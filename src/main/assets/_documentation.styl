@@ -51,6 +51,31 @@ article
     a:link, a:visited
       font-weight 700
 
+.next-link
+  a
+    font-size 1.1em
+    display block
+    padding 18px 10px 18px 90px
+    margin 30px 0
+    background lb-light-grey-ltr url(images/logos/lagom-icon-full-color.svg) no-repeat
+    background-size 60px 60px
+    background-position left 10px top 0px
+    border 1px solid lb-light-grey
+    font-weight: 400
+    transition background-color 300ms ease-in-out;
+    border-radius br
+    strong
+      color lgm-purple-dkr
+    &:hover
+      border 1px solid lgm-purple
+      background lgm-purple url(images/logos/lagom-icon-reverse.svg) no-repeat
+      background-size 60px 60px
+      background-position left 10px top 0px
+      color white
+      transition background-color 300ms ease-in-out
+      strong
+        color white
+
 /* Make the search drop down right aligned when the side menu is on the right hand side (ie, ion large screens) */
 @media screen and (min-width: 64em)
   .aa-dropdown-menu

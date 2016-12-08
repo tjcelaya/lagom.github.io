@@ -27,11 +27,24 @@ object DocumentationGenerator extends App {
   val currentDocsVersion = "1.2.x"
   val currentLagomVersion = "1.2.1"
 
+  // This impacts what gets displayed on the main documentation index.
+  val stableVersions = Seq(
+    VersionSummary("1.2.x", s"Lagom $currentLagomVersion (current stable release) for Scala 2.11"),
+    VersionSummary("1.1.x", s"Lagom 1.1.0 (previous stable release) for Scala 2.11")
+  )
+
+  val previewVersions = Seq(
+    VersionSummary("1.3.x", s"Lagom 1.3.0-M1 for Scala 2.11")
+  )
+
+  val oldVersions = Seq(
+    VersionSummary("1.0.x", s"Lagom 1.0.0 for Scala 2.11")
+  )
+
   //val baseUrl = "http://jroper.github.io/lagom.github.io"
   //val context = "/lagom.github.io"
   val baseUrl = "http://www.lagomframework.com"
   val context = ""
-
 
   // Templated pages to generate
   val templatePages: Seq[(String, Template1[LagomContext, Html])] = Seq(
@@ -42,7 +55,7 @@ object DocumentationGenerator extends App {
 
   // Redirects
   val redirects: Seq[(String, String)] = Seq(
-    "/documentation/index.html" -> s"$context/documentation/$currentDocsVersion/java/Home.html",
+    "/documentation/scala/index.html" -> s"$context/documentation/$currentDocsVersion/scala/Home.html",
     "/documentation/java/index.html" -> s"$context/documentation/$currentDocsVersion/java/Home.html"
   )
 
@@ -156,14 +169,19 @@ object DocumentationGenerator extends App {
   }
 
   // Discover versions
-  val versions = docsDir.listFiles().toSeq.map { docsVersionDir =>
-    val indexJson = new File(docsVersionDir, "index.json")
+  val versions = docsDir.listFiles().toSeq.map { versionDir =>
+    // Discover languages
+    val languages = versionDir.listFiles().toSeq.map { languageDir =>
+      val indexJson = new File(languageDir, "index.json")
+      val toc = Json.parse(Files.readAllBytes(indexJson.toPath)).as[TOC]
+      LanguageVersion(versionDir.getName, languageDir.getName, languageDir, toc)
+    }
 
-    val toc = Json.parse(Files.readAllBytes(indexJson.toPath)).as[TOC]
-    docsVersionDir -> Version(docsVersionDir.getName, toc)
-  }.sortBy(_._1.getName) // Will need a better sort in future
+    Version(versionDir.getName, languages)
+  }.sortBy(_.name) // Will need a better sort in future
 
-  val currentVersion = versions.find(_._2.name == currentDocsVersion)
+
+  val currentVersion = versions.find(_.name == currentDocsVersion)
 
   private def getNav(ctx: Context, acc: List[Section] = Nil): List[Section] = {
     ctx.parent match {
@@ -175,10 +193,24 @@ object DocumentationGenerator extends App {
     }
   }
 
-  def renderDocVersion(version: Version): Seq[OutputFile] = {
-    val docsPath = s"documentation/${version.name}/java"
+  private def getNext(ctx: Context): Option[NavLink] = {
+    ctx.parent match {
+      case None => None
+      case Some(parent) =>
+        parent.children.dropWhile(_._1 != ctx.title).drop(1).headOption match {
+          case Some((title, url)) => Some(NavLink(title, url, false))
+          case None => getNext(parent)
+        }
+    }
+  }
+
+  def renderDocVersion(version: LanguageVersion): Seq[OutputFile] = {
+    val docsPath = s"documentation/${version.name}/${version.language}"
     val versionOutputDir = new File(outputDir, docsPath)
     versionOutputDir.mkdirs()
+
+    val languageVersions = versions.collect(Function.unlift((v: Version) => v.versionFor(version.language)))
+    val currentLanguageVersion = currentVersion.flatMap(_.versionFor(version.language))
 
     def processDocsFile(path: String, file: File): Seq[OutputFile] = {
       if (file.isDirectory) {
@@ -193,13 +225,15 @@ object DocumentationGenerator extends App {
           case Some(context) if !context.nostyle =>
             val fileContent = Html(new String(Files.readAllBytes(file.toPath), "utf-8"))
 
-            val versionPages = versions.map(_._2.pageFor(path))
+            val versionPages = languageVersions.map(_.pageFor(path))
             val nav = getNav(context)
-            val canonical = currentVersion.map(_._2.pageFor(path)).collect {
-              case VersionPage(name, true) => s"$baseUrl/documentation/$name/java/$path"
+            val canonical = currentLanguageVersion.map(_.pageFor(path)).collect {
+              case VersionPage(name, true) => s"$baseUrl/documentation/$name/${version.language}/$path"
             }
 
-            val rendered = html.documentation(path, fileContent, context, version.name, versionPages, nav, canonical)
+            val nextLink = getNext(context)
+
+            val rendered = html.documentation(path, fileContent, context, version.language, version.name, versionPages, nav, canonical, nextLink)
 
             Files.write(targetFile.toPath, rendered.body.getBytes("utf-8"))
             OutputFile(targetFile, docsPath + "/" + path, includeInSitemap = true, "0.9")
@@ -214,12 +248,21 @@ object DocumentationGenerator extends App {
       }
     }
 
-    processDocsFile("", new File(docsDir, version.name))
+    processDocsFile("", version.file)
   }
 
-  val generatedDocs = versions.map(_._2).map(version => version -> renderDocVersion(version))
+  val generatedDocs = versions.flatMap(_.languages).map { version =>
+    version -> renderDocVersion(version)
+  }
 
-  val generated = templatePages.map((generatePage _).tupled) ++ renderMarkdownFiles("", markdownDir) ++ blogPostFiles ++ redirects.map((generateRedirect _).tupled)
+  val generated = templatePages.map((generatePage _).tupled) ++
+    Seq(savePage("documentation/index.html", html.documentationIndex(stableVersions, previewVersions, oldVersions, versions))) ++
+    versions.map { version =>
+      savePage(s"documentation/${version.name}/index.html", html.documentationVersionIndex(version), includeInSitemap = false)
+    } ++
+    renderMarkdownFiles("", markdownDir) ++
+    blogPostFiles ++
+    redirects.map((generateRedirect _).tupled)
 
   // sitemaps
   val mainSitemap = Sitemap("sitemap-main.xml", generated.filter(_.includeInSitemap)
@@ -271,13 +314,21 @@ object ActivatorRelease {
   implicit val reads: Reads[ActivatorRelease] = Json.reads[ActivatorRelease]
 }
 
+case class VersionSummary(name: String, title: String)
+
+case class Version(name: String, languages: Seq[LanguageVersion]) {
+  def versionFor(language: String): Option[LanguageVersion] = languages.find(_.language == language)
+}
+
 /**
-  * A version of the docs.
+  * A version of the docs for a language.
   *
   * @param name The name of the version.
+  * @param language The name of the language.
+  * @param file The path of the language version.
   * @param toc The table of contents for the version.
   */
-case class Version(name: String, toc: TOC) {
+case class LanguageVersion(name: String, language: String, file: File, toc: TOC) {
   def pageFor(path: String) = VersionPage(name, toc.mappings.get(path).isDefined)
 }
 
