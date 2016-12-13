@@ -213,7 +213,7 @@ extends Object</pre>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>abstract java.util.concurrent.CompletionStage&lt;java.util.Optional&lt;java.util.UUID&gt;&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/lightbend/lagom/javadsl/persistence/cassandra/CassandraReadSideProcessor.html#prepare-com.lightbend.lagom.javadsl.persistence.cassandra.CassandraSession-">prepare</a></span>(<a href="../../../../../../com/lightbend/lagom/javadsl/persistence/cassandra/CassandraSession.html" title="class in com.lightbend.lagom.javadsl.persistence.cassandra">CassandraSession</a>&nbsp;session)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../com/lightbend/lagom/javadsl/persistence/cassandra/CassandraReadSideProcessor.html#prepare-com.lightbend.lagom.javadsl.persistence.cassandra.CassandraSession-">prepare</a></span>(com.lightbend.lagom.javadsl.persistence.cassandra.CassandraSession&nbsp;session)</code>
 <div class="block">First you must tell where in the event stream the processing should start,
  i.e.</div>
 </td>
@@ -274,7 +274,7 @@ extends Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>prepare</h4>
-<pre>public abstract&nbsp;java.util.concurrent.CompletionStage&lt;java.util.Optional&lt;java.util.UUID&gt;&gt;&nbsp;prepare(<a href="../../../../../../com/lightbend/lagom/javadsl/persistence/cassandra/CassandraSession.html" title="class in com.lightbend.lagom.javadsl.persistence.cassandra">CassandraSession</a>&nbsp;session)</pre>
+<pre>public abstract&nbsp;java.util.concurrent.CompletionStage&lt;java.util.Optional&lt;java.util.UUID&gt;&gt;&nbsp;prepare(com.lightbend.lagom.javadsl.persistence.cassandra.CassandraSession&nbsp;session)</pre>
 <div class="block">First you must tell where in the event stream the processing should start,
  i.e. return the offset. The current offset is a parameter to the event
  handler for each event and it should typically be stored so that it can be

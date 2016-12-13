@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -171,54 +171,78 @@ extends org.apache.maven.plugin.AbstractMojo</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#execute--">execute</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#cassandraEnabled--">cassandraEnabled</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#getServiceGatewayPort--">getServiceGatewayPort</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#cassandraPort--">cassandraPort</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#getServiceLocatorEnabled--">getServiceLocatorEnabled</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#execute--">execute</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#getServiceLocatorPort--">getServiceLocatorPort</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#getCassandraEnabled--">getCassandraEnabled</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>java.util.Map&lt;String,String&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#getUnmanagedServices--">getUnmanagedServices</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#getCassandraPort--">getCassandraPort</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#serviceGatewayPort--">serviceGatewayPort</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#getServiceGatewayPort--">getServiceGatewayPort</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#serviceLocatorEnabled--">serviceLocatorEnabled</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#getServiceLocatorEnabled--">getServiceLocatorEnabled</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#serviceLocatorPort--">serviceLocatorPort</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#getServiceLocatorPort--">getServiceLocatorPort</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i8" class="altColor">
+<td class="colFirst"><code>java.util.Map&lt;String,String&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#getUnmanagedServices--">getUnmanagedServices</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#serviceGatewayPort--">serviceGatewayPort</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#serviceLocatorEnabled--">serviceLocatorEnabled</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#serviceLocatorPort--">serviceLocatorPort</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i12" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#setCassandraEnabled-boolean-">setCassandraEnabled</a></span>(boolean&nbsp;x$1)</code>&nbsp;</td>
+</tr>
+<tr id="i13" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#setCassandraPort-int-">setCassandraPort</a></span>(int&nbsp;x$1)</code>&nbsp;</td>
+</tr>
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#setServiceGatewayPort-int-">setServiceGatewayPort</a></span>(int&nbsp;x$1)</code>&nbsp;</td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#setServiceLocatorEnabled-boolean-">setServiceLocatorEnabled</a></span>(boolean&nbsp;x$1)</code>&nbsp;</td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#setServiceLocatorPort-int-">setServiceLocatorPort</a></span>(int&nbsp;x$1)</code>&nbsp;</td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#setUnmanagedServices-java.util.Map-">setUnmanagedServices</a></span>(java.util.Map&lt;String,String&gt;&nbsp;x$1)</code>&nbsp;</td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>java.util.Map&lt;String,String&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/maven/StartServiceLocatorMojo.html#unmanagedServices--">unmanagedServices</a></span>()</code>&nbsp;</td>
 </tr>
@@ -342,6 +366,42 @@ extends org.apache.maven.plugin.AbstractMojo</pre>
 <pre>public&nbsp;void&nbsp;setUnmanagedServices(java.util.Map&lt;String,String&gt;&nbsp;x$1)</pre>
 </li>
 </ul>
+<a name="cassandraPort--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>cassandraPort</h4>
+<pre>public&nbsp;int&nbsp;cassandraPort()</pre>
+</li>
+</ul>
+<a name="setCassandraPort-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setCassandraPort</h4>
+<pre>public&nbsp;void&nbsp;setCassandraPort(int&nbsp;x$1)</pre>
+</li>
+</ul>
+<a name="cassandraEnabled--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>cassandraEnabled</h4>
+<pre>public&nbsp;boolean&nbsp;cassandraEnabled()</pre>
+</li>
+</ul>
+<a name="setCassandraEnabled-boolean-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setCassandraEnabled</h4>
+<pre>public&nbsp;void&nbsp;setCassandraEnabled(boolean&nbsp;x$1)</pre>
+</li>
+</ul>
 <a name="execute--">
 <!--   -->
 </a>
@@ -381,10 +441,28 @@ extends org.apache.maven.plugin.AbstractMojo</pre>
 <a name="getUnmanagedServices--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getUnmanagedServices</h4>
 <pre>public&nbsp;java.util.Map&lt;String,String&gt;&nbsp;getUnmanagedServices()</pre>
+</li>
+</ul>
+<a name="getCassandraPort--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getCassandraPort</h4>
+<pre>public&nbsp;int&nbsp;getCassandraPort()</pre>
+</li>
+</ul>
+<a name="getCassandraEnabled--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getCassandraEnabled</h4>
+<pre>public&nbsp;boolean&nbsp;getCassandraEnabled()</pre>
 </li>
 </ul>
 </li>
