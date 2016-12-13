@@ -111,6 +111,29 @@ serializable, and reports any such problems in the <code>issues</code> of the <c
       </a>
     </span>
       
+    </li><li name="com.lightbend.lagom.scaladsl.testkit.ServiceTest" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ServiceTest"></a>
+      <a id="ServiceTest:ServiceTest"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ServiceTest$.html"><span class="name">ServiceTest</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.lightbend.lagom.scaladsl.testkit.package@ServiceTest" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Support for writing functional tests for one service.</p><div class="fullcomment"><div class="comment cmt"><p>Support for writing functional tests for one service. The service is running in a server and in the test you can
+interact with it using its service client, i.e. calls to the service API.</p><p>The server is ran standalone without persistence, pubsub or cluster features enabled. Cassandra is also disabled by
+default. If your service require either of these features you can enable them in the <code>Setup</code>.</p><p>There are two different styles that can be used. It is most convenient to use <span class="extype" name="ServiceTest.withServer()">ServiceTest.withServer()</span>, since it
+automatically starts and stops the server before and after the given block. When your test have several test
+methods, and especially when using persistence, it is faster to only <span class="extype" name="ServiceTest.startServer()">ServiceTest.startServer()</span> the server once in a
+before all tests hook, and then stop it in an after all test hook.
+</p></div></div>
     </li></ol>
             </div>
 

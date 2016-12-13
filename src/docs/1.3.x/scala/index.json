@@ -3,52 +3,52 @@
   "children" : [ {
     "title" : "Home",
     "url" : "Home.html",
-    "sourceUrl" : "https://github.com/lagom/lagom/edit/scaladsl-fixes/docs/manual/common/Home.md"
+    "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/Home.md"
   }, {
     "title" : "Welcome to Lagom",
     "children" : [ {
       "title" : "What is Lagom?",
       "url" : "WhatIsLagom.html",
-      "sourceUrl" : "https://github.com/lagom/lagom/edit/scaladsl-fixes/docs/manual/common/welcome/WhatIsLagom.md"
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/welcome/WhatIsLagom.md"
     }, {
       "title" : "What’s in the name?",
       "url" : "WhatDoesLagomMean.html",
-      "sourceUrl" : "https://github.com/lagom/lagom/edit/scaladsl-fixes/docs/manual/common/welcome/WhatDoesLagomMean.md"
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/welcome/WhatDoesLagomMean.md"
     }, {
       "title" : "Lagom design philosophy",
       "url" : "LagomDesignPhilosophy.html",
-      "sourceUrl" : "https://github.com/lagom/lagom/edit/scaladsl-fixes/docs/manual/common/welcome/LagomDesignPhilosophy.md"
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/welcome/LagomDesignPhilosophy.md"
     } ]
   }, {
     "title" : "Lagom core concepts",
     "children" : [ {
       "title" : "Lagom core concepts",
       "url" : "CoreConcepts.html",
-      "sourceUrl" : "https://github.com/lagom/lagom/edit/scaladsl-fixes/docs/manual/common/concepts/CoreConcepts.md"
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/concepts/CoreConcepts.md"
     }, {
       "title" : "Microservices in Lagom",
       "url" : "Microservices.html",
-      "sourceUrl" : "https://github.com/lagom/lagom/edit/scaladsl-fixes/docs/manual/common/concepts/Microservices.md"
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/concepts/Microservices.md"
     }, {
       "title" : "Polyglot systems with Lagom",
       "url" : "PolyglotSystems.html",
-      "sourceUrl" : "https://github.com/lagom/lagom/edit/scaladsl-fixes/docs/manual/common/concepts/PolyglotSystems.md"
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/concepts/PolyglotSystems.md"
     }, {
       "title" : "Lagom component technologies",
       "url" : "Technologies.html",
-      "sourceUrl" : "https://github.com/lagom/lagom/edit/scaladsl-fixes/docs/manual/common/concepts/Technologies.md"
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/concepts/Technologies.md"
     }, {
       "title" : "Lagom build philosophy",
       "url" : "BuildConcepts.html",
-      "sourceUrl" : "https://github.com/lagom/lagom/edit/scaladsl-fixes/docs/manual/common/concepts/BuildConcepts.md"
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/concepts/BuildConcepts.md"
     }, {
       "title" : "Immutable Objects",
       "url" : "Immutable.html",
-      "sourceUrl" : "https://github.com/lagom/lagom/edit/scaladsl-fixes/docs/manual/scala/concepts/Immutable.md"
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/concepts/Immutable.md"
     }, {
       "title" : "Event Sourcing and CQRS",
       "url" : "ES_CQRS.html",
-      "sourceUrl" : "https://github.com/lagom/lagom/edit/scaladsl-fixes/docs/manual/common/concepts/ES_CQRS.md"
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/concepts/ES_CQRS.md"
     } ]
   }, {
     "title" : "Getting started with Lagom",
@@ -58,7 +58,7 @@
     "children" : [ {
       "title" : "Reference Guide",
       "url" : "ReferenceGuide.html",
-      "sourceUrl" : "https://github.com/lagom/lagom/edit/scaladsl-fixes/docs/manual/common/guide/ReferenceGuide.md"
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/guide/ReferenceGuide.md"
     }, {
       "title" : "Defining a Lagom build",
       "url" : "build.html"
@@ -70,23 +70,26 @@
       "children" : [ {
         "title" : "Service descriptors",
         "url" : "ServiceDescriptors.html",
-        "sourceUrl" : "https://github.com/lagom/lagom/edit/scaladsl-fixes/docs/manual/scala/guide/services/ServiceDescriptors.md"
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/services/ServiceDescriptors.md"
       }, {
         "title" : "Implementing services",
         "url" : "ServiceImplementation.html",
-        "sourceUrl" : "https://github.com/lagom/lagom/edit/scaladsl-fixes/docs/manual/scala/guide/services/ServiceImplementation.md"
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/services/ServiceImplementation.md"
       }, {
         "title" : "Consuming services",
-        "url" : "ServiceClients.html"
+        "url" : "ServiceClients.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/services/ServiceClients.md"
       }, {
         "title" : "Testing Services",
-        "url" : "Test.html"
+        "url" : "TestingServices.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/services/TestingServices.md"
       }, {
         "title" : "Message serializers",
         "url" : "MessageSerializers.html"
       }, {
         "title" : "Header Filters",
-        "url" : "HeaderFilters.html"
+        "url" : "HeaderFilters.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/services/HeaderFilters.md"
       }, {
         "title" : "Error handling",
         "url" : "ServiceErrorHandling.html"
@@ -96,35 +99,35 @@
       "children" : [ {
         "title" : "Persistent Entity",
         "url" : "PersistentEntity.html",
-        "sourceUrl" : "https://github.com/lagom/lagom/edit/scaladsl-fixes/docs/manual/scala/guide/cluster/PersistentEntity.md"
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/cluster/PersistentEntity.md"
       }, {
         "title" : "Cassandra Persistent Entities",
         "url" : "PersistentEntityCassandra.html",
-        "sourceUrl" : "https://github.com/lagom/lagom/edit/scaladsl-fixes/docs/manual/scala/guide/cluster/PersistentEntityCassandra.md"
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/cluster/PersistentEntityCassandra.md"
       }, {
         "title" : "Relational Database Persistent Entities",
         "url" : "PersistentEntityRDBMS.html",
-        "sourceUrl" : "https://github.com/lagom/lagom/edit/scaladsl-fixes/docs/manual/scala/guide/cluster/PersistentEntityRDBMS.md"
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/cluster/PersistentEntityRDBMS.md"
       }, {
         "title" : "Persistent Read-Side",
         "url" : "ReadSide.html",
-        "sourceUrl" : "https://github.com/lagom/lagom/edit/scaladsl-fixes/docs/manual/scala/guide/cluster/ReadSide.md"
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/cluster/ReadSide.md"
       }, {
         "title" : "Cassandra Read-Side Support",
         "url" : "ReadSideCassandra.html",
-        "sourceUrl" : "https://github.com/lagom/lagom/edit/scaladsl-fixes/docs/manual/scala/guide/cluster/ReadSideCassandra.md"
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/cluster/ReadSideCassandra.md"
       }, {
         "title" : "Relational Database Read-Side Support",
         "url" : "ReadSideRDBMS.html",
-        "sourceUrl" : "https://github.com/lagom/lagom/edit/scaladsl-fixes/docs/manual/scala/guide/cluster/ReadSideRDBMS.md"
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/cluster/ReadSideRDBMS.md"
       }, {
         "title" : "Cluster",
         "url" : "Cluster.html",
-        "sourceUrl" : "https://github.com/lagom/lagom/edit/scaladsl-fixes/docs/manual/scala/guide/cluster/Cluster.md"
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/cluster/Cluster.md"
       }, {
         "title" : "Serialization",
         "url" : "Serialization.html",
-        "sourceUrl" : "https://github.com/lagom/lagom/edit/scaladsl-fixes/docs/manual/scala/guide/cluster/Serialization.md"
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/cluster/Serialization.md"
       } ]
     }, {
       "title" : "Decouple services with a message broker",
