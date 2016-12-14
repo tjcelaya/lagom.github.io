@@ -85,14 +85,16 @@
         "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/services/TestingServices.md"
       }, {
         "title" : "Message serializers",
-        "url" : "MessageSerializers.html"
+        "url" : "MessageSerializers.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/services/MessageSerializers.md"
       }, {
         "title" : "Header Filters",
         "url" : "HeaderFilters.html",
         "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/services/HeaderFilters.md"
       }, {
         "title" : "Error handling",
-        "url" : "ServiceErrorHandling.html"
+        "url" : "ServiceErrorHandling.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/services/ServiceErrorHandling.md"
       } ]
     }, {
       "title" : "Writing persistent and clustered services",
