@@ -208,9 +208,9 @@
     }, {
       "title" : "Running Lagom in production",
       "children" : [ {
-        "title" : "Overview",
-        "url" : "Overview.html",
-        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/guide/production/Overview.md"
+        "title" : "Production Overview",
+        "url" : "ProductionOverview.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/guide/production/ProductionOverview.md"
       }, {
         "title" : "Lightbend ConductR",
         "url" : "ConductR.html",
@@ -224,9 +224,9 @@
         "url" : "ConductRSbt.html",
         "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/guide/production/ConductRSbt.md"
       }, {
-        "title" : "ReactivePlatform",
+        "title" : "Reactive Platform",
         "url" : "ReactivePlatform.html",
-        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/guide/production/ReactivePlatform.md"
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/guide/production/ReactivePlatform.md"
       } ]
     }, {
       "title" : "Logging",

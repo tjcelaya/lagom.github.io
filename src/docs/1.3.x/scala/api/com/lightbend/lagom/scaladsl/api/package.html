@@ -66,7 +66,24 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="com.lightbend.lagom.scaladsl.api.CircuitBreaker" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+              <ol><li name="com.lightbend.lagom.scaladsl.api.AdditionalConfiguration" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AdditionalConfigurationextendsAnyRef"></a>
+      <a id="AdditionalConfiguration:AdditionalConfiguration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="AdditionalConfiguration.html"><span class="name">AdditionalConfiguration</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.lightbend.lagom.scaladsl.api.package@AdditionalConfigurationextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Additional configuration that will be added to the main system configuration.</p>
+    </li><li name="com.lightbend.lagom.scaladsl.api.CircuitBreaker" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="CircuitBreakerextendsAnyRef"></a>
       <a id="CircuitBreaker:CircuitBreaker"></a>
       <h4 class="signature">
@@ -83,6 +100,23 @@
       </a>
     </span>
       
+    </li><li name="com.lightbend.lagom.scaladsl.api.ConfigurationServiceLocator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ConfigurationServiceLocatorextendsServiceLocator"></a>
+      <a id="ConfigurationServiceLocator:ConfigurationServiceLocator"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ConfigurationServiceLocator.html"><span class="name">ConfigurationServiceLocator</span></a><span class="result"> extends <a href="ServiceLocator.html" class="extype" name="com.lightbend.lagom.scaladsl.api.ServiceLocator">ServiceLocator</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.lightbend.lagom.scaladsl.api.package@ConfigurationServiceLocatorextendsServiceLocator" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A service locator that uses static configuration.</p>
     </li><li name="com.lightbend.lagom.scaladsl.api.Descriptor" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="DescriptorextendsAnyRef"></a>
       <a id="Descriptor:Descriptor"></a>
@@ -102,6 +136,25 @@
       <p class="shortcomment cmt">Describes a service.</p><div class="fullcomment"><div class="comment cmt"><p>Describes a service.</p><p>A descriptor is a set of call and topic descriptors that the service provides, coupled with metadata about how the
 service and its calls are to be served. Metadata may include versioning and migrations, SLA's, sharding
 hints, circuit breaker strategies etc.
+</p></div></div>
+    </li><li name="com.lightbend.lagom.scaladsl.api.ProvidesAdditionalConfiguration" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="ProvidesAdditionalConfigurationextendsAnyRef"></a>
+      <a id="ProvidesAdditionalConfiguration:ProvidesAdditionalConfiguration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ProvidesAdditionalConfiguration.html"><span class="name">ProvidesAdditionalConfiguration</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.lightbend.lagom.scaladsl.api.package@ProvidesAdditionalConfigurationextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This trait allows Lagom integrations to define additional configuration that gets mixed into the application trait.</p><div class="fullcomment"><div class="comment cmt"><p>This trait allows Lagom integrations to define additional configuration that gets mixed into the application trait.</p><p>By extending this, and overriding <code>additionalConfiguration</code>, an integration can inject configuration, and the user
+can control which order this configuration gets applied by changing the order in which traits are mixed together.
 </p></div></div>
     </li><li name="com.lightbend.lagom.scaladsl.api.Service" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="ServiceextendsAnyRef"></a>
@@ -206,7 +259,24 @@ routing pool, or it may decide to notify some up stream service registry that th
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="com.lightbend.lagom.scaladsl.api.CircuitBreaker" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="com.lightbend.lagom.scaladsl.api.AdditionalConfiguration" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AdditionalConfiguration"></a>
+      <a id="AdditionalConfiguration:AdditionalConfiguration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="AdditionalConfiguration$.html"><span class="name">AdditionalConfiguration</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.lightbend.lagom.scaladsl.api.package@AdditionalConfiguration" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.lightbend.lagom.scaladsl.api.CircuitBreaker" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="CircuitBreaker"></a>
       <a id="CircuitBreaker:CircuitBreaker"></a>
       <h4 class="signature">

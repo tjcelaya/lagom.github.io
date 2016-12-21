@@ -1,4 +1,31 @@
-<h1 id="Using-ConductR-with-sbt"><a class="section-marker" href="#Using-ConductR-with-sbt">§</a><a href="#using-conductr-with-sbt" name="using-conductr-with-sbt">Using ConductR with sbt</a></h1>
+<h1 id="Lightbend-ConductR"><a class="section-marker" href="#Lightbend-ConductR">§</a><a href="#lightbend-conductr" name="lightbend-conductr">Lightbend ConductR</a></h1>
+<p>ConductR is a container orchestration tool with the main goal of delivering operational productivity. ConductR is also designed to host your Lagom services with resilience.</p>
+<p>ConductR is free for development usage and comes with a &ldquo;sandbox&rdquo; so that you can run ConductR locally and test your services. For more information on ConductR go to:</p>
+<ul>
+  <li><a href="http://lightbend.com/products/conductr">ConductR product page</a></li>
+  <li><a href="http://conductr.lightbend.com">ConductR documentation</a></li>
+</ul>
+<p>This guide will explain how to:</p>
+<ul>
+  <li>Install ConductR sandbox</li>
+  <li>Start local ConductR cluster</li>
+  <li>Conveniently package, load and run your entire Lagom system</li>
+  <li>Package Lagom services individually</li>
+  <li>Load and run services during and outside of development</li>
+  <li>Run Cassandra on ConductR</li>
+</ul>
+<p>If you&rsquo;d like to know more about our commercial license then <a href="https://www.lightbend.com/company/contact">please contact us</a>.</p><h2 id="Installing-ConductR-sandbox"><a class="section-marker" href="#Installing-ConductR-sandbox">§</a><a href="#installing-conductr-sandbox" name="installing-conductr-sandbox">Installing ConductR sandbox</a></h2>
+<p>The ConductR sandbox is a docker image to easily create a ConductR cluster locally. To run ConductR on your development machine follow the instructions on the <a href="https://www.lightbend.com/product/conductr/developer">ConductR developer page</a> up to the section <strong>Configure Docker VM</strong>. We will run the sandbox later on in this guide. Note that in order to access this page you need to login with your Lightbend account. If you don&rsquo;t have an account yet, head out to the <a href="https://www.lightbend.com/account/register">Sign Up page</a> and create a free account.</p>
+<p>Verify the successful installation of the <code>conductr-cli</code> by running the <code>conduct</code> command within the terminal:</p>
+<pre class="prettyprint"><code class="language-console">$ conduct
+usage: conduct [-h]
+               {version,info,services,acls,load,run,stop,unload,events,logs}
+               ...
+</code></pre>
+<p>You can also verify the successful installation of the ConductR sandbox by running <code>sandbox</code> within the terminal:</p>
+<pre class="prettyprint"><code class="language-console">$ sandbox
+usage: sandbox [-h] {run,debug,stop,init} ...
+</code></pre><h2 id="Using-ConductR-with-your-build"><a class="section-marker" href="#Using-ConductR-with-your-build">§</a><a href="#using-conductr-with-your-build" name="using-conductr-with-your-build">Using ConductR with your build</a></h2>
 <p>To use ConductR with sbt, add the <a href="https://github.com/typesafehub/sbt-conductr">sbt-conductr plugin</a> to your <code>project/plugins.sbt</code>:</p>
 <pre class="prettyprint"><code class="language-sbt">addSbtPlugin(&quot;com.lightbend.conductr&quot; % &quot;sbt-conductr&quot; % &quot;2.1.17&quot;)</code></pre>
 <p>sbt-conductr adds several commands to the activator console:</p>
@@ -9,7 +36,20 @@
   <li><code>configuration:dist</code> to produce individual custom ConductR configuration for your services</li>
   <li>Commands from the <code>conductr-cli</code></li>
 </ul>
-<p>We will use most of these commands in the next sections.</p><h2 id="Run-it-all"><a class="section-marker" href="#Run-it-all">§</a><a href="#run-it-all" name="run-it-all">Run it all</a></h2>
+<p>It also adds the ConductR libraries to your classpath, which provide components, including the service locator and other components necessary for initialization on ConductR, which you can mix in with your application cake. To do so, mix <code>ConductRApplicationComponents</code> into your production cake:</p>
+<pre class="prettyprint"><code class="language-scala">import com.lightbend.lagom.scaladsl.server._
+import com.typesafe.conductr.bundlelib.lagom.scaladsl.ConductRApplicationComponents
+
+class HelloApplicationLoader extends LagomApplicationLoader {
+
+  override def load(context: LagomApplicationContext) =
+    new HelloApplication(context) with ConductRApplicationComponents
+
+  override def loadDevMode(context: LagomApplicationContext) =
+    new HelloApplication(context) with LagomDevModeComponents
+
+}</code></pre>
+<p>Once you have added this to each of your services, you should be ready to run in ConductR.</p><h2 id="Run-it-all"><a class="section-marker" href="#Run-it-all">§</a><a href="#run-it-all" name="run-it-all">Run it all</a></h2>
 <p>The simplest thing that you can do in order to deploy your entire Lagom system is to run a local ConductR cluster and then run the <code>install</code> command.</p>
 <p>To start a ConductR cluster locally you should use the ConductR sandbox which is a docker image based on Ubuntu that includes ConductR. With this docker image you can easily spin up multiple ConductR nodes on your local machine. The <code>sandbox run</code> command will pick up and run this ConductR docker image. In order to use this command we need to specify the ConductR version. Note that this version is the version of ConductR itself and not the version of the <code>sbt-conductr</code> plugin. Please visit again the <a href="https://www.lightbend.com/product/conductr/developer">ConductR Developer page</a> to pick up the latest ConductR version from the section <strong>Quick Configuration</strong>.</p>
 <p>First, start the activator console from the terminal:</p>

@@ -45,7 +45,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">LagomApplication</span><span class="result"> extends <span class="extype" name="play.api.BuiltInComponentsFromContext">BuiltInComponentsFromContext</span> with <a href="LagomServerComponents.html" class="extype" name="com.lightbend.lagom.scaladsl.server.LagomServerComponents">LagomServerComponents</a> with <a href="../client/LagomServiceClientComponents.html" class="extype" name="com.lightbend.lagom.scaladsl.client.LagomServiceClientComponents">LagomServiceClientComponents</a></span>
+        <span class="name">LagomApplication</span><span class="result"> extends <span class="extype" name="play.api.BuiltInComponentsFromContext">BuiltInComponentsFromContext</span> with <a href="../api/ProvidesAdditionalConfiguration.html" class="extype" name="com.lightbend.lagom.scaladsl.api.ProvidesAdditionalConfiguration">ProvidesAdditionalConfiguration</a> with <a href="LagomServerComponents.html" class="extype" name="com.lightbend.lagom.scaladsl.server.LagomServerComponents">LagomServerComponents</a> with <a href="../client/LagomServiceClientComponents.html" class="extype" name="com.lightbend.lagom.scaladsl.client.LagomServiceClientComponents">LagomServiceClientComponents</a></span>
       </span>
       </h4>
       
@@ -58,7 +58,7 @@ the <code>serviceLocator</code> component will be provided by mixing in a servic
 for production or for development.
 </p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/lagom/lagom/tree/master//service/scaladsl/server/src/main/scala/com/lightbend/lagom/scaladsl/server/LagomApplicationLoader.scala" target="_blank">LagomApplicationLoader.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="../client/LagomServiceClientComponents.html" class="extype" name="com.lightbend.lagom.scaladsl.client.LagomServiceClientComponents">LagomServiceClientComponents</a>, <span class="extype" name="com.lightbend.lagom.internal.scaladsl.api.broker.TopicFactoryProvider">TopicFactoryProvider</span>, <a href="LagomServerComponents.html" class="extype" name="com.lightbend.lagom.scaladsl.server.LagomServerComponents">LagomServerComponents</a>, <span class="extype" name="play.api.BuiltInComponentsFromContext">BuiltInComponentsFromContext</span>, <span class="extype" name="play.api.BuiltInComponents">BuiltInComponents</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="../client/LagomServiceClientComponents.html" class="extype" name="com.lightbend.lagom.scaladsl.client.LagomServiceClientComponents">LagomServiceClientComponents</a>, <span class="extype" name="com.lightbend.lagom.internal.scaladsl.api.broker.TopicFactoryProvider">TopicFactoryProvider</span>, <a href="LagomServerComponents.html" class="extype" name="com.lightbend.lagom.scaladsl.server.LagomServerComponents">LagomServerComponents</a>, <a href="../api/ProvidesAdditionalConfiguration.html" class="extype" name="com.lightbend.lagom.scaladsl.api.ProvidesAdditionalConfiguration">ProvidesAdditionalConfiguration</a>, <span class="extype" name="play.api.BuiltInComponentsFromContext">BuiltInComponentsFromContext</span>, <span class="extype" name="play.api.BuiltInComponents">BuiltInComponents</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -76,7 +76,7 @@ for production or for development.
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="com.lightbend.lagom.scaladsl.server.LagomApplication"><span>LagomApplication</span></li><li class="in" name="com.lightbend.lagom.scaladsl.client.LagomServiceClientComponents"><span>LagomServiceClientComponents</span></li><li class="in" name="com.lightbend.lagom.internal.scaladsl.api.broker.TopicFactoryProvider"><span>TopicFactoryProvider</span></li><li class="in" name="com.lightbend.lagom.scaladsl.server.LagomServerComponents"><span>LagomServerComponents</span></li><li class="in" name="play.api.BuiltInComponentsFromContext"><span>BuiltInComponentsFromContext</span></li><li class="in" name="play.api.BuiltInComponents"><span>BuiltInComponents</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="com.lightbend.lagom.scaladsl.server.LagomApplication"><span>LagomApplication</span></li><li class="in" name="com.lightbend.lagom.scaladsl.client.LagomServiceClientComponents"><span>LagomServiceClientComponents</span></li><li class="in" name="com.lightbend.lagom.internal.scaladsl.api.broker.TopicFactoryProvider"><span>TopicFactoryProvider</span></li><li class="in" name="com.lightbend.lagom.scaladsl.server.LagomServerComponents"><span>LagomServerComponents</span></li><li class="in" name="com.lightbend.lagom.scaladsl.api.ProvidesAdditionalConfiguration"><span>ProvidesAdditionalConfiguration</span></li><li class="in" name="play.api.BuiltInComponentsFromContext"><span>BuiltInComponentsFromContext</span></li><li class="in" name="play.api.BuiltInComponents"><span>BuiltInComponents</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
                 <span class="filtertype">Implicitly<br />
@@ -293,23 +293,26 @@ for production or for development.
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>BuiltInComponents</dd></dl></div>
-    </li><li name="com.lightbend.lagom.scaladsl.server.LagomApplication#additionalConfiguration" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="additionalConfiguration:play.api.Configuration"></a>
-      <a id="additionalConfiguration:Configuration"></a>
+    </li><li name="com.lightbend.lagom.scaladsl.api.ProvidesAdditionalConfiguration#additionalConfiguration" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="additionalConfiguration:com.lightbend.lagom.scaladsl.api.AdditionalConfiguration"></a>
+      <a id="additionalConfiguration:AdditionalConfiguration"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">additionalConfiguration</span><span class="result">: <span class="extype" name="play.api.Configuration">Configuration</span></span>
+        <span class="name">additionalConfiguration</span><span class="result">: <a href="../api/AdditionalConfiguration.html" class="extype" name="com.lightbend.lagom.scaladsl.api.AdditionalConfiguration">AdditionalConfiguration</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#com.lightbend.lagom.scaladsl.server.LagomApplication@additionalConfiguration:play.api.Configuration" title="Permalink" target="_top">
+      <a href="../../../../../index.html#com.lightbend.lagom.scaladsl.server.LagomApplication@additionalConfiguration:com.lightbend.lagom.scaladsl.api.AdditionalConfiguration" title="Permalink" target="_top">
         <img src="../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">This can be overridden to provide any additional programatically configured configuration.</p>
+      <p class="shortcomment cmt">Define the additional configuration to add to the application.</p><div class="fullcomment"><div class="comment cmt"><p>Define the additional configuration to add to the application.</p><p>Classes that override this must combine the configuration they add with the configuration from the super
+implementation. Failure to do this will prevent different integrations from working with each other.</p><p>When overriding, the overridden file should be a def, so as to ensure multiple components can all override it.
+Lagom will only invoke this method once from a lazy val, so it will effectively be calculated once.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../api/ProvidesAdditionalConfiguration.html" class="extype" name="com.lightbend.lagom.scaladsl.api.ProvidesAdditionalConfiguration">ProvidesAdditionalConfiguration</a></dd></dl></div>
     </li><li name="play.api.BuiltInComponents#aesCrypter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="aesCrypter:play.api.libs.crypto.AESCrypter"></a>
       <a id="aesCrypter:AESCrypter"></a>
@@ -1255,6 +1258,8 @@ for production or for development.
               <h3>Inherited from <span class="extype" name="com.lightbend.lagom.internal.scaladsl.api.broker.TopicFactoryProvider">TopicFactoryProvider</span></h3>
             </div><div class="parent" name="com.lightbend.lagom.scaladsl.server.LagomServerComponents">
               <h3>Inherited from <a href="LagomServerComponents.html" class="extype" name="com.lightbend.lagom.scaladsl.server.LagomServerComponents">LagomServerComponents</a></h3>
+            </div><div class="parent" name="com.lightbend.lagom.scaladsl.api.ProvidesAdditionalConfiguration">
+              <h3>Inherited from <a href="../api/ProvidesAdditionalConfiguration.html" class="extype" name="com.lightbend.lagom.scaladsl.api.ProvidesAdditionalConfiguration">ProvidesAdditionalConfiguration</a></h3>
             </div><div class="parent" name="play.api.BuiltInComponentsFromContext">
               <h3>Inherited from <span class="extype" name="play.api.BuiltInComponentsFromContext">BuiltInComponentsFromContext</span></h3>
             </div><div class="parent" name="play.api.BuiltInComponents">

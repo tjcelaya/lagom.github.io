@@ -136,7 +136,19 @@
       "url" : "broker.html"
     }, {
       "title" : "Running Lagom in production",
-      "url" : "production.html"
+      "children" : [ {
+        "title" : "Production Overview",
+        "url" : "ProductionOverview.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/production/ProductionOverview.md"
+      }, {
+        "title" : "Lightbend ConductR",
+        "url" : "ConductR.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/production/ConductR.md"
+      }, {
+        "title" : "Reactive Platform",
+        "url" : "ReactivePlatform.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/guide/production/ReactivePlatform.md"
+      } ]
     }, {
       "title" : "Logging",
       "url" : "logging.html"
