@@ -12,11 +12,11 @@ INFO Service hellostream-impl listening for HTTP on 0:0:0:0:0:0:0:0:27462
 <p>This may take a while if you have a lot of services or if dependencies are being retrieved for the first time.</p><h2 id="Starting-the-sbt-development-console"><a class="section-marker" href="#Starting-the-sbt-development-console">§</a><a href="#starting-the-sbt-development-console" name="starting-the-sbt-development-console">Starting the sbt development console</a></h2>
 <p>Assuming you have followed the <a href="Installation.html">Installation</a> instructions, it&rsquo;s now time to fire up the console on your Lagom project directory:</p>
 <pre class="prettyprint"><code class="language-console">$ cd &lt;path to your Lagom project&gt;
-$ activator
+$ sbt
 [info] ...
 &gt;
 </code></pre>
-<p>To run all Lagom services together, with automatic reloading, just enter <code>runAll</code> in the activator console:</p>
+<p>To run all Lagom services together, with automatic reloading, just enter <code>runAll</code> in the sbt console:</p>
 <pre class="prettyprint"><code class="language-console">&gt; runAll
 [info] ...
 [info] Service helloworld-impl listening for HTTP on 0:0:0:0:0:0:0:0:23966

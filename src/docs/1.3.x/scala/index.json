@@ -52,7 +52,19 @@
     } ]
   }, {
     "title" : "Getting started with Lagom",
-    "url" : "gettingstarted.html"
+    "children" : [ {
+      "title" : "Installing Lagom",
+      "url" : "Installation.html",
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/gettingstarted/Installation.md"
+    }, {
+      "title" : "Getting started with Lagom",
+      "url" : "GettingStarted.html",
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/gettingstarted/GettingStarted.md"
+    }, {
+      "title" : "Import a Lagom build in your IDE",
+      "url" : "IDEs.html",
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/gettingstarted/IDEs.md"
+    } ]
   }, {
     "title" : "Lagom reference guide",
     "children" : [ {

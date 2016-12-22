@@ -55,11 +55,11 @@
     "children" : [ {
       "title" : "Installing Lagom",
       "url" : "Installation.html",
-      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/gettingstarted/Installation.md"
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/gettingstarted/Installation.md"
     }, {
       "title" : "Getting started with Lagom",
       "url" : "GettingStarted.html",
-      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/gettingstarted/GettingStarted.md"
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/gettingstarted/GettingStarted.md"
     }, {
       "title" : "Getting started with Lagom in Maven",
       "url" : "GettingStartedMaven.html",
@@ -71,7 +71,7 @@
     }, {
       "title" : "Import a Lagom build in your IDE",
       "url" : "IDEs.html",
-      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/gettingstarted/IDEs.md"
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/gettingstarted/IDEs.md"
     } ]
   }, {
     "title" : "Lagom reference guide",

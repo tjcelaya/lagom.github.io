@@ -1,7 +1,7 @@
-<h1 id="Getting-started-with-Lagom-in-sbt"><a class="section-marker" href="#Getting-started-with-Lagom-in-sbt">§</a><a href="#getting-started-with-lagom-in-sbt" name="getting-started-with-lagom-in-sbt">Getting started with Lagom in sbt</a></h1>
+<h1 id="Getting-started-with-Lagom"><a class="section-marker" href="#Getting-started-with-Lagom">§</a><a href="#getting-started-with-lagom" name="getting-started-with-lagom">Getting started with Lagom</a></h1>
 <p>This page shows how to create and run your first Lagom project using sbt.</p><h2 id="Creating-a-new-Lagom-project"><a class="section-marker" href="#Creating-a-new-Lagom-project">§</a><a href="#creating-a-new-lagom-project" name="creating-a-new-lagom-project">Creating a new Lagom project</a></h2>
 <p>A Lagom system is typically made up of a set of sbt builds, each build providing multiple services. The easiest way to get started with a new Lagom system is to create a new project using the <code>lagom</code> sbt Giter8 template:</p>
-<pre class="prettyprint"><code>$ sbt new lagom/lagom-java.g8
+<pre class="prettyprint"><code>$ sbt new lagom/lagom-scala.g8
 </code></pre>
 <p>After following the prompts, this will create a new system with two services, if you went with the default name of <code>Hello</code>, these services will be called <code>hello</code> and <code>hello-stream</code>. The documentation below assumes that you selected the default name of <code>Hello</code>.</p><h2 id="Anatomy-of-a-Lagom-project"><a class="section-marker" href="#Anatomy-of-a-Lagom-project">§</a><a href="#anatomy-of-a-lagom-project" name="anatomy-of-a-lagom-project">Anatomy of a Lagom project</a></h2>
 <p>The created project contains the following elements:</p>
@@ -21,52 +21,60 @@
   <li>The <code>build.sbt</code> file, which contains all information necessary to build, run, and deploy your services.</li>
 </ul><h2 id="Understanding-services-projects"><a class="section-marker" href="#Understanding-services-projects">§</a><a href="#understanding-services-projects" name="understanding-services-projects">Understanding services projects</a></h2>
 <ul>
-  <li>The service interface is always placed in the api project. For instance, the service interface for the <code>hello</code> service can be found in the <code>hello-api</code> project (look for the <code>HelloService.java</code> source file).</li>
+  <li>The service interface is always placed in the api project. For instance, the service interface for the <code>hello</code> service can be found in the <code>hello-api</code> project (look for the <code>HelloService.scala</code> source file).</li>
 </ul>
-<pre class="prettyprint"><code class="language-java">public interface HelloService extends Service {
+<pre class="prettyprint"><code class="language-scala">import akka.{Done, NotUsed}
+import com.lightbend.lagom.scaladsl.api._
+import play.api.libs.json._
 
-  ServiceCall&lt;NotUsed, String&gt; hello(String id);
+trait HelloService extends Service {
 
-  @Override
-  default Descriptor descriptor() {
-    return named(&quot;helloservice&quot;).withCalls(
-        restCall(Method.GET,  &quot;/api/hello/:id&quot;, this::hello)
-      ).withAutoAcl(true);
+  def hello(id: String): ServiceCall[NotUsed, String]
+
+  def useGreeting(id: String): ServiceCall[GreetingMessage, Done]
+
+  override final def descriptor = {
+    import Service._
+    named(&quot;hello&quot;).withCalls(
+      pathCall(&quot;/api/hello/:id&quot;, hello _),
+      pathCall(&quot;/api/hello/:id&quot;, useGreeting _)
+    ).withAutoAcl(true)
   }
+}
+
+case class GreetingMessage(message: String)
+
+object GreetingMessage {
+  implicit val format: Format[GreetingMessage] = Json.format[GreetingMessage]
 }</code></pre>
 <ul>
   <li>
-  <p>The service interface needs to inherit from <a href="api/index.html?com/lightbend/lagom/javadsl/api/Service.html"><code>Service</code></a> and provide an implementation of <a href="api/index.html?com/lightbend/lagom/javadsl/api/Service.html#descriptor--"><code>Service.descriptor</code></a> method.</p></li>
+  <p>The service interface needs to inherit from <a href="api/com/lightbend/lagom/scaladsl/api/Service.html"><code>Service</code></a> and provide an implementation of <a href="api/com/lightbend/lagom/scaladsl/api/Service.html#descriptor"><code>Service.descriptor</code></a> method.</p></li>
   <li>
-  <p>The implementation of <code>Service.descriptor</code> returns a <a href="api/index.html?com/lightbend/lagom/javadsl/api/Descriptor.html"><code>Descriptor</code></a>. A <code>Descriptor</code> defines the service name and the REST endpoints offered by a service. For each declared endpoint, an abstract method is declared in the service interface, e.g., see the <code>HelloService.hello</code> method.</p></li>
+  <p>The implementation of <code>Service.descriptor</code> returns a <a href="api/com/lightbend/lagom/scaladsl/api/Descriptor.html"><code>Descriptor</code></a>. A <code>Descriptor</code> defines the service name and the REST endpoints offered by a service. For each declared endpoint, an abstract method is declared in the service interface, e.g., see the <code>HelloService.hello</code> method.</p></li>
   <li>
-  <p>The implementation of the service abstract methods is provided by the related implementation project. For instance, the service implementation of the <code>HelloService.hello</code> method, for the <code>hello</code> service, can be found in the <code>hello-impl</code> project (look for the <code>HelloServiceImpl.java</code> source file).</p></li>
+  <p>The implementation of the service abstract methods is provided by the related implementation project. For instance, the service implementation of the <code>HelloService.hello</code> method, for the <code>hello</code> service, can be found in the <code>hello-impl</code> project (look for the <code>HelloServiceImpl.scala</code> source file).</p></li>
 </ul>
-<pre class="prettyprint"><code class="language-java">public class HelloServiceImpl implements HelloService {
+<pre class="prettyprint"><code class="language-scala">import com.lightbend.lagom.scaladsl.api.ServiceCall
+import com.lightbend.lagom.scaladsl.persistence.PersistentEntityRegistry
 
-  private final PersistentEntityRegistry persistentEntityRegistry;
+class HelloServiceImpl(persistentEntityRegistry: PersistentEntityRegistry) extends HelloService {
 
-  @Inject
-  public HelloServiceImpl(PersistentEntityRegistry persistentEntityRegistry) {
-    this.persistentEntityRegistry = persistentEntityRegistry;
-    persistentEntityRegistry.register(HelloWorld.class);
+  override def hello(id: String) = ServiceCall { _ =&gt;
+    val ref = persistentEntityRegistry.refFor[HelloEntity](id)
+    ref.ask(Hello(id, None))
   }
 
-  @Override
-  public ServiceCall&lt;NotUsed, String&gt; hello(String id) {
-    return request -&gt; {
-      // Look up the hello world entity for the given ID.
-      PersistentEntityRef&lt;HelloCommand&gt; ref = persistentEntityRegistry.refFor(HelloWorld.class, id);
-      // Ask the entity the Hello command.
-      return ref.ask(new Hello(id, Optional.empty()));
-    };
+  override def useGreeting(id: String) = ServiceCall { request =&gt;
+    val ref = persistentEntityRegistry.refFor[HelloEntity](id)
+    ref.ask(UseGreetingMessage(request.message))
   }
 }</code></pre>
 <ul>
-  <li>The <a href="api/index.html?com/lightbend/lagom/javadsl/persistence/PersistentEntityRegistry.html"><code>PersistentEntityRegistry</code></a> allows to persist data in the database using <a href="ES_CQRS.html">Event Sourcing and CQRS</a>.</li>
+  <li>The <a href="api/com/lightbend/lagom/scaladsl/persistence/PersistentEntityRegistry.html"><code>PersistentEntityRegistry</code></a> allows to persist data in the database using <a href="ES_CQRS.html">Event Sourcing and CQRS</a>.</li>
 </ul><h2 id="Running-Lagom-services"><a class="section-marker" href="#Running-Lagom-services">§</a><a href="#running-lagom-services" name="running-lagom-services">Running Lagom services</a></h2>
 <p>Lagom includes a development environment that let you start all your services by simply typing <code>runAll</code> in the sbt console. Open the terminal and <code>cd</code> to your Lagom project:</p>
-<pre class="prettyprint"><code class="language-console">$ cd my-first-system
+<pre class="prettyprint"><code class="language-console">$ cd hello
 $ sbt
 ... (booting up)
 &gt; runAll
@@ -75,8 +83,8 @@ $ sbt
 [info] Cassandra server running at 127.0.0.1:4000
 [info] Service locator is running at http://localhost:8000
 [info] Service gateway is running at http://localhost:9000
-[info] Service helloworld-impl listening for HTTP on 0:0:0:0:0:0:0:0:24266
-[info] Service hellostream-impl listening for HTTP on 0:0:0:0:0:0:0:0:26230
+[info] Service hello-impl listening for HTTP on 0:0:0:0:0:0:0:0:24266
+[info] Service hello-stream-impl listening for HTTP on 0:0:0:0:0:0:0:0:26230
 (Services started, use Ctrl+D to stop and go back to the console...)
 </code></pre>
 <p>You can verify that the services are indeed up and running by exercising one of its endpoints, e.g:</p>
@@ -88,4 +96,4 @@ $ sbt
   <p>One microservice is no microservice - they come in systems.</p>
 </blockquote>
 <p>Said otherwise, we believe you will be creating several services, and we felt it was important to showcase intra-service communication.</p>
-<p>The <code>lagom-java</code> template you used to build <code>my-first-system</code> uses the <code>.sbtopts</code> file to increase the memory used by the <code>JVM</code> when starting your project. There&rsquo;s a few more ways to <a href="JVMMemoryOnDev.html">Increase Memory in sbt</a></p>
+<p>The <code>lagom-scala.g8</code> template you used to build <code>hello</code> uses the <code>.sbtopts</code> file to increase the memory used by the <code>JVM</code> when starting your project. There&rsquo;s a few more ways to <a href="JVMMemoryOnDev.html">Increase Memory in sbt</a></p>

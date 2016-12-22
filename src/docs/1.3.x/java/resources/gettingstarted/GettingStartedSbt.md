@@ -4,28 +4,28 @@ This page shows how to create and run your first Lagom project using sbt.
 
 ## Creating a new Lagom project
 
-A Lagom system is typically made up of a set of sbt builds, each build providing multiple services.  The easiest way to get started with a new Lagom system is to create a new project using the `lagom` Activator template:
+A Lagom system is typically made up of a set of sbt builds, each build providing multiple services.  The easiest way to get started with a new Lagom system is to create a new project using the `lagom` sbt Giter8 template:
 
 ```
-$ activator new my-first-system lagom-java
+$ sbt new lagom/lagom-java.g8
 ```
 
-This will create a new system with two services in it: `helloworld` and `hellostream`.
+After following the prompts, this will create a new system with two services, if you went with the default name of `Hello`, these services will be called `hello` and `hello-stream`. The documentation below assumes that you selected the default name of `Hello`.
 
 ## Anatomy of a Lagom project
 
 The created project contains the following elements:
 
 ```
-my-first-system          → Project root
- └ hellostream-api       → hellostream api project
- └ hellostream-impl      → hellostream implementation project
- └ helloworld-api        → helloworld api project
- └ helloworld-impl       → helloworld implementation project
- └ project               → sbt configuration files
-   └ build.properties    → Marker for sbt project
-   └ plugins.sbt         → sbt plugins including the declaration for Lagom itself
- └ build.sbt             → Your project build file
+hello                   → Project root
+ └ hello-api            → hello api project
+ └ hello-impl           → hello implementation project
+ └ hello-stream-api     → hello-stream api project
+ └ hello-stream-impl    → hello-steram implementation project
+ └ project              → sbt configuration files
+   └ build.properties   → Marker for sbt project
+   └ plugins.sbt        → sbt plugins including the declaration for Lagom itself
+ └ build.sbt            → Your project build file
 ```
 
 * Notice how each service is broken up into two projects: api and implementation. The api project contains a service interface through which consumers may interact with the service. While the implementation project contains the actual service implementation.
@@ -34,27 +34,27 @@ my-first-system          → Project root
 
 ## Understanding services projects
 
-* The service interface is always placed in the api project. For instance, the service interface for the `helloworld` service can be found in the `helloworld-api` project (look for the `HelloService.java` source file).
+* The service interface is always placed in the api project. For instance, the service interface for the `hello` service can be found in the `hello-api` project (look for the `HelloService.java` source file).
 
-@[helloservice-interface](code/sample/helloworld/api/HelloService.java)
+@[helloservice-interface](code/docs/javadsl/gettingstarted/helloservice/HelloService.java)
 
-* The service interface needs to inherit from [`Service`](api/index.html?com/lightbend/lagom/javadsl/api/Service.html) and provide an implementation of [`Service#descriptor`](api/index.html?com/lightbend/lagom/javadsl/api/Service.html#descriptor--) method.
+* The service interface needs to inherit from [`Service`](api/index.html?com/lightbend/lagom/javadsl/api/Service.html) and provide an implementation of [`Service.descriptor`](api/index.html?com/lightbend/lagom/javadsl/api/Service.html#descriptor--) method.
 
-* The implementation of `Service#descriptor` returns a [`Descriptor`](api/index.html?com/lightbend/lagom/javadsl/api/Descriptor.html). A `Descriptor` defines the service name and the REST endpoints offered by a service. For each declared endpoint, an abstract method is declared in the service interface, e.g., see the `HelloService#hello` method.
+* The implementation of `Service.descriptor` returns a [`Descriptor`](api/index.html?com/lightbend/lagom/javadsl/api/Descriptor.html). A `Descriptor` defines the service name and the REST endpoints offered by a service. For each declared endpoint, an abstract method is declared in the service interface, e.g., see the `HelloService.hello` method.
 
-* The implementation of the service abstract methods is provided by the related implementation project. For instance, the service implementation of the `HelloService#hello` method, for the `helloworld` service, can be found in the `helloworld-impl` project (look for the `HelloServiceImpl.java` source file).
+* The implementation of the service abstract methods is provided by the related implementation project. For instance, the service implementation of the `HelloService.hello` method, for the `hello` service, can be found in the `hello-impl` project (look for the `HelloServiceImpl.java` source file).
 
-@[helloservice-impl](code/sample/helloworld/impl/HelloServiceImpl.java)
+@[helloservice-impl](code/docs/javadsl/gettingstarted/helloservice/HelloServiceImpl.java)
 
 * The [`PersistentEntityRegistry`](api/index.html?com/lightbend/lagom/javadsl/persistence/PersistentEntityRegistry.html) allows to persist data in the database using [[Event Sourcing and CQRS|ES_CQRS]].
 
 ## Running Lagom services
 
-Lagom includes a development environment that let you start all your services by simply typing `runAll` in the activator console. Open the terminal and `cd` to your Lagom project:
+Lagom includes a development environment that let you start all your services by simply typing `runAll` in the sbt console. Open the terminal and `cd` to your Lagom project:
 
 ```console
 $ cd my-first-system
-$ activator
+$ sbt
 ... (booting up)
 > runAll
 [info] Starting embedded Cassandra server

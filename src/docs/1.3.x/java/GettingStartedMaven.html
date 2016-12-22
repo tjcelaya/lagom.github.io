@@ -34,11 +34,11 @@
 }</code></pre>
 <ul>
   <li>
-  <p>The service interface needs to inherit from <a href="api/index.html?com/lightbend/lagom/javadsl/api/Service.html"><code>Service</code></a> and provide an implementation of <a href="api/index.html?com/lightbend/lagom/javadsl/api/Service.html#descriptor--"><code>Service#descriptor</code></a> method.</p></li>
+  <p>The service interface needs to inherit from <a href="api/index.html?com/lightbend/lagom/javadsl/api/Service.html"><code>Service</code></a> and provide an implementation of <a href="api/index.html?com/lightbend/lagom/javadsl/api/Service.html#descriptor--"><code>Service.descriptor</code></a> method.</p></li>
   <li>
-  <p>The implementation of <code>Service#descriptor</code> returns a <a href="api/index.html?com/lightbend/lagom/javadsl/api/Descriptor.html"><code>Descriptor</code></a>. A <code>Descriptor</code> defines the service name and the REST endpoints offered by a service. For each declared endpoint, an abstract method is declared in the service interface, e.g., see the <code>HelloService#hello</code> method.</p></li>
+  <p>The implementation of <code>Service.descriptor</code> returns a <a href="api/index.html?com/lightbend/lagom/javadsl/api/Descriptor.html"><code>Descriptor</code></a>. A <code>Descriptor</code> defines the service name and the REST endpoints offered by a service. For each declared endpoint, an abstract method is declared in the service interface, e.g., see the <code>HelloService.hello</code> method.</p></li>
   <li>
-  <p>The implementation of the service abstract methods is provided by the related implementation project. For instance, the service implementation of the <code>HelloService#hello</code> method, for the <code>hello</code> service, can be found in the <code>hello-impl</code> project (look for the <code>HelloServiceImpl.java</code> source file).</p></li>
+  <p>The implementation of the service abstract methods is provided by the related implementation project. For instance, the service implementation of the <code>HelloService.hello</code> method, for the <code>hello</code> service, can be found in the <code>hello-impl</code> project (look for the <code>HelloServiceImpl.java</code> source file).</p></li>
 </ul>
 <pre class="prettyprint"><code class="language-java">public class HelloServiceImpl implements HelloService {
 
@@ -73,8 +73,8 @@ $ mvn lagom:runAll
 [info] Service locator is running at http://localhost:8000
 [info] Service gateway is running at http://localhost:9000
 ...
-[info] Service helloworld-impl listening for HTTP on 0:0:0:0:0:0:0:0:24266
-[info] Service hellostream-impl listening for HTTP on 0:0:0:0:0:0:0:0:26230
+[info] Service hello-impl listening for HTTP on 0:0:0:0:0:0:0:0:24266
+[info] Service stream-impl listening for HTTP on 0:0:0:0:0:0:0:0:26230
 (Services started, press enter to stop and go back to the console...)
 </code></pre>
 <p>You can verify that the services are indeed up and running by invoking one of its endpoints, e.g:</p>

@@ -11,7 +11,7 @@
 <p>To publish to Bintray using Maven, you can follow the instructions published by bintray <a href="https://blog.bintray.com/2015/09/17/publishing-your-maven-project-to-bintray/">here</a>.</p><h4 id="Publishing-to-Bintray-using-sbt"><a class="section-marker" href="#Publishing-to-Bintray-using-sbt">§</a><a href="#publishing-to-bintray-using-sbt" name="publishing-to-bintray-using-sbt">Publishing to Bintray using sbt</a></h4>
 <p>First, add the sbt-bintray plugin to your <code>project/plugins.sbt</code> file:</p>
 <pre class="prettyprint"><code class="language-sbt">addSbtPlugin(&quot;me.lessis&quot; % &quot;bintray-sbt&quot; % &quot;0.3.0&quot;)</code></pre>
-<p>The Bintray plugin manages its own credentials, this can be configured by running <code>activator bintrayChangeCredentials</code>, which will save the credentials in <code>~/.bintray/.credentials</code>.</p>
+<p>The Bintray plugin manages its own credentials, this can be configured by running <code>sbt bintrayChangeCredentials</code>, which will save the credentials in <code>~/.bintray/.credentials</code>.</p>
 <p>Once you&rsquo;ve authenticated with Bintray, you can then configure your build to publish to it, by adding the following configuration to <code>build.sbt</code>:</p>
 <pre class="prettyprint"><code class="language-sbt">// Set this to the organization that you want to publish to
 bintrayOrganization in ThisBuild := Some(&quot;example-organization&quot;)

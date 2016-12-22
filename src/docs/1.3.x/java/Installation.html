@@ -16,31 +16,12 @@ javac 1.8.0_74
 <p>If you don&rsquo;t have java and javac, you can get it from the <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Oracle Java downloads page</a>.</p><h2 id="Installing-Maven"><a class="section-marker" href="#Installing-Maven">§</a><a href="#installing-maven" name="installing-maven">Installing Maven</a></h2>
 <p>To install Maven, see the official <a href="https://maven.apache.org/install.html">Maven installation page</a>.</p>
 <p>Lagom requires at least Maven 3.2.1, earlier versions of Maven will not work with Lagom. We recommend that you use at least Maven 3.3. When checking your Maven version, make sure also that your IDE is configured to use a recent Maven version, many IDEs use an older version by default.</p><h2 id="Installing-sbt"><a class="section-marker" href="#Installing-sbt">§</a><a href="#installing-sbt" name="installing-sbt">Installing sbt</a></h2>
-<p><a href="http://www.scala-sbt.org">sbt</a> is a build tool for Java and Scala. In addition to sbt, another tool, Activator adds a few features to sbt, notably the ability to start new projects from templates available online.</p>
-<p>Because Activator includes sbt, if you install Activator, you don&rsquo;t need to install anything else.</p>
-<p>Note that if you aren&rsquo;t using the optional project templates, you don&rsquo;t strictly need Activator; sbt itself is enough. The examples in this manual always show the <code>activator</code> command, but unless the command is <code>activator new</code>, you can always substitute <code>activator</code> by <code>sbt</code>.</p><h3 id="Activator-version-(Read-me!)"><a class="section-marker" href="#Activator-version-(Read-me!)">§</a>Activator version (Read me!)</h3>
-<p>Older installations of Activator may cause OutOfMemoryException when using the Lagom development environment. To avoid this issue, make sure you are using the Activator package version 1.3.10+. Here is how you can check what version of the Activator package you are using on Linux systems (for Windows users, just check what&rsquo;s in your <code>%PATH%</code> environment variable):</p>
-<pre class="prettyprint"><code class="language-console">$ which activator
-/opt/activator-1.3.10-minimal/bin/activator
-</code></pre>
-<p>The important bit is that the <version> appended after <code>activator-&lt;version&gt;</code> must be at least 1.3.10 for Lagom to properly work. </p>
-<p>Follow <a href="https://www.lightbend.com/activator/download">this link</a> to download the latest activator bundle.</p><h3 id="Quick-setup"><a class="section-marker" href="#Quick-setup">§</a><a href="#quick-setup" name="quick-setup">Quick setup</a></h3>
-<p>If you already have Activator and JDK 8, you can skip ahead to <a href="GettingStarted.html">Getting Started</a>.</p>
-<p>Otherwise, follow these steps:</p>
-<ol>
-  <li><strong>Ensure</strong> you have Oracle JDK 8 installed on your system.</li>
-  <li><strong>Download</strong> latest <a href="https://www.lightbend.com/activator/download">Activator</a></li>
-  <li><strong>Extract</strong> it to a location where you have access.</li>
-  <li><strong>Add</strong> the Activator installation directory to your <code>PATH</code>.</li>
-</ol>
-<p>Some package managers can handle steps 2, 3, and 4 for you. For example, if you use Homebrew on Mac OS X, then <code>brew install typesafe-activator</code> and you&rsquo;re done.</p>
-<p>More detailed information on these steps follows.</p><h4 id="Activator-details"><a class="section-marker" href="#Activator-details">§</a><a href="#activator-details" name="activator-details">Activator details</a></h4>
-<p>To install Activator, download the <a href="https://www.lightbend.com/activator/download">latest version</a> and extract it to a location that you have write access to.</p>
-<p>Activator needs write access to its installation directory. On Linux/Unix installations, this means that you shouldn&rsquo;t extract it to somewhere that you don&rsquo;t have write access to, for example <code>/opt</code> or <code>/usr/local</code>.</p>
-<p>The <code>activator</code> script needs to be executable. If not, you can make it executable by running <code>chmod u+x /path/to/activator</code>.</p><h5 id="Adding-the-activator-installation-to-your-PATH"><a class="section-marker" href="#Adding-the-activator-installation-to-your-PATH">§</a><a href="#adding-the-activator-installation-to-your-path" name="adding-the-activator-installation-to-your-path">Adding the activator installation to your PATH</a></h5>
-<p>For convenience, you should add the Activator installation directory to your system <code>PATH</code>:</p>
-<ul>
-  <li>On Linux/Unix, this can be done by adding <code>export PATH=/path/to/activator:$PATH</code> to your <code>.bashrc</code> file.</li>
-  <li>On Windows, add <code>;C:\path\to\activator</code> to your <code>PATH</code> environment variable. Do not use a path with spaces.</li>
-</ul><h5 id="Proxy-Setup"><a class="section-marker" href="#Proxy-Setup">§</a><a href="#proxy-setup" name="proxy-setup">Proxy Setup</a></h5>
+<p><a href="http://www.scala-sbt.org">sbt</a> is a build tool for Java and Scala.</p>
+<p>Lagom requires at least sbt 0.13.5, but if you want to create new projects using Lagom&rsquo;s supplied templates, you&rsquo;ll need at least sbt 0.13.13, which contains the sbt new command.</p>
+<p>sbt can be downloaded from <a href="http://www.scala-sbt.org/download.html">here</a>, while instructions for installing it can be found <a href="http://www.scala-sbt.org/release/docs/Setup.html">here</a></p>
+<p>To check which version of sbt you are using, run <code>sbt sbt-version</code>, for example:</p>
+<pre class="prettyprint"><code class="language-console">$ sbt sbt-version
+[info] Set current project to example (in build file:/home/example/)
+[info] 0.13.13
+</code></pre><h2 id="Proxy-Setup"><a class="section-marker" href="#Proxy-Setup">§</a><a href="#proxy-setup" name="proxy-setup">Proxy Setup</a></h2>
 <p>If you can only access the web through a proxy, set the <code>HTTP_PROXY</code> environment variable to your proxy&rsquo;s URL, for example, <code>HTTP_PROXY=http://&lt;host&gt;:&lt;port&gt;</code>.</p>
