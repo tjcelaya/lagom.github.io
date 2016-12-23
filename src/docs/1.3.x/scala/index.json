@@ -145,7 +145,19 @@
       } ]
     }, {
       "title" : "Decouple services with a message broker",
-      "url" : "broker.html"
+      "children" : [ {
+        "title" : "Message Broker Support",
+        "url" : "MessageBroker.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/guide/broker/MessageBroker.md"
+      }, {
+        "title" : "Message Broker API",
+        "url" : "MessageBrokerApi.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/broker/MessageBrokerApi.md"
+      }, {
+        "title" : "Lagom Kafka Client",
+        "url" : "KafkaClient.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/broker/KafkaClient.md"
+      } ]
     }, {
       "title" : "Running Lagom in production",
       "children" : [ {
@@ -163,16 +175,25 @@
       } ]
     }, {
       "title" : "Logging",
-      "url" : "logging.html"
+      "children" : [ {
+        "title" : "Logging",
+        "url" : "Logging.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/guide/logging/Logging.md"
+      }, {
+        "title" : "Configuring Logging",
+        "url" : "SettingsLogger.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/guide/logging/SettingsLogger.md"
+      } ]
     }, {
       "title" : "Advanced topics",
       "url" : "advanced.html"
     } ]
   }, {
     "title" : "Appendix",
-    "url" : "appendix.html"
-  }, {
-    "title" : "Lagom Releases",
-    "url" : "releases.html"
+    "children" : [ {
+      "title" : "Increase Memory in sbt and Maven",
+      "url" : "JVMMemoryOnDev.html",
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/appendix/JVMMemoryOnDev.md"
+    } ]
   } ]
 }

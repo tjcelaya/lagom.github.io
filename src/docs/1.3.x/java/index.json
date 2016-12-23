@@ -195,7 +195,7 @@
       "children" : [ {
         "title" : "Message Broker Support",
         "url" : "MessageBroker.html",
-        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/guide/broker/MessageBroker.md"
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/guide/broker/MessageBroker.md"
       }, {
         "title" : "Message Broker API",
         "url" : "MessageBrokerApi.html",
@@ -233,11 +233,11 @@
       "children" : [ {
         "title" : "Logging",
         "url" : "Logging.html",
-        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/guide/logging/Logging.md"
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/guide/logging/Logging.md"
       }, {
         "title" : "Configuring Logging",
         "url" : "SettingsLogger.html",
-        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/guide/logging/SettingsLogger.md"
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/guide/logging/SettingsLogger.md"
       } ]
     }, {
       "title" : "Advanced topics",
@@ -260,7 +260,7 @@
     }, {
       "title" : "Increase Memory in sbt and Maven",
       "url" : "JVMMemoryOnDev.html",
-      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/appendix/JVMMemoryOnDev.md"
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/appendix/JVMMemoryOnDev.md"
     } ]
   }, {
     "title" : "Lagom Releases",
