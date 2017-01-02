@@ -76,7 +76,31 @@
       "url" : "build.html"
     }, {
       "title" : "Running Lagom in development",
-      "url" : "devmode.html"
+      "children" : [ {
+        "title" : "Development Environment",
+        "url" : "DevEnvironment.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/guide/devmode/DevEnvironment.md"
+      }, {
+        "title" : "Running Services",
+        "url" : "RunningServices.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/guide/devmode/RunningServices.md"
+      }, {
+        "title" : "How are ports assigned to services?",
+        "url" : "ServicePort.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/guide/devmode/ServicePort.md"
+      }, {
+        "title" : "Service Locator",
+        "url" : "ServiceLocator.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/guide/devmode/ServiceLocator.md"
+      }, {
+        "title" : "Cassandra Server",
+        "url" : "CassandraServer.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/guide/devmode/CassandraServer.md"
+      }, {
+        "title" : "Kafka Server",
+        "url" : "KafkaServer.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/guide/devmode/KafkaServer.md"
+      } ]
     }, {
       "title" : "Writing Lagom services",
       "children" : [ {
