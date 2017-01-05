@@ -16,6 +16,7 @@ com.lightbend.lagom.javadsl.persistence.cassandra
 com.lightbend.lagom.javadsl.persistence.cassandra.testkit
 com.lightbend.lagom.javadsl.persistence.jdbc
 com.lightbend.lagom.javadsl.persistence.jdbc.testkit
+com.lightbend.lagom.javadsl.persistence.jpa
 com.lightbend.lagom.javadsl.persistence.testkit
 com.lightbend.lagom.javadsl.pubsub
 com.lightbend.lagom.javadsl.server

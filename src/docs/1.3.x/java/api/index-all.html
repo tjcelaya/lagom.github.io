@@ -445,6 +445,8 @@
 <dd>&nbsp;</dd>
 <dt><a href="com/lightbend/lagom/javadsl/persistence/jdbc/testkit/package-summary.html">com.lightbend.lagom.javadsl.persistence.jdbc.testkit</a> - package com.lightbend.lagom.javadsl.persistence.jdbc.testkit</dt>
 <dd>&nbsp;</dd>
+<dt><a href="com/lightbend/lagom/javadsl/persistence/jpa/package-summary.html">com.lightbend.lagom.javadsl.persistence.jpa</a> - package com.lightbend.lagom.javadsl.persistence.jpa</dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/lightbend/lagom/javadsl/persistence/testkit/package-summary.html">com.lightbend.lagom.javadsl.persistence.testkit</a> - package com.lightbend.lagom.javadsl.persistence.testkit</dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/lightbend/lagom/javadsl/pubsub/package-summary.html">com.lightbend.lagom.javadsl.pubsub</a> - package com.lightbend.lagom.javadsl.pubsub</dt>
@@ -1378,6 +1380,10 @@
 <dt><a href="com/lightbend/lagom/javadsl/persistence/jdbc/JdbcSession.ConnectionFunction.html" title="interface in com.lightbend.lagom.javadsl.persistence.jdbc"><span class="typeNameLink">JdbcSession.ConnectionFunction</span></a>&lt;<a href="com/lightbend/lagom/javadsl/persistence/jdbc/JdbcSession.ConnectionFunction.html" title="type parameter in JdbcSession.ConnectionFunction">T</a>&gt; - Interface in <a href="com/lightbend/lagom/javadsl/persistence/jdbc/package-summary.html">com.lightbend.lagom.javadsl.persistence.jdbc</a></dt>
 <dd>
 <div class="block">SAM for using a connection.</div>
+</dd>
+<dt><a href="com/lightbend/lagom/javadsl/persistence/jpa/JpaSession.html" title="interface in com.lightbend.lagom.javadsl.persistence.jpa"><span class="typeNameLink">JpaSession</span></a> - Interface in <a href="com/lightbend/lagom/javadsl/persistence/jpa/package-summary.html">com.lightbend.lagom.javadsl.persistence.jpa</a></dt>
+<dd>
+<div class="block">Provides asynchronous access to a JPA EntityManager.</div>
 </dd>
 <dt><a href="com/lightbend/lagom/serialization/Jsonable.html" title="interface in com.lightbend.lagom.serialization"><span class="typeNameLink">Jsonable</span></a> - Interface in <a href="com/lightbend/lagom/serialization/package-summary.html">com.lightbend.lagom.serialization</a></dt>
 <dd>
@@ -3416,6 +3422,10 @@
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/persistence/jdbc/JdbcSession.html#withTransaction-com.lightbend.lagom.javadsl.persistence.jdbc.JdbcSession.ConnectionFunction-">withTransaction(JdbcSession.ConnectionFunction&lt;T&gt;)</a></span> - Method in interface com.lightbend.lagom.javadsl.persistence.jdbc.<a href="com/lightbend/lagom/javadsl/persistence/jdbc/JdbcSession.html" title="interface in com.lightbend.lagom.javadsl.persistence.jdbc">JdbcSession</a></dt>
 <dd>
 <div class="block">Execute the given function in a transaction.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/persistence/jpa/JpaSession.html#withTransaction-java.util.function.Function-">withTransaction(Function&lt;EntityManager, T&gt;)</a></span> - Method in interface com.lightbend.lagom.javadsl.persistence.jpa.<a href="com/lightbend/lagom/javadsl/persistence/jpa/JpaSession.html" title="interface in com.lightbend.lagom.javadsl.persistence.jpa">JpaSession</a></dt>
+<dd>
+<div class="block">Execute the given function in a JPA transaction.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/transport/RequestHeader.html#withUri-java.net.URI-">withUri(URI)</a></span> - Method in class com.lightbend.lagom.javadsl.api.transport.<a href="com/lightbend/lagom/javadsl/api/transport/RequestHeader.html" title="class in com.lightbend.lagom.javadsl.api.transport">RequestHeader</a></dt>
 <dd>
