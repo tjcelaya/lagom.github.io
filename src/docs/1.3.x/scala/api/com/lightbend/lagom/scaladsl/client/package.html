@@ -66,7 +66,24 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="com.lightbend.lagom.scaladsl.client.CircuitBreakingServiceLocator" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+              <ol><li name="com.lightbend.lagom.scaladsl.client.CircuitBreakerComponents" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="CircuitBreakerComponentsextendsAnyRef"></a>
+      <a id="CircuitBreakerComponents:CircuitBreakerComponents"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="CircuitBreakerComponents.html"><span class="name">CircuitBreakerComponents</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.lightbend.lagom.scaladsl.client.package@CircuitBreakerComponentsextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Components required for circuit breakers.</p>
+    </li><li name="com.lightbend.lagom.scaladsl.client.CircuitBreakingServiceLocator" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="CircuitBreakingServiceLocatorextendsServiceLocator"></a>
       <a id="CircuitBreakingServiceLocator:CircuitBreakingServiceLocator"></a>
       <h4 class="signature">
@@ -86,6 +103,59 @@
 <span class="extype" name="doWithServiceImpl()">doWithServiceImpl()</span> can be overridden if the service locator wants to
 handle failures in some way.
 </p></div></div>
+    </li><li name="com.lightbend.lagom.scaladsl.client.ConfigurationServiceLocator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ConfigurationServiceLocatorextendsCircuitBreakingServiceLocator"></a>
+      <a id="ConfigurationServiceLocator:ConfigurationServiceLocator"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ConfigurationServiceLocator.html"><span class="name">ConfigurationServiceLocator</span></a><span class="result"> extends <a href="CircuitBreakingServiceLocator.html" class="extype" name="com.lightbend.lagom.scaladsl.client.CircuitBreakingServiceLocator">CircuitBreakingServiceLocator</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.lightbend.lagom.scaladsl.client.package@ConfigurationServiceLocatorextendsCircuitBreakingServiceLocator" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A service locator that uses static configuration.</p>
+    </li><li name="com.lightbend.lagom.scaladsl.client.ConfigurationServiceLocatorComponents" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ConfigurationServiceLocatorComponentsextendsCircuitBreakerComponents"></a>
+      <a id="ConfigurationServiceLocatorComponents:ConfigurationServiceLocatorComponents"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ConfigurationServiceLocatorComponents.html"><span class="name">ConfigurationServiceLocatorComponents</span></a><span class="result"> extends <a href="CircuitBreakerComponents.html" class="extype" name="com.lightbend.lagom.scaladsl.client.CircuitBreakerComponents">CircuitBreakerComponents</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.lightbend.lagom.scaladsl.client.package@ConfigurationServiceLocatorComponentsextendsCircuitBreakerComponents" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Components for using the configuration service locator.</p>
+    </li><li name="com.lightbend.lagom.scaladsl.client.LagomClientApplication" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="LagomClientApplicationextendsLagomServiceClientComponents"></a>
+      <a id="LagomClientApplication:LagomClientApplication"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="LagomClientApplication.html"><span class="name">LagomClientApplication</span></a><span class="result"> extends <a href="LagomServiceClientComponents.html" class="extype" name="com.lightbend.lagom.scaladsl.client.LagomServiceClientComponents">LagomServiceClientComponents</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.lightbend.lagom.scaladsl.client.package@LagomClientApplicationextendsLagomServiceClientComponents" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Convienence for constructing service clients in a non Lagom server application.</p><div class="fullcomment"><div class="comment cmt"><p>Convienence for constructing service clients in a non Lagom server application.</p><p>It is important to invoke <a href="LagomClientApplication.html#stop():Unit" class="extmbr" name="com.lightbend.lagom.scaladsl.client.LagomClientApplication#stop">#stop</a> when the application is no longer needed, as this will trigger the shutdown
+of all thread and connection pools.
+</p></div></div>
     </li><li name="com.lightbend.lagom.scaladsl.client.LagomServiceClientComponents" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="LagomServiceClientComponentsextendsTopicFactoryProvider"></a>
       <a id="LagomServiceClientComponents:LagomServiceClientComponents"></a>
@@ -102,7 +172,41 @@ handle failures in some way.
         <img src="../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">The Lagom service client components.</p>
+    </li><li name="com.lightbend.lagom.scaladsl.client.RoundRobinServiceLocator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RoundRobinServiceLocatorextendsCircuitBreakingServiceLocator"></a>
+      <a id="RoundRobinServiceLocator:RoundRobinServiceLocator"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="RoundRobinServiceLocator.html"><span class="name">RoundRobinServiceLocator</span></a><span class="result"> extends <a href="CircuitBreakingServiceLocator.html" class="extype" name="com.lightbend.lagom.scaladsl.client.CircuitBreakingServiceLocator">CircuitBreakingServiceLocator</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.lightbend.lagom.scaladsl.client.package@RoundRobinServiceLocatorextendsCircuitBreakingServiceLocator" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A round robin service locator, that cycles through a list of URIs.</p>
+    </li><li name="com.lightbend.lagom.scaladsl.client.RoundRobinServiceLocatorComponents" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="RoundRobinServiceLocatorComponentsextendsCircuitBreakerComponents"></a>
+      <a id="RoundRobinServiceLocatorComponents:RoundRobinServiceLocatorComponents"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="RoundRobinServiceLocatorComponents.html"><span class="name">RoundRobinServiceLocatorComponents</span></a><span class="result"> extends <a href="CircuitBreakerComponents.html" class="extype" name="com.lightbend.lagom.scaladsl.client.CircuitBreakerComponents">CircuitBreakerComponents</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.lightbend.lagom.scaladsl.client.package@RoundRobinServiceLocatorComponentsextendsCircuitBreakerComponents" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Components for using the round robin service locator.</p>
     </li><li name="com.lightbend.lagom.scaladsl.client.ServiceClient" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="ServiceClientextendsAnyRef"></a>
       <a id="ServiceClient:ServiceClient"></a>
@@ -203,6 +307,40 @@ cause end users to have a binary dependency on this class, which is why it's in 
       </a>
     </span>
       
+    </li><li name="com.lightbend.lagom.scaladsl.client.StaticServiceLocator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="StaticServiceLocatorextendsCircuitBreakingServiceLocator"></a>
+      <a id="StaticServiceLocator:StaticServiceLocator"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="StaticServiceLocator.html"><span class="name">StaticServiceLocator</span></a><span class="result"> extends <a href="CircuitBreakingServiceLocator.html" class="extype" name="com.lightbend.lagom.scaladsl.client.CircuitBreakingServiceLocator">CircuitBreakingServiceLocator</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.lightbend.lagom.scaladsl.client.package@StaticServiceLocatorextendsCircuitBreakingServiceLocator" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A static service locator, that always resolves the same URI.</p>
+    </li><li name="com.lightbend.lagom.scaladsl.client.StaticServiceLocatorComponents" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="StaticServiceLocatorComponentsextendsCircuitBreakerComponents"></a>
+      <a id="StaticServiceLocatorComponents:StaticServiceLocatorComponents"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="StaticServiceLocatorComponents.html"><span class="name">StaticServiceLocatorComponents</span></a><span class="result"> extends <a href="CircuitBreakerComponents.html" class="extype" name="com.lightbend.lagom.scaladsl.client.CircuitBreakerComponents">CircuitBreakerComponents</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.lightbend.lagom.scaladsl.client.package@StaticServiceLocatorComponentsextendsCircuitBreakerComponents" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Components for using the static service locator.</p>
     </li></ol>
             </div>
 

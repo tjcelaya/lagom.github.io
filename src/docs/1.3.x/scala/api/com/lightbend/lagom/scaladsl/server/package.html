@@ -130,30 +130,6 @@ to an app, this can be extended without breaking compatibility.
 play.application.loader = com.example.MyApplicationLoader
 <code><code><code></code></code></code></code></code></code></p><p>This class provides an abstraction over Play's application loader that provides Lagom specific functionality.
 </p></div></div>
-    </li><li name="com.lightbend.lagom.scaladsl.server.LagomDevModeComponents" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="LagomDevModeComponentsextendsAnyRef"></a>
-      <a id="LagomDevModeComponents:LagomDevModeComponents"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="LagomDevModeComponents.html"><span class="name">LagomDevModeComponents</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../../index.html#com.lightbend.lagom.scaladsl.server.package@LagomDevModeComponentsextendsAnyRef" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Provides the Lagom dev mode components.</p><div class="fullcomment"><div class="comment cmt"><p>Provides the Lagom dev mode components.</p><p>This trait primarily has two responsibilities, it provides a service locator that uses Lagom's development service
-locator, and it registers any services returned by the <code>serviceInfo</code> component with the Lagom develompent service
-registry.</p><p>It can be used both by Lagom services, and also by non Lagom services, such as pure Play applications, in order to
-use the Lagom dev mode service locator and register components with Lagom. In the case of pure Play applications,
-<code>serviceInfo</code> will need to manually be implemented to return the service name and any ACLs for the service gateway
-to use.</p><p>It expects the service locator URL to be provided using the <code>lagom.service-locator.url</code> property, which by default
-will be automatically provided to the service by Lagom's dev mode build plugins.
-</p></div></div>
     </li><li name="com.lightbend.lagom.scaladsl.server.LagomServer" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="LagomServerextendsAnyRef"></a>
       <a id="LagomServer:LagomServer"></a>

@@ -210,7 +210,15 @@
       } ]
     }, {
       "title" : "Advanced topics",
-      "url" : "advanced.html"
+      "children" : [ {
+        "title" : "Integrating with Akka",
+        "url" : "Akka.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/advanced/Akka.md"
+      }, {
+        "title" : "Integrating with non Lagom services",
+        "url" : "IntegratingNonLagom.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/advanced/IntegratingNonLagom.md"
+      } ]
     } ]
   }, {
     "title" : "Appendix",

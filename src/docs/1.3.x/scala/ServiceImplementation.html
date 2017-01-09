@@ -38,6 +38,7 @@ abstract class HelloApplication(context: LagomApplicationContext)
 <p>Having created our application cake, we can now write an application loader. Play&rsquo;s mechanism for loading an application is for the application to provide an application loader. Play will pass some context information to this loader, such as a classloader, the running mode, and any extra configuration, so that the application can bootstrap itself. Lagom provides a convenient mechanism for implementing this, the <a href="api/com/lightbend/lagom/scaladsl/server/LagomApplicationLoader.html"><code>LagomApplicationLoader</code></a>:</p>
 <pre class="prettyprint"><code class="language-scala">import com.lightbend.lagom.scaladsl.server._
 import com.lightbend.lagom.scaladsl.api.ServiceLocator
+import com.lightbend.lagom.scaladsl.devmode.LagomDevModeComponents
 
 class HelloApplicationLoader extends LagomApplicationLoader {
 
@@ -49,7 +50,7 @@ class HelloApplicationLoader extends LagomApplicationLoader {
       override def serviceLocator = ServiceLocator.NoServiceLocator
     }
 }</code></pre>
-<p>The loader has two methods, <code>load</code> and <code>loadDevMode</code>. You can see that we&rsquo;ve mixed in different service locators for each method, we&rsquo;ve mixed in <a href="api/com/lightbend/lagom/scaladsl/server/LagomDevModeComponents.html"><code>LagomDevModeComponents</code></a> that provides the dev mode service locator and registers the services with it in dev mode, and in prod mode, for now, we&rsquo;ve simply provided <a href="api/com/lightbend/lagom/scaladsl/api/ServiceLocator$$NoServiceLocator$.html"><code>NoServiceLocator</code></a> as the service locator - this is a service locator that will return nothing for every lookup. We&rsquo;ll see in the <a href="ProductionOverview.html">deploying to production</a> documentation how to select the right service locator for production.</p>
+<p>The loader has two methods, <code>load</code> and <code>loadDevMode</code>. You can see that we&rsquo;ve mixed in different service locators for each method, we&rsquo;ve mixed in <a href="api/com/lightbend/lagom/scaladsl/devmode/LagomDevModeComponents.html"><code>LagomDevModeComponents</code></a> that provides the dev mode service locator and registers the services with it in dev mode, and in prod mode, for now, we&rsquo;ve simply provided <a href="api/com/lightbend/lagom/scaladsl/api/ServiceLocator$$NoServiceLocator$.html"><code>NoServiceLocator</code></a> as the service locator - this is a service locator that will return nothing for every lookup. We&rsquo;ll see in the <a href="ProductionOverview.html">deploying to production</a> documentation how to select the right service locator for production.</p>
 <p>Finally, we need to tell Play about our application loader. We can do that by adding the following configuration to <code>application.conf</code>:</p>
 <pre class="prettyprint"><code>play.application.loader += com.example.HelloLoader
 </code></pre><h2 id="Working-with-streams"><a class="section-marker" href="#Working-with-streams">§</a><a href="#working-with-streams" name="working-with-streams">Working with streams</a></h2>
