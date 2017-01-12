@@ -122,7 +122,10 @@ using a <code>PersistentEntityRef</code>.
 all persistent events of all <code>Order</code> entities.</p><p>The type of the offset is journal dependent, some journals use time-based
 UUID offsets, while others use sequence numbers. The passed in <code>fromOffset</code>
 must either be <span class="extype" name="akka.persistence.query.NoOffset">akka.persistence.query.NoOffset</span>, or an offset that has previously been produced
-by this journal.
+by this journal.</p><p>The stream will begin with events starting <i>after</i> <code>fromOffset</code>.
+To resume an event stream, store the <code>Offset</code> corresponding to the most
+recently processed <code>Event</code>, and pass that back as the value for
+<code>fromOffset</code> to start the stream from events following that one.
 </p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalArgumentException"><code>IllegalArgumentException</code></span> If the <code>fromOffset</code> type is not supported
   by this journal.</p></span></dd></dl></div>
     </li><li name="com.lightbend.lagom.scaladsl.persistence.PersistentEntityRegistry#gracefulShutdown" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">

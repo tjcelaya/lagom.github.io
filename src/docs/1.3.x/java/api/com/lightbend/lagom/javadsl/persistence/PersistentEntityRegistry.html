@@ -211,6 +211,11 @@ var activeTableTab = "activeTableTab";
  UUID offsets, while others use sequence numbers. The passed in <code>fromOffset</code>
  must either be <a href="../../../../../com/lightbend/lagom/javadsl/persistence/Offset.html#NONE"><code>Offset.NONE</code></a>, or an offset that has previously been produced
  by this journal.
+ <p>
+ The stream will begin with events starting ''after'' <code>fromOffset</code>.
+ To resume an event stream, store the <code>Offset</code> corresponding to the most
+ recently processed <code>Event</code>, and pass that back as the value for
+ <code>fromOffset</code> to start the stream from events following that one.
  <p></div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
