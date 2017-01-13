@@ -73,7 +73,15 @@
       "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/guide/ReferenceGuide.md"
     }, {
       "title" : "Defining a Lagom build",
-      "url" : "build.html"
+      "children" : [ {
+        "title" : "Defining a Lagom build",
+        "url" : "LagomBuild.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/build/LagomBuild.md"
+      }, {
+        "title" : "Splitting a system into multiple builds",
+        "url" : "MultipleBuilds.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/build/MultipleBuilds.md"
+      } ]
     }, {
       "title" : "Running Lagom in development",
       "children" : [ {
