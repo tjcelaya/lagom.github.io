@@ -34,7 +34,7 @@ Other new features in this release include:
 
 ## Sample apps
 
-The Lagom team has been working on an auction system that demonstrates many of the features of Lagom. You can get the Java version [here](https://github.com/lagom/online-auction-java) and the Scala version [here](https://github.com/lagom/online-auction.scala). Please be aware that these apps are still a work in progress.
+The Lagom team has been working on an auction system that demonstrates many of the features of Lagom. You can get the Java version [here](https://github.com/lagom/online-auction-java) and the Scala version [here](https://github.com/lagom/online-auction-scala). Please be aware that these apps are still a work in progress.
 
 ## Migration
 
