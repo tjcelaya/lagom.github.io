@@ -45,7 +45,7 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">Persist</span><span class="tparams">[<span name="B">B &lt;: <a href="PersistentEntity.html#Event" class="extmbr" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Event">Event</a></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">Persist</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
@@ -153,20 +153,20 @@ that is passed to the command handler function to create the <code>Persist</code
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>] to
-            <span class="extype" name="scala.Predef.any2stringadd">any2stringadd</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>]] performed by method any2stringadd in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a> to
+            <span class="extype" name="scala.Predef.any2stringadd">any2stringadd</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>] performed by method any2stringadd in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>any2stringadd</dd></dl></div>
     </li><li name="scala.Predef.ArrowAssoc#-&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="-&gt;[B](y:B):(A,B)"></a>
-      <a id="-&gt;[B](B):(Persist[B],B)"></a>
+      <a id="-&gt;[B](B):(Persist,B)"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span title="gt4s: $minus$greater" class="implicit">-&gt;</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="y">y: <span class="extype" name="scala.Predef.ArrowAssoc.-&gt;.B">B</span></span>)</span><span class="result">: (<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>], <span class="extype" name="scala.Predef.ArrowAssoc.-&gt;.B">B</span>)</span>
+        <span title="gt4s: $minus$greater" class="implicit">-&gt;</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="y">y: <span class="extype" name="scala.Predef.ArrowAssoc.-&gt;.B">B</span></span>)</span><span class="result">: (<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>, <span class="extype" name="scala.Predef.ArrowAssoc.-&gt;.B">B</span>)</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../../index.html#com.lightbend.lagom.scaladsl.persistence.PersistentEntity$Persist@-&gt;[B](y:B):(A,B)" title="Permalink" target="_top">
@@ -174,8 +174,8 @@ that is passed to the command handler function to create the <code>Persist</code
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>] to
-            <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>]] performed by method ArrowAssoc in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a> to
+            <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>] performed by method ArrowAssoc in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>ArrowAssoc</dd><dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
@@ -240,14 +240,14 @@ that is passed to the command handler function to create the <code>Persist</code
         </dd></dl></div>
     </li><li name="scala.Predef.Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ensuring(cond:A=&gt;Boolean,msg:=&gt;Any):A"></a>
-      <a id="ensuring((Persist[B])⇒Boolean,⇒Any):Persist[B]"></a>
+      <a id="ensuring((Persist)⇒Boolean,⇒Any):Persist"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: (<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>]) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="msg">msg: ⇒ <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>]</span>
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: (<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="msg">msg: ⇒ <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../../index.html#com.lightbend.lagom.scaladsl.persistence.PersistentEntity$Persist@ensuring(cond:A=&gt;Boolean,msg:=&gt;Any):A" title="Permalink" target="_top">
@@ -255,20 +255,20 @@ that is passed to the command handler function to create the <code>Persist</code
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>] to
-            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>]] performed by method Ensuring in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a> to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>] performed by method Ensuring in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
     </li><li name="scala.Predef.Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ensuring(cond:A=&gt;Boolean):A"></a>
-      <a id="ensuring((Persist[B])⇒Boolean):Persist[B]"></a>
+      <a id="ensuring((Persist)⇒Boolean):Persist"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: (<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>]) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>]</span>
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: (<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../../index.html#com.lightbend.lagom.scaladsl.persistence.PersistentEntity$Persist@ensuring(cond:A=&gt;Boolean):A" title="Permalink" target="_top">
@@ -276,20 +276,20 @@ that is passed to the command handler function to create the <code>Persist</code
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>] to
-            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>]] performed by method Ensuring in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a> to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>] performed by method Ensuring in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
     </li><li name="scala.Predef.Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ensuring(cond:Boolean,msg:=&gt;Any):A"></a>
-      <a id="ensuring(Boolean,⇒Any):Persist[B]"></a>
+      <a id="ensuring(Boolean,⇒Any):Persist"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="msg">msg: ⇒ <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>]</span>
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="msg">msg: ⇒ <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../../index.html#com.lightbend.lagom.scaladsl.persistence.PersistentEntity$Persist@ensuring(cond:Boolean,msg:=&gt;Any):A" title="Permalink" target="_top">
@@ -297,20 +297,20 @@ that is passed to the command handler function to create the <code>Persist</code
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>] to
-            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>]] performed by method Ensuring in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a> to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>] performed by method Ensuring in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
     </li><li name="scala.Predef.Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ensuring(cond:Boolean):A"></a>
-      <a id="ensuring(Boolean):Persist[B]"></a>
+      <a id="ensuring(Boolean):Persist"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>]</span>
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../../index.html#com.lightbend.lagom.scaladsl.persistence.PersistentEntity$Persist@ensuring(cond:Boolean):A" title="Permalink" target="_top">
@@ -318,8 +318,8 @@ that is passed to the command handler function to create the <code>Persist</code
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>] to
-            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>]] performed by method Ensuring in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a> to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>] performed by method Ensuring in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -396,8 +396,8 @@ that is passed to the command handler function to create the <code>Persist</code
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>] to
-            <span class="extype" name="scala.Predef.StringFormat">StringFormat</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>]] performed by method StringFormat in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a> to
+            <span class="extype" name="scala.Predef.StringFormat">StringFormat</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>] performed by method StringFormat in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>StringFormat</dd><dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
@@ -610,14 +610,14 @@ that is passed to the command handler function to create the <code>Persist</code
         </dd></dl></div>
     </li><li name="scala.Predef.ArrowAssoc#→" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="→[B](y:B):(A,B)"></a>
-      <a id="→[B](B):(Persist[B],B)"></a>
+      <a id="→[B](B):(Persist,B)"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span title="gt4s: $u2192" class="implicit">→</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="y">y: <span class="extype" name="scala.Predef.ArrowAssoc.→.B">B</span></span>)</span><span class="result">: (<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>], <span class="extype" name="scala.Predef.ArrowAssoc.→.B">B</span>)</span>
+        <span title="gt4s: $u2192" class="implicit">→</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="y">y: <span class="extype" name="scala.Predef.ArrowAssoc.→.B">B</span></span>)</span><span class="result">: (<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>, <span class="extype" name="scala.Predef.ArrowAssoc.→.B">B</span>)</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../../index.html#com.lightbend.lagom.scaladsl.persistence.PersistentEntity$Persist@→[B](y:B):(A,B)" title="Permalink" target="_top">
@@ -625,8 +625,8 @@ that is passed to the command handler function to create the <code>Persist</code
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>] to
-            <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>]] performed by method ArrowAssoc in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a> to
+            <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>] performed by method ArrowAssoc in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>ArrowAssoc</dd></dl></div>
     </li></ol>
@@ -645,19 +645,19 @@ that is passed to the command handler function to create the <code>Persist</code
             </div>
         <div class="conversion" name="scala.Predef.any2stringadd">
               <h3>Inherited by implicit conversion any2stringadd from
-                <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>] to <span class="extype" name="scala.Predef.any2stringadd">any2stringadd</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>]]
+                <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a> to <span class="extype" name="scala.Predef.any2stringadd">any2stringadd</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>]
               </h3>
             </div><div class="conversion" name="scala.Predef.StringFormat">
               <h3>Inherited by implicit conversion StringFormat from
-                <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>] to <span class="extype" name="scala.Predef.StringFormat">StringFormat</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>]]
+                <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a> to <span class="extype" name="scala.Predef.StringFormat">StringFormat</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>]
               </h3>
             </div><div class="conversion" name="scala.Predef.Ensuring">
               <h3>Inherited by implicit conversion Ensuring from
-                <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>] to <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>]]
+                <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a> to <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>]
               </h3>
             </div><div class="conversion" name="scala.Predef.ArrowAssoc">
               <h3>Inherited by implicit conversion ArrowAssoc from
-                <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>] to <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>[<span class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist.B">B</span>]]
+                <a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a> to <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="com.lightbend.lagom.scaladsl.persistence.PersistentEntity.Persist">Persist</a>]
               </h3>
             </div>
         </div>

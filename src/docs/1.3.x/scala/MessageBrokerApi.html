@@ -5,6 +5,9 @@
 import com.lightbend.lagom.scaladsl.api.{Service, ServiceCall}
 import play.api.libs.json.{Format, Json}
 
+object HelloService  {
+  val TOPIC_NAME = &quot;greetings&quot;
+}
 trait HelloService extends Service {
 
   override final def descriptor = {
@@ -13,7 +16,7 @@ trait HelloService extends Service {
       pathCall(&quot;/api/hello/:id&quot;, hello _),
       pathCall(&quot;/api/hello/:id&quot;, useGreeting _)
     ).withTopics(
-      topic(&quot;greetings&quot;, greetingsTopic)
+      topic(HelloService.TOPIC_NAME, greetingsTopic)
     ).withAutoAcl(true)
   }
 
@@ -23,7 +26,7 @@ trait HelloService extends Service {
   def hello(id: String): ServiceCall[NotUsed, String]
   def useGreeting(id: String): ServiceCall[GreetingMessage, Done]
 }</code></pre>
-<p>The syntax for declaring a topic is similar to the one used already to define services&rsquo; endpoints. The <a href="api/com/lightbend/lagom/scaladsl/api/Descriptor.html"><code>Descriptor.withTopics</code></a> method accepts a sequence of topic calls, each topic call can be defined via the <a href="api/com/lightbend/lagom/scaladsl/api/Service$.html"><code>topic</code></a> method on the <code>Service</code> object. The latter takes a topic name (i.e., the topic identifier), and a method reference that returns a <a href="api/com/lightbend/lagom/scaladsl/api/broker.Topic.html"><code>Topic</code></a> instance.</p>
+<p>The syntax for declaring a topic is similar to the one used already to define services&rsquo; endpoints. The <a href="api/com/lightbend/lagom/scaladsl/api/Descriptor.html"><code>Descriptor.withTopics</code></a> method accepts a sequence of topic calls, each topic call can be defined via the <a href="api/com/lightbend/lagom/scaladsl/api/Service$.html"><code>topic</code></a> method on the <code>Service</code> object. The latter takes a topic name (i.e., the topic identifier), and a method reference that returns a <a href="api/com/lightbend/lagom/scaladsl/api/broker/Topic.html"><code>Topic</code></a> instance.</p>
 <p>Data flowing through a topic is serialized to JSON by default. Of course, it is possible to use a different serialization format, and you can do so by providing an implicit message serializer for each topic defined in a service descriptor. This is the same approach described on <a href="ServiceDescriptors.html#Message-serialization">message serialization</a> when presenting <a href="ServiceDescriptors.html">Service Descriptors</a>. You may want to review the <a href="MessageSerializers.html">message serializers documentation</a> too.</p><h3 id="Partitioning-topics"><a class="section-marker" href="#Partitioning-topics">§</a><a href="#partitioning-topics" name="partitioning-topics">Partitioning topics</a></h3>
 <p>Kafka will distribute messages for a particular topic across many partitions, so that the topic can scale. Messages sent to different partitions may be processed out of order, so if the ordering of the messages you are publishing matters, you need to ensure that the messages are partitioned in such a way that order is preserved. Typically, this means ensuring each message for a particular entity goes to the same partition.</p>
 <p>Lagom allows this by allowing you to configure a partition key strategy, which extracts the partition key out of a message. Kafka will then use this key to help decide what partition to send each message to. The partition can be selected using the <a href="api/com/lightbend/lagom/scaladsl/api/broker/kafka/KafkaProperties$.html#partitionKeyStrategy[Message]:com.lightbend.lagom.scaladsl.api.Descriptor.Property[Message,com.lightbend.lagom.scaladsl.api.broker.kafka.PartitionKeyStrategy[Message]]"><code>partitionKeyStrategy</code></a> property, by passing a <a href="api/com/lightbend/lagom/scaladsl/api/broker/kafka/PartitionKeyStrategy.html"><code>PartitionKeyStrategy</code></a> to it: </p>
@@ -60,6 +63,7 @@ private def convertEvent(helloEvent: EventStreamElement[HelloEvent]): GreetingMe
   .atLeastOnce(
     Flow[GreetingMessage].map{ msg =&gt; 
       // Do somehting with the `msg`
+      doSomethingWithTheMessage(msg)
       Done
     }
   )</code></pre>

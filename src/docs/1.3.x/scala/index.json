@@ -99,7 +99,7 @@
       }, {
         "title" : "Service Locator",
         "url" : "ServiceLocator.html",
-        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/guide/devmode/ServiceLocator.md"
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/devmode/ServiceLocator.md"
       }, {
         "title" : "Cassandra Server",
         "url" : "CassandraServer.html",
@@ -167,6 +167,10 @@
         "url" : "ReadSideRDBMS.html",
         "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/cluster/ReadSideRDBMS.md"
       }, {
+        "title" : "Publish-Subscribe",
+        "url" : "PubSub.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/cluster/PubSub.md"
+      }, {
         "title" : "Cluster",
         "url" : "Cluster.html",
         "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/cluster/Cluster.md"
@@ -189,6 +193,10 @@
         "title" : "Lagom Kafka Client",
         "url" : "KafkaClient.html",
         "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/broker/KafkaClient.md"
+      }, {
+        "title" : "Message Broker Testing",
+        "url" : "MessageBrokerTesting.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/scala/guide/broker/MessageBrokerTesting.md"
       } ]
     }, {
       "title" : "Running Lagom in production",

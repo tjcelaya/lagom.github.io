@@ -64,14 +64,13 @@ class Worker extends AbstractActor {
   }
 }</code></pre>
 <p>The messages are ordinary case classes. Note that they extend <code>Jsonable</code> since they need proper <a href="Serialization.html">Serialization</a> when they are sent across nodes in the cluster of the service, and the have formats created for them:</p>
-<pre class="prettyprint"><code class="language-scala">import com.lightbend.lagom.scaladsl.playjson.Jsonable
-import play.api.libs.json.{Format, Json}
+<pre class="prettyprint"><code class="language-scala">import play.api.libs.json.{Format, Json}
 
-case class Job(jobId: String, task: String, payload: String) extends Jsonable
+case class Job(jobId: String, task: String, payload: String)
 object Job {
   implicit val format: Format[Job] = Json.format
 }
-case class JobAccepted(jobId: String) extends Jsonable
+case class JobAccepted(jobId: String)
 object JobAccepted {
   implicit val format: Format[JobAccepted] = Json.format
 }</code></pre>

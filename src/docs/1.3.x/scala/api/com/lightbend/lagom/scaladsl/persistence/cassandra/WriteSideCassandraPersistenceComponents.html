@@ -52,7 +52,7 @@
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Write-side persistence Cassandra components (for compile-time injection).
 </p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/lagom/lagom/tree/master//persistence-cassandra/scaladsl/src/main/scala/com/lightbend/lagom/scaladsl/persistence/cassandra/CassandraPersistenceComponents.scala" target="_blank">CassandraPersistenceComponents.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="../WriteSidePersistenceComponents.html" class="extype" name="com.lightbend.lagom.scaladsl.persistence.WriteSidePersistenceComponents">WriteSidePersistenceComponents</a>, <a href="../../cluster/ClusterComponents.html" class="extype" name="com.lightbend.lagom.scaladsl.cluster.ClusterComponents">ClusterComponents</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="../WriteSidePersistenceComponents.html" class="extype" name="com.lightbend.lagom.scaladsl.persistence.WriteSidePersistenceComponents">WriteSidePersistenceComponents</a>, <a href="../../cluster/ClusterComponents.html" class="extype" name="com.lightbend.lagom.scaladsl.cluster.ClusterComponents">ClusterComponents</a>, <a href="../../playjson/RequiresJsonSerializerRegistry.html" class="extype" name="com.lightbend.lagom.scaladsl.playjson.RequiresJsonSerializerRegistry">RequiresJsonSerializerRegistry</a>, <a href="../../playjson/ProvidesJsonSerializerRegistry.html" class="extype" name="com.lightbend.lagom.scaladsl.playjson.ProvidesJsonSerializerRegistry">ProvidesJsonSerializerRegistry</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">Known Subclasses</span>
             <div class="subClasses hiddenContent"><a href="CassandraPersistenceComponents.html" class="extype" name="com.lightbend.lagom.scaladsl.persistence.cassandra.CassandraPersistenceComponents">CassandraPersistenceComponents</a></div>
@@ -73,7 +73,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="com.lightbend.lagom.scaladsl.persistence.cassandra.WriteSideCassandraPersistenceComponents"><span>WriteSideCassandraPersistenceComponents</span></li><li class="in" name="com.lightbend.lagom.scaladsl.persistence.WriteSidePersistenceComponents"><span>WriteSidePersistenceComponents</span></li><li class="in" name="com.lightbend.lagom.scaladsl.cluster.ClusterComponents"><span>ClusterComponents</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="com.lightbend.lagom.scaladsl.persistence.cassandra.WriteSideCassandraPersistenceComponents"><span>WriteSideCassandraPersistenceComponents</span></li><li class="in" name="com.lightbend.lagom.scaladsl.persistence.WriteSidePersistenceComponents"><span>WriteSidePersistenceComponents</span></li><li class="in" name="com.lightbend.lagom.scaladsl.cluster.ClusterComponents"><span>ClusterComponents</span></li><li class="in" name="com.lightbend.lagom.scaladsl.playjson.RequiresJsonSerializerRegistry"><span>RequiresJsonSerializerRegistry</span></li><li class="in" name="com.lightbend.lagom.scaladsl.playjson.ProvidesJsonSerializerRegistry"><span>ProvidesJsonSerializerRegistry</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
                 <span class="filtertype">Implicitly<br />
@@ -118,6 +118,24 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../cluster/ClusterComponents.html" class="extype" name="com.lightbend.lagom.scaladsl.cluster.ClusterComponents">ClusterComponents</a></dd></dl></div>
+    </li><li name="com.lightbend.lagom.scaladsl.playjson.RequiresJsonSerializerRegistry#jsonSerializerRegistry" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="jsonSerializerRegistry:com.lightbend.lagom.scaladsl.playjson.JsonSerializerRegistry"></a>
+      <a id="jsonSerializerRegistry:JsonSerializerRegistry"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">jsonSerializerRegistry</span><span class="result">: <a href="../../playjson/JsonSerializerRegistry.html" class="extype" name="com.lightbend.lagom.scaladsl.playjson.JsonSerializerRegistry">JsonSerializerRegistry</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.lightbend.lagom.scaladsl.persistence.cassandra.WriteSideCassandraPersistenceComponents@jsonSerializerRegistry:com.lightbend.lagom.scaladsl.playjson.JsonSerializerRegistry" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The serializer registry.</p><div class="fullcomment"><div class="comment cmt"><p>The serializer registry.</p><p>If no JSON serializers need to be provided, this can simply return <a href="../../playjson/EmptyJsonSerializerRegistry$.html" class="extype" name="com.lightbend.lagom.scaladsl.playjson.EmptyJsonSerializerRegistry">EmptyJsonSerializerRegistry</a>.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../playjson/RequiresJsonSerializerRegistry.html" class="extype" name="com.lightbend.lagom.scaladsl.playjson.RequiresJsonSerializerRegistry">RequiresJsonSerializerRegistry</a></dd></dl></div>
     </li><li name="com.lightbend.lagom.scaladsl.persistence.cassandra.WriteSideCassandraPersistenceComponents#serviceLocator" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="serviceLocator:com.lightbend.lagom.scaladsl.api.ServiceLocator"></a>
       <a id="serviceLocator:ServiceLocator"></a>
@@ -560,6 +578,27 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.lightbend.lagom.scaladsl.playjson.RequiresJsonSerializerRegistry#optionalJsonSerializerRegistry" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="optionalJsonSerializerRegistry:Option[com.lightbend.lagom.scaladsl.playjson.JsonSerializerRegistry]"></a>
+      <a id="optionalJsonSerializerRegistry:Option[JsonSerializerRegistry]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">optionalJsonSerializerRegistry</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Option" class="extype" target="_top">Option</a>[<a href="../../playjson/JsonSerializerRegistry.html" class="extype" name="com.lightbend.lagom.scaladsl.playjson.JsonSerializerRegistry">JsonSerializerRegistry</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.lightbend.lagom.scaladsl.persistence.cassandra.WriteSideCassandraPersistenceComponents@optionalJsonSerializerRegistry:Option[com.lightbend.lagom.scaladsl.playjson.JsonSerializerRegistry]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The optionally provided serializer registry.</p><div class="fullcomment"><div class="comment cmt"><p>The optionally provided serializer registry.</p><p>Note that this can also be exploited to allow multiple traits to contribute to the serializer registry rather
+than provide one, by checking whether the super implementation also provides one, and concatenating with that if
+it does. To do that, the override must be a def, so that it can be subsequently overridden by other mixed in
+traits.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../playjson/RequiresJsonSerializerRegistry.html" class="extype" name="com.lightbend.lagom.scaladsl.playjson.RequiresJsonSerializerRegistry">RequiresJsonSerializerRegistry</a> → <a href="../../playjson/ProvidesJsonSerializerRegistry.html" class="extype" name="com.lightbend.lagom.scaladsl.playjson.ProvidesJsonSerializerRegistry">ProvidesJsonSerializerRegistry</a></dd></dl></div>
     </li><li name="com.lightbend.lagom.scaladsl.persistence.cassandra.WriteSideCassandraPersistenceComponents#persistentEntityRegistry" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="persistentEntityRegistry:com.lightbend.lagom.scaladsl.persistence.PersistentEntityRegistry"></a>
       <a id="persistentEntityRegistry:PersistentEntityRegistry"></a>
@@ -714,6 +753,10 @@
               <h3>Inherited from <a href="../WriteSidePersistenceComponents.html" class="extype" name="com.lightbend.lagom.scaladsl.persistence.WriteSidePersistenceComponents">WriteSidePersistenceComponents</a></h3>
             </div><div class="parent" name="com.lightbend.lagom.scaladsl.cluster.ClusterComponents">
               <h3>Inherited from <a href="../../cluster/ClusterComponents.html" class="extype" name="com.lightbend.lagom.scaladsl.cluster.ClusterComponents">ClusterComponents</a></h3>
+            </div><div class="parent" name="com.lightbend.lagom.scaladsl.playjson.RequiresJsonSerializerRegistry">
+              <h3>Inherited from <a href="../../playjson/RequiresJsonSerializerRegistry.html" class="extype" name="com.lightbend.lagom.scaladsl.playjson.RequiresJsonSerializerRegistry">RequiresJsonSerializerRegistry</a></h3>
+            </div><div class="parent" name="com.lightbend.lagom.scaladsl.playjson.ProvidesJsonSerializerRegistry">
+              <h3>Inherited from <a href="../../playjson/ProvidesJsonSerializerRegistry.html" class="extype" name="com.lightbend.lagom.scaladsl.playjson.ProvidesJsonSerializerRegistry">ProvidesJsonSerializerRegistry</a></h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">

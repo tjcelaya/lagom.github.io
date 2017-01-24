@@ -74,9 +74,10 @@ def descriptor = {
 <p>A strict message is a single message that can be represented by a simple Scala object, typically a case class. The message will be buffered into memory, and then parsed, for example, as JSON. When both message types are strict, the call is said to be a synchronous call, that is, a request is sent and received, then a response is sent and received. The caller and callee have synchronized in their communication.</p>
 <p>So far, all of the service call examples we&rsquo;ve seen have used strict messages, for example, the order service descriptors above accept and return items and orders. The input value is passed directly to the service call, and returned directly from the service call, and these values are serialized to a JSON buffer in memory before being sent, and read entirely into memory before being deserialized back from JSON.</p><h3 id="Streamed-messages"><a class="section-marker" href="#Streamed-messages">§</a><a href="#streamed-messages" name="streamed-messages">Streamed messages</a></h3>
 <p>A streamed message is a message of type <a href="http://doc.akka.io/api/akka/2.4.4/akka/stream/scaladsl/Source.html"><code>Source</code></a>. <code>Source</code> is an <a href="http://doc.akka.io/docs/akka/2.4/scala.html">Akka streams</a> API that allows asynchronous streaming and handling of messages. Here&rsquo;s an example streamed service call:</p>
-<pre class="prettyprint"><code class="language-scala">import akka.stream.scaladsl.Source
+<pre class="prettyprint"><code class="language-scala">import akka.NotUsed
+import akka.stream.scaladsl.Source
 
-def tick(interval: Int): ServiceCall[String, Source[String, _]]
+def tick(interval: Int): ServiceCall[String, Source[String, NotUsed]]
 
 def descriptor = {
   import Service._
@@ -86,9 +87,10 @@ def descriptor = {
 }</code></pre>
 <p>This service call has a strict request type and a streamed response type. An implementation of this might return a <code>Source</code> that sends the input tick message <code>String</code> at the specified interval.</p>
 <p>A bidirectional streamed call might look like this:</p>
-<pre class="prettyprint"><code class="language-scala">import akka.stream.scaladsl.Source
+<pre class="prettyprint"><code class="language-scala">import akka.NotUsed
+import akka.stream.scaladsl.Source
 
-def sayHello: ServiceCall[Source[String, _], Source[String, _]]
+def sayHello: ServiceCall[Source[String, NotUsed], Source[String, NotUsed]]
 
 def descriptor = {
   import Service._

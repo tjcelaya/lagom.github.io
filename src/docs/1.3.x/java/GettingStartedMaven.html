@@ -77,10 +77,9 @@ $ mvn lagom:runAll
 [info] Service stream-impl listening for HTTP on 0:0:0:0:0:0:0:0:26230
 (Services started, press enter to stop and go back to the console...)
 </code></pre>
-<p>You can verify that the services are indeed up and running by invoking one of its endpoints, e.g:</p>
-<pre class="prettyprint"><code class="language-console">$ curl http://localhost:9000/api/hello/World
+<p>You can verify that the services are indeed up and running by invoking one of its endpoints from any HTTP client, such as a browser. The following request returns the message <code>Hello, World!</code>:</p>
+<pre class="prettyprint"><code>http://localhost:9000/api/hello/World
 </code></pre>
-<p>And you should get back the message <code>Hello, World!</code>.</p>
 <p>If you are wondering why we have created two services in the seed template, instead of having just one, the reason is simply that (<a href="https://twitter.com/jboner/status/699536472442011648">quoting</a> Jonas Bonér):</p>
 <blockquote>
   <p>One microservice is no microservice - they come in systems.</p>

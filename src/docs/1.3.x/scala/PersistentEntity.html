@@ -48,9 +48,10 @@ final class Post1 extends PersistentEntity {
 Actions()
   .onCommand[AddPost, AddPostDone] {
     case (AddPost(content), ctx, state) =&gt;
-      ctx.thenPersist(PostAdded(entityId, content), evt =&gt;
+      ctx.thenPersist(PostAdded(entityId, content)) { evt =&gt;
         // After persist is done additional side effects can be performed
-        ctx.reply(AddPostDone(entityId)))
+        ctx.reply(AddPostDone(entityId))
+      }
   }</code></pre>
 <p>You should define one command handler for each command class that the entity can receive.</p>
 <p>A command handler is a partial function with 3 parameters (<code>Tuple3</code>) for the <code>Command</code>, the <code>CommandContext</code> and current <code>State</code>. </p>
@@ -93,7 +94,7 @@ Actions()
 <p>Typically the reply will be an acknowledgment that the entity processed the command successfully, i.e. you send it after persist.</p>
 <pre class="prettyprint"><code class="language-scala">.onCommand[ChangeBody, Done] {
   case (ChangeBody(body), ctx, state) =&gt;
-    ctx.thenPersist(BodyChanged(entityId, body), _ =&gt; ctx.reply(Done))
+    ctx.thenPersist(BodyChanged(entityId, body))(_ =&gt; ctx.reply(Done))
 }</code></pre>
 <p>For convenience you may use the <code>akka.Done</code> as acknowledgment message.</p>
 <p>It can also be a reply to a read-only query command.</p>
@@ -111,8 +112,9 @@ Actions()
   Actions()
     .onCommand[AddPost, AddPostDone] {
       case (AddPost(content), ctx, state) if state.isEmpty =&gt;
-        ctx.thenPersist(PostAdded(entityId, content), evt =&gt;
-          ctx.reply(AddPostDone(entityId)))
+        ctx.thenPersist(PostAdded(entityId, content)) { evt =&gt;
+          ctx.reply(AddPostDone(entityId))
+        }
     }
     .onEvent {
       case (PostAdded(postId, content), state) =&gt;
@@ -173,6 +175,7 @@ import scala.concurrent.duration._
 import akka.Done
 import akka.actor.ActorSystem
 import com.lightbend.lagom.scaladsl.persistence.PersistentEntity.InvalidCommandException
+import com.lightbend.lagom.scaladsl.playjson.JsonSerializerRegistry
 import com.lightbend.lagom.scaladsl.testkit.PersistentEntityTestDriver
 import com.typesafe.config.ConfigFactory
 import org.scalactic.ConversionCheckedTripleEquals
@@ -183,11 +186,7 @@ import org.scalatest.WordSpecLike
 class PostSpec extends WordSpecLike with Matchers with BeforeAndAfterAll
   with ConversionCheckedTripleEquals {
 
-  val config = ConfigFactory.parseString(
-    &quot;&quot;&quot;
-      lagom.serialization.play-json.serializer-registry=docs.home.scaladsl.persistence.BlogPostSerializerRegistry
-    &quot;&quot;&quot;).withFallback(ConfigFactory.load())
-  val system = ActorSystem(&quot;PostSpec&quot;, config)
+  val system = ActorSystem(&quot;PostSpec&quot;, JsonSerializerRegistry.actorSystemSetupFor(BlogPostSerializerRegistry))
 
   override def afterAll(): Unit = {
     Await.ready(system.terminate, 10.seconds)
@@ -231,16 +230,7 @@ class PostSpec extends WordSpecLike with Matchers with BeforeAndAfterAll
 }</code></pre>
 <p><code>run</code> may be invoked multiple times to divide the sequence of commands into manageable steps. The <a href="api/index.html#com/lightbend/lagom/scaladsl/testkit/PersistentEntityTestDriver@Outcome">Outcome</a> contains the events and side-effects of the last <code>run</code>, but the state is not reset between different runs.</p>
 <p>Note that it also verifies that all commands, events, replies and state are <a href="Serialization.html">serializable</a>, and reports any such problems in the <code>issues</code> of the <code>Outcome</code>.</p>
-<p>To use this feature add the following in your project&rsquo;s build.</p>
-<p>In Maven:</p>
-<pre class="prettyprint"><code class="language-xml">&lt;dependency&gt;
-    &lt;groupId&gt;com.lightbend.lagom&lt;/groupId&gt;
-    &lt;artifactId&gt;lagom-scaladsl-testkit_2.11&lt;/artifactId&gt;
-    &lt;version&gt;${lagom.version}&lt;/version&gt;
-    &lt;scope&gt;test&lt;/scope&gt;
-&lt;/dependency&gt;
-</code></pre>
-<p>In sbt:</p>
+<p>To use this feature add the following in your project&rsquo;s build:</p>
 <pre class="prettyprint"><code class="language-sbt">// FIXME
 //libraryDependencies += lagomScaladslTestKit</code></pre><h2 id="Full-Example"><a class="section-marker" href="#Full-Example">§</a><a href="#full-example" name="full-example">Full Example</a></h2>
 <pre class="prettyprint"><code class="language-scala">import akka.Done
@@ -269,9 +259,10 @@ final class Post extends PersistentEntity {
             ctx.invalidCommand(&quot;Title must be defined&quot;)
             ctx.done
           } else {
-            ctx.thenPersist(PostAdded(entityId, content), evt =&gt;
+            ctx.thenPersist(PostAdded(entityId, content)) { _ =&gt;
               // After persist is done additional side effects can be performed
-              ctx.reply(AddPostDone(entityId)))
+              ctx.reply(AddPostDone(entityId))
+            }
           }
       }
       // Event handlers are used both when persisting new events and when replaying
@@ -286,7 +277,7 @@ final class Post extends PersistentEntity {
     Actions()
       .onCommand[ChangeBody, Done] {
         case (ChangeBody(body), ctx, state) =&gt;
-          ctx.thenPersist(BodyChanged(entityId, body), _ =&gt; ctx.reply(Done))
+          ctx.thenPersist(BodyChanged(entityId, body))(_ =&gt; ctx.reply(Done))
       }
       .onEvent {
         case (BodyChanged(_, body), state) =&gt;
@@ -301,30 +292,29 @@ final class Post extends PersistentEntity {
 }</code></pre>
 <pre class="prettyprint"><code class="language-scala">import com.lightbend.lagom.scaladsl.persistence.PersistentEntity.ReplyType
 import akka.Done
-import com.lightbend.lagom.scaladsl.playjson.{Jsonable, Serializers}
+import com.lightbend.lagom.scaladsl.playjson.JsonSerializer
 
-sealed trait BlogCommand extends Jsonable
+sealed trait BlogCommand
 
 object BlogCommand {
   import play.api.libs.json._
-  import Serializers.emptySingletonFormat
-
+  import JsonSerializer.emptySingletonFormat
 
   implicit val postContentFormat = Json.format[PostContent]
 
   val serializers = Vector(
-    Serializers(Json.format[AddPost]),
-    Serializers(Json.format[AddPostDone]),
-    Serializers(emptySingletonFormat(GetPost)),
-    Serializers(Json.format[ChangeBody]),
-    Serializers(emptySingletonFormat(Publish)))
+    JsonSerializer(Json.format[AddPost]),
+    JsonSerializer(Json.format[AddPostDone]),
+    JsonSerializer(emptySingletonFormat(GetPost)),
+    JsonSerializer(Json.format[ChangeBody]),
+    JsonSerializer(emptySingletonFormat(Publish)))
 }
 
 //#AddPost
 final case class AddPost(content: PostContent) extends BlogCommand with ReplyType[AddPostDone]
 //#AddPost
 
-final case class AddPostDone(postId: String) extends Jsonable
+final case class AddPostDone(postId: String)
 
 case object GetPost extends BlogCommand with ReplyType[PostContent]
 
@@ -334,7 +324,7 @@ case object Publish extends BlogCommand with ReplyType[Done]</code></pre>
 <pre class="prettyprint"><code class="language-scala">import com.lightbend.lagom.scaladsl.persistence.AggregateEvent
 import com.lightbend.lagom.scaladsl.persistence.AggregateEventShards
 import com.lightbend.lagom.scaladsl.persistence.AggregateEventTag
-import com.lightbend.lagom.scaladsl.playjson.{Jsonable, Serializers}
+import com.lightbend.lagom.scaladsl.playjson.JsonSerializer
 
 object BlogEvent {
   val NumShards = 20
@@ -345,12 +335,12 @@ object BlogEvent {
   private implicit val postContentFormat = Json.format[PostContent]
 
   val serializers = Vector(
-    Serializers(Json.format[PostAdded]),
-    Serializers(Json.format[BodyChanged]),
-    Serializers(Json.format[PostPublished]))
+    JsonSerializer(Json.format[PostAdded]),
+    JsonSerializer(Json.format[BodyChanged]),
+    JsonSerializer(Json.format[PostPublished]))
 }
 
-sealed trait BlogEvent extends AggregateEvent[BlogEvent] with Jsonable {
+sealed trait BlogEvent extends AggregateEvent[BlogEvent] {
   override def aggregateTag: AggregateEventShards[BlogEvent] = BlogEvent.Tag
 }
 
@@ -359,20 +349,17 @@ final case class PostAdded(postId: String, content: PostContent) extends BlogEve
 final case class BodyChanged(postId: String, body: String) extends BlogEvent
 
 final case class PostPublished(postId: String) extends BlogEvent</code></pre>
-<pre class="prettyprint"><code class="language-scala">import com.lightbend.lagom.scaladsl.playjson.{Jsonable, Serializers}
-import play.api.libs.json._
+<pre class="prettyprint"><code class="language-scala">import play.api.libs.json._
 
 object BlogState {
   val empty = BlogState(None, published = false)
 
   implicit val postContentFormat = Json.format[PostContent]
 
-  val serializers = Vector(
-    Serializers(Json.format[BlogState])
-  )
+  implicit val format: Format[BlogState] = Json.format[BlogState]
 }
 
-final case class BlogState(content: Option[PostContent], published: Boolean) extends Jsonable {
+final case class BlogState(content: Option[PostContent], published: Boolean) {
   def withBody(body: String): BlogState = {
     content match {
       case Some(c) =&gt;

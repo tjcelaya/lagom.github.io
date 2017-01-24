@@ -32,7 +32,7 @@ The implementation of this interface looks like:
 
 @[service-impl](code/docs/home/pubsub/SensorServiceImpl.java)
 
-When a device submit its current temperature it is published to a topic that is unique for that device. Note that the topic where the message is published to is defined by the message class, here `Temperature`, and an optional classifier, here the device id. The messages of this topic will be instances of the message class or subclasses thereof. The qualifier can be used to distinguish topics that are using the same message class. The empty string can be used as qualifier if the message class is enough to define the topic identity.
+When a device submits its current temperature it is published to a topic that is unique for that device. Note that the topic where the message is published to is defined by the message class, here `Temperature`, and an optional classifier, here the device id. The messages of this topic will be instances of the message class or subclasses thereof. The qualifier can be used to distinguish topics that are using the same message class. The empty string can be used as qualifier if the message class is enough to define the topic identity.
 
 Use the method `publish` of the [PubSubRef](api/index.html?com/lightbend/lagom/javadsl/pubsub/PubSubRef.html) representing a given topic to publish a single message, see `registerTemperature` in the above code.
 
@@ -60,7 +60,7 @@ To complete the picture, a service method that delivers these `PostPublished` ev
 
 ## Limitations
 
-It is only possible to publish and subscribe within a single service. It is not possible to publish messages in one service and subscribe to them in another service. We will probably provide publish-subscribe across services in a future release of Lagom.
+This feature is specifically for providing publish and subscribe functionality within a single services cluster. To publish and subscribe between services, you should instead use Lagom's [[message broker support|MessageBrokerApi]].
 
 Published messages may be lost. For example in case of networks problems messages might not be delivered to all subscribers. We might provide publish-subscribe with at-least-once delivery in a future release of Lagom.
 

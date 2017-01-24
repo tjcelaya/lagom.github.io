@@ -46,7 +46,7 @@ In sbt:
 
 @[service-locator-unmanaged-services](code/build-service-locator.sbt)
 
-The above ensures that the Service Locator knows about the `weather` service. Then, if you need a Lagom service to communicate with it, simply `@Inject` the [`ServiceLocator`](api/index.html?com/lightbend/lagom/javadsl/api/ServiceLocator.html) and use it to either locate the `weather` service's URI, or perform some arbitrary work with it.
+The above ensures that the Service Locator knows about the `weather` service. Then, if you need a Lagom service to communicate with it, simply `@Inject` the [`ServiceLocator`](api/com/lightbend/lagom/scaladsl/api/ServiceLocator.html) and use it to either locate the `weather` service's URI, or perform some arbitrary work with it.
 
 ### Integrating with external Lagom projects
 
@@ -77,4 +77,4 @@ In sbt:
 
 @[service-locator-disabled](code/build-service-locator.sbt)
 
-Be aware that by disabling the Service Locator your services will not be able to communicate. To restore communication, you will have to provide an implementation of [`ServiceLocator`](api/index.html?com/lightbend/lagom/javadsl/api/ServiceLocator.html) in your service.
+Be aware that by disabling the Service Locator your services will not be able to communicate. To restore communication, you will have to provide an implementation of [`ServiceLocator`](api/com/lightbend/lagom/scaladsl/api/ServiceLocator.html) in your service.

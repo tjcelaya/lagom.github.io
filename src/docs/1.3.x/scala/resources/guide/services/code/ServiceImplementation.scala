@@ -13,7 +13,7 @@ package helloservice {
   //#hello-service-impl
 }
 
-package lagomappliaction {
+package lagomapplication {
 
   import helloservice._
 
@@ -35,7 +35,7 @@ package lagomappliaction {
 
 package lagomloader {
 
-  import lagomappliaction._
+  import lagomapplication._
 
   //#lagom-loader
   import com.lightbend.lagom.scaladsl.server._
@@ -57,7 +57,9 @@ package lagomloader {
 
 package callstream {
 
+  import akka.NotUsed
   import com.lightbend.lagom.scaladsl.api.ServiceCall
+
   import scala.concurrent.Future
 
   class CallStreamImpl extends CallStream {
@@ -68,7 +70,7 @@ package callstream {
     override def tick(intervalMs: Int) = ServiceCall { tickMessage =>
       Future.successful(Source.tick(
         intervalMs.milliseconds, intervalMs.milliseconds, tickMessage
-      ))
+      ).mapMaterializedValue(_ => NotUsed))
     }
     //#tick-service-call
   }

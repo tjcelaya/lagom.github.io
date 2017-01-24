@@ -2228,6 +2228,21 @@
 <dd>
 <div class="block">Get the principal for this request, if there is one.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/testkit/ProducerStubFactory.html#producer-java.lang.String-">producer(String)</a></span> - Method in class com.lightbend.lagom.javadsl.testkit.<a href="com/lightbend/lagom/javadsl/testkit/ProducerStubFactory.html" title="class in com.lightbend.lagom.javadsl.testkit">ProducerStubFactory</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/lightbend/lagom/javadsl/testkit/ProducerStub.html" title="class in com.lightbend.lagom.javadsl.testkit"><span class="typeNameLink">ProducerStub</span></a>&lt;<a href="com/lightbend/lagom/javadsl/testkit/ProducerStub.html" title="type parameter in ProducerStub">T</a>&gt; - Class in <a href="com/lightbend/lagom/javadsl/testkit/package-summary.html">com.lightbend.lagom.javadsl.testkit</a></dt>
+<dd>
+<div class="block">Stubs the production end of a <a href="com/lightbend/lagom/javadsl/api/broker/Topic.html" title="interface in com.lightbend.lagom.javadsl.api.broker"><code>Topic</code></a> so that test writers can mock
+ message production from upstream services into topics consumed by services under test.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/testkit/ProducerStub.html#ProducerStub-java.lang.String-akka.actor.ActorSystem-akka.stream.Materializer-">ProducerStub(String, ActorSystem, Materializer)</a></span> - Constructor for class com.lightbend.lagom.javadsl.testkit.<a href="com/lightbend/lagom/javadsl/testkit/ProducerStub.html" title="class in com.lightbend.lagom.javadsl.testkit">ProducerStub</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/lightbend/lagom/javadsl/testkit/ProducerStubFactory.html" title="class in com.lightbend.lagom.javadsl.testkit"><span class="typeNameLink">ProducerStubFactory</span></a> - Class in <a href="com/lightbend/lagom/javadsl/testkit/package-summary.html">com.lightbend.lagom.javadsl.testkit</a></dt>
+<dd>
+<div class="block">Factors <a href="com/lightbend/lagom/javadsl/testkit/ProducerStub.html" title="class in com.lightbend.lagom.javadsl.testkit"><code>ProducerStub</code></a>'s.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/testkit/ProducerStubFactory.html#ProducerStubFactory-akka.actor.ActorSystem-akka.stream.Materializer-">ProducerStubFactory(ActorSystem, Materializer)</a></span> - Constructor for class com.lightbend.lagom.javadsl.testkit.<a href="com/lightbend/lagom/javadsl/testkit/ProducerStubFactory.html" title="class in com.lightbend.lagom.javadsl.testkit">ProducerStubFactory</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/api/Descriptor.TopicCall.html#properties--">properties()</a></span> - Method in class com.lightbend.lagom.javadsl.api.<a href="com/lightbend/lagom/javadsl/api/Descriptor.TopicCall.html" title="class in com.lightbend.lagom.javadsl.api">Descriptor.TopicCall</a></dt>
 <dd>
 <div class="block">Get the properties associated with this topic.</div>
@@ -2569,6 +2584,10 @@
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/persistence/AggregateEventTag.html#selectShard-int-java.lang.String-">selectShard(int, String)</a></span> - Static method in class com.lightbend.lagom.javadsl.persistence.<a href="com/lightbend/lagom/javadsl/persistence/AggregateEventTag.html" title="class in com.lightbend.lagom.javadsl.persistence">AggregateEventTag</a></dt>
 <dd>
 <div class="block">Select a shard given the number of shards and the ID of the entity.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/testkit/ProducerStub.html#send-T-">send(T)</a></span> - Method in class com.lightbend.lagom.javadsl.testkit.<a href="com/lightbend/lagom/javadsl/testkit/ProducerStub.html" title="class in com.lightbend.lagom.javadsl.testkit">ProducerStub</a></dt>
+<dd>
+<div class="block">Sends the message via the <a href="com/lightbend/lagom/javadsl/api/broker/Topic.html" title="interface in com.lightbend.lagom.javadsl.api.broker"><code>Topic</code></a> where this <a href="com/lightbend/lagom/javadsl/testkit/ProducerStub.html" title="class in com.lightbend.lagom.javadsl.testkit"><code>ProducerStub</code></a> is connected to.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/persistence/Offset.html#sequence-long-">sequence(long)</a></span> - Static method in class com.lightbend.lagom.javadsl.persistence.<a href="com/lightbend/lagom/javadsl/persistence/Offset.html" title="class in com.lightbend.lagom.javadsl.persistence">Offset</a></dt>
 <dd>
@@ -2952,6 +2971,10 @@
 </dd>
 <dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/pubsub/PubSubRef.html#topic--">topic()</a></span> - Method in class com.lightbend.lagom.javadsl.pubsub.<a href="com/lightbend/lagom/javadsl/pubsub/PubSubRef.html" title="class in com.lightbend.lagom.javadsl.pubsub">PubSubRef</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/lightbend/lagom/javadsl/testkit/ProducerStub.html#topic--">topic()</a></span> - Method in class com.lightbend.lagom.javadsl.testkit.<a href="com/lightbend/lagom/javadsl/testkit/ProducerStub.html" title="class in com.lightbend.lagom.javadsl.testkit">ProducerStub</a></dt>
+<dd>
+<div class="block">Returns the <a href="com/lightbend/lagom/javadsl/api/broker/Topic.html" title="interface in com.lightbend.lagom.javadsl.api.broker"><code>Topic</code></a> where this <a href="com/lightbend/lagom/javadsl/testkit/ProducerStub.html" title="class in com.lightbend.lagom.javadsl.testkit"><code>ProducerStub</code></a> is connected to.</div>
+</dd>
 <dt><a href="com/lightbend/lagom/javadsl/api/broker/Topic.TopicId.html" title="class in com.lightbend.lagom.javadsl.api.broker"><span class="typeNameLink">Topic.TopicId</span></a> - Class in <a href="com/lightbend/lagom/javadsl/api/broker/package-summary.html">com.lightbend.lagom.javadsl.api.broker</a></dt>
 <dd>
 <div class="block">A topic identifier.</div>

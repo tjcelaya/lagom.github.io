@@ -85,15 +85,15 @@ $ sbt
 [info] Service gateway is running at http://localhost:9000
 [info] Service hello-impl listening for HTTP on 0:0:0:0:0:0:0:0:24266
 [info] Service hello-stream-impl listening for HTTP on 0:0:0:0:0:0:0:0:26230
-(Services started, use Ctrl+D to stop and go back to the console...)
+(Services started, press enter to stop and go back to the console...)
 </code></pre>
-<p>You can verify that the services are indeed up and running by exercising one of its endpoints, e.g:</p>
-<pre class="prettyprint"><code class="language-console">$ curl http://localhost:9000/api/hello/World
+<p>You can verify that the services are indeed up and running by invoking one of its endpoints from any HTTP client, such as a browser. The following request returns the message <code>Hello, World!</code>:</p>
+<pre class="prettyprint"><code>http://localhost:9000/api/hello/World
 </code></pre>
-<p>And you should get back the message <code>Hello, World!</code>.</p>
 <p>If you are wondering why we have created two services in the seed template, instead of having just one, the reason is simply that (<a href="https://twitter.com/jboner/status/699536472442011648">quoting</a> Jonas Bonér):</p>
 <blockquote>
   <p>One microservice is no microservice - they come in systems.</p>
 </blockquote>
 <p>Said otherwise, we believe you will be creating several services, and we felt it was important to showcase intra-service communication.</p>
-<p>The <code>lagom-scala.g8</code> template you used to build <code>hello</code> uses the <code>.sbtopts</code> file to increase the memory used by the <code>JVM</code> when starting your project. There&rsquo;s a few more ways to <a href="JVMMemoryOnDev.html">Increase Memory in sbt</a></p>
+<p>The <code>lagom-scala.g8</code> template you used to build <code>hello</code> uses the <code>.sbtopts</code> file to increase the memory used by the <code>JVM</code> when starting your project. There&rsquo;s a few more ways to <a href="JVMMemoryOnDev.html">Increase Memory in sbt</a></p><h2 id="Larger-scale-sample-project"><a class="section-marker" href="#Larger-scale-sample-project">§</a>Larger-scale sample project</h2>
+<p>The <a href="https://github.com/lagom/online-auction-scala">online-auction-scala</a> is a larger project comprising a number of services. Downloading this project and inspecting the source code will provide a valuable supplemental resource for this documentation.</p>

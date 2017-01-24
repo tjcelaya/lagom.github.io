@@ -113,9 +113,11 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public abstract class <span class="typeNameLabel">CircuitBreaker</span>
 extends Object</pre>
-<div class="block">Circuit breaker descriptor.
-
- This describes how circuit breaking should be applied to a particular <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api"><code>ServiceCall</code></a>.</div>
+<div class="block">Circuit breaker descriptor. Describes how circuit breaking should be applied
+ to a particular <a href="../../../../../com/lightbend/lagom/javadsl/api/ServiceCall.html" title="interface in com.lightbend.lagom.javadsl.api"><code>ServiceCall</code></a>.
+ A circuit breaker is used to provide stability and prevent cascading
+ failures in distributed systems. An example would be to begin to fail-fast
+ after some number of failures due to a dependency on a hanging call.</div>
 </li>
 </ul>
 </div>

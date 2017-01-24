@@ -27,7 +27,7 @@
   .settings(
     // ...
   )</code></pre><h2 id="How-to-test-one-service"><a class="section-marker" href="#How-to-test-one-service">§</a><a href="#how-to-test-one-service" name="how-to-test-one-service">How to test one service</a></h2>
-<p>Lagom provides support for writing functional tests for one service in isolation. The service is running in a server and in the test you can interact with it using its service client, i.e. calls to the service API. These utilities are defined in <a href="api/com/lightbend/lagom/scaladsl/testkit/ServiceTest.html">ServiceTest</a>.</p>
+<p>Lagom provides support for writing functional tests for one service in isolation. The service is running in a server and in the test you can interact with it using its service client, i.e. calls to the service API. These utilities are defined in <a href="api/com/lightbend/lagom/scaladsl/testkit/ServiceTest$.html">ServiceTest</a>.</p>
 <p>Here&rsquo;s what a simple test may look like:</p>
 <pre class="prettyprint"><code class="language-scala">import com.lightbend.lagom.scaladsl.server.LocalServiceLocator
 import com.lightbend.lagom.scaladsl.testkit.ServiceTest
@@ -50,7 +50,7 @@ class HelloServiceSpec extends AsyncWordSpec with Matchers {
 <p>There are a few points to note about this code:</p>
 <ul>
   <li>The test is using ScalaTest&rsquo;s <a href="http://www.scalatest.org/user_guide/async_testing">asynchronous test support</a>. The actual test itself returns a future, and ScalaTest ensures that that future is handled appropriately.</li>
-  <li><code>withServer</code> takes three parameters. The first is a setup parameter, which can be used to configure how the environment should be setup, for example, it can be used to start Cassandra. The second is a constructor for a <a href="api/com/lightbend/lagom/scaladsl/server/LagomAppication">LagomApplication</a>, which is where we construct the application, and the third is a block to run that takes the started server and runs the actual test.</li>
+  <li><code>withServer</code> takes three parameters. The first is a setup parameter, which can be used to configure how the environment should be setup, for example, it can be used to start Cassandra. The second is a constructor for a <a href="api/com/lightbend/lagom/scaladsl/server/LagomApplication.html">LagomApplication</a>, which is where we construct the application, and the third is a block to run that takes the started server and runs the actual test.</li>
   <li>When we construct the <code>LagomApplication</code>, we mix in <code>LocalServiceLocator</code>. This provides a local service locator which will resolve just the services that our application is running itself, and is how the service client we construct knows where to find our running service.</li>
   <li>In the test callback, we implement a service client, which we can then use to talk to our service.</li>
 </ul>
@@ -105,7 +105,7 @@ class HelloServiceSpec extends AsyncWordSpec with Matchers with BeforeAndAfterAl
 <p>Lagom will provide support for writing integration tests that involve several interacting services. This feature is <a href="https://github.com/lagom/lagom/issues/38">not yet implemented</a>.</p><h2 id="How-to-test-streamed-request/response"><a class="section-marker" href="#How-to-test-streamed-request/response">§</a><a href="#how-to-test-streamed-request-response" name="how-to-test-streamed-request-response">How to test streamed request/response</a></h2>
 <p>Let&rsquo;s say we have a service that has streaming request and/or response parameters. For example an <code>EchoService</code> like this:</p>
 <pre class="prettyprint"><code class="language-scala">trait EchoService extends Service {
-  def echo: ServiceCall[Source[String, _], Source[String, _]]
+  def echo: ServiceCall[Source[String, NotUsed], Source[String, NotUsed]]
 
   override def descriptor = {
     import Service._

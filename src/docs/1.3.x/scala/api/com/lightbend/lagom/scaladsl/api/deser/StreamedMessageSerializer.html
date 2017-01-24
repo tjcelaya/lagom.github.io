@@ -45,14 +45,14 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">StreamedMessageSerializer</span><span class="tparams">[<span name="Message">Message</span>]</span><span class="result"> extends <a href="MessageSerializer.html" class="extype" name="com.lightbend.lagom.scaladsl.api.deser.MessageSerializer">MessageSerializer</a>[<span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="com.lightbend.lagom.scaladsl.api.deser.StreamedMessageSerializer.Message">Message</span>, _], <span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="akka.util.ByteString">ByteString</span>, _]]</span>
+        <span class="name">StreamedMessageSerializer</span><span class="tparams">[<span name="Message">Message</span>]</span><span class="result"> extends <a href="MessageSerializer.html" class="extype" name="com.lightbend.lagom.scaladsl.api.deser.MessageSerializer">MessageSerializer</a>[<span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="com.lightbend.lagom.scaladsl.api.deser.StreamedMessageSerializer.Message">Message</span>, <span class="extype" name="akka.NotUsed">NotUsed</span>], <span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="akka.util.ByteString">ByteString</span>, <span class="extype" name="akka.NotUsed">NotUsed</span>]]</span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A streamed message serializer, for streams of messages.
 </p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/lagom/lagom/tree/master//service/scaladsl/api/src/main/scala/com/lightbend/lagom/scaladsl/api/deser/MessageSerializer.scala" target="_blank">MessageSerializer.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="MessageSerializer.html" class="extype" name="com.lightbend.lagom.scaladsl.api.deser.MessageSerializer">MessageSerializer</a>[<span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="com.lightbend.lagom.scaladsl.api.deser.StreamedMessageSerializer.Message">Message</span>, _], <span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="akka.util.ByteString">ByteString</span>, _]], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="MessageSerializer.html" class="extype" name="com.lightbend.lagom.scaladsl.api.deser.MessageSerializer">MessageSerializer</a>[<span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="com.lightbend.lagom.scaladsl.api.deser.StreamedMessageSerializer.Message">Message</span>, <span class="extype" name="akka.NotUsed">NotUsed</span>], <span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="akka.util.ByteString">ByteString</span>, <span class="extype" name="akka.NotUsed">NotUsed</span>]], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -100,14 +100,14 @@
               <h3>Abstract Value Members</h3>
               <ol><li name="com.lightbend.lagom.scaladsl.api.deser.MessageSerializer#deserializer" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="deserializer(protocol:com.lightbend.lagom.scaladsl.api.transport.MessageProtocol):com.lightbend.lagom.scaladsl.api.deser.MessageSerializer.NegotiatedDeserializer[Message,WireFormat]"></a>
-      <a id="deserializer(MessageProtocol):NegotiatedDeserializer[Source[Message,_],Source[ByteString,_]]"></a>
+      <a id="deserializer(MessageProtocol):NegotiatedDeserializer[Source[Message,NotUsed],Source[ByteString,NotUsed]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">deserializer</span><span class="params">(<span name="protocol">protocol: <a href="../transport/MessageProtocol.html" class="extype" name="com.lightbend.lagom.scaladsl.api.transport.MessageProtocol">MessageProtocol</a></span>)</span><span class="result">: <a href="MessageSerializer$$NegotiatedDeserializer.html" class="extype" name="com.lightbend.lagom.scaladsl.api.deser.MessageSerializer.NegotiatedDeserializer">NegotiatedDeserializer</a>[<span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="com.lightbend.lagom.scaladsl.api.deser.StreamedMessageSerializer.Message">Message</span>, _], <span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="akka.util.ByteString">ByteString</span>, _]]</span>
+        <span class="name">deserializer</span><span class="params">(<span name="protocol">protocol: <a href="../transport/MessageProtocol.html" class="extype" name="com.lightbend.lagom.scaladsl.api.transport.MessageProtocol">MessageProtocol</a></span>)</span><span class="result">: <a href="MessageSerializer$$NegotiatedDeserializer.html" class="extype" name="com.lightbend.lagom.scaladsl.api.deser.MessageSerializer.NegotiatedDeserializer">NegotiatedDeserializer</a>[<span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="com.lightbend.lagom.scaladsl.api.deser.StreamedMessageSerializer.Message">Message</span>, <span class="extype" name="akka.NotUsed">NotUsed</span>], <span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="akka.util.ByteString">ByteString</span>, <span class="extype" name="akka.NotUsed">NotUsed</span>]]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#com.lightbend.lagom.scaladsl.api.deser.StreamedMessageSerializer@deserializer(protocol:com.lightbend.lagom.scaladsl.api.transport.MessageProtocol):com.lightbend.lagom.scaladsl.api.deser.MessageSerializer.NegotiatedDeserializer[Message,WireFormat]" title="Permalink" target="_top">
@@ -124,14 +124,14 @@
         </dd><dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="UnsupportedMediaType"><code>UnsupportedMediaType</code></span> If the deserializer can't deserialize that protocol.</p></span></dd></dl></div>
     </li><li name="com.lightbend.lagom.scaladsl.api.deser.MessageSerializer#serializerForRequest" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="serializerForRequest:com.lightbend.lagom.scaladsl.api.deser.MessageSerializer.NegotiatedSerializer[Message,WireFormat]"></a>
-      <a id="serializerForRequest:NegotiatedSerializer[Source[Message,_],Source[ByteString,_]]"></a>
+      <a id="serializerForRequest:NegotiatedSerializer[Source[Message,NotUsed],Source[ByteString,NotUsed]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">serializerForRequest</span><span class="result">: <a href="MessageSerializer$$NegotiatedSerializer.html" class="extype" name="com.lightbend.lagom.scaladsl.api.deser.MessageSerializer.NegotiatedSerializer">NegotiatedSerializer</a>[<span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="com.lightbend.lagom.scaladsl.api.deser.StreamedMessageSerializer.Message">Message</span>, _], <span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="akka.util.ByteString">ByteString</span>, _]]</span>
+        <span class="name">serializerForRequest</span><span class="result">: <a href="MessageSerializer$$NegotiatedSerializer.html" class="extype" name="com.lightbend.lagom.scaladsl.api.deser.MessageSerializer.NegotiatedSerializer">NegotiatedSerializer</a>[<span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="com.lightbend.lagom.scaladsl.api.deser.StreamedMessageSerializer.Message">Message</span>, <span class="extype" name="akka.NotUsed">NotUsed</span>], <span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="akka.util.ByteString">ByteString</span>, <span class="extype" name="akka.NotUsed">NotUsed</span>]]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#com.lightbend.lagom.scaladsl.api.deser.StreamedMessageSerializer@serializerForRequest:com.lightbend.lagom.scaladsl.api.deser.MessageSerializer.NegotiatedSerializer[Message,WireFormat]" title="Permalink" target="_top">
@@ -142,14 +142,14 @@
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>A serializer for request messages.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="MessageSerializer.html" class="extype" name="com.lightbend.lagom.scaladsl.api.deser.MessageSerializer">MessageSerializer</a></dd></dl></div>
     </li><li name="com.lightbend.lagom.scaladsl.api.deser.MessageSerializer#serializerForResponse" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="serializerForResponse(acceptedMessageProtocols:scala.collection.immutable.Seq[com.lightbend.lagom.scaladsl.api.transport.MessageProtocol]):com.lightbend.lagom.scaladsl.api.deser.MessageSerializer.NegotiatedSerializer[Message,WireFormat]"></a>
-      <a id="serializerForResponse(Seq[MessageProtocol]):NegotiatedSerializer[Source[Message,_],Source[ByteString,_]]"></a>
+      <a id="serializerForResponse(Seq[MessageProtocol]):NegotiatedSerializer[Source[Message,NotUsed],Source[ByteString,NotUsed]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">serializerForResponse</span><span class="params">(<span name="acceptedMessageProtocols">acceptedMessageProtocols: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.collection.immutable.Seq" class="extype" target="_top">Seq</a>[<a href="../transport/MessageProtocol.html" class="extype" name="com.lightbend.lagom.scaladsl.api.transport.MessageProtocol">MessageProtocol</a>]</span>)</span><span class="result">: <a href="MessageSerializer$$NegotiatedSerializer.html" class="extype" name="com.lightbend.lagom.scaladsl.api.deser.MessageSerializer.NegotiatedSerializer">NegotiatedSerializer</a>[<span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="com.lightbend.lagom.scaladsl.api.deser.StreamedMessageSerializer.Message">Message</span>, _], <span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="akka.util.ByteString">ByteString</span>, _]]</span>
+        <span class="name">serializerForResponse</span><span class="params">(<span name="acceptedMessageProtocols">acceptedMessageProtocols: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.collection.immutable.Seq" class="extype" target="_top">Seq</a>[<a href="../transport/MessageProtocol.html" class="extype" name="com.lightbend.lagom.scaladsl.api.transport.MessageProtocol">MessageProtocol</a>]</span>)</span><span class="result">: <a href="MessageSerializer$$NegotiatedSerializer.html" class="extype" name="com.lightbend.lagom.scaladsl.api.deser.MessageSerializer.NegotiatedSerializer">NegotiatedSerializer</a>[<span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="com.lightbend.lagom.scaladsl.api.deser.StreamedMessageSerializer.Message">Message</span>, <span class="extype" name="akka.NotUsed">NotUsed</span>], <span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="akka.util.ByteString">ByteString</span>, <span class="extype" name="akka.NotUsed">NotUsed</span>]]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../../../index.html#com.lightbend.lagom.scaladsl.api.deser.StreamedMessageSerializer@serializerForResponse(acceptedMessageProtocols:scala.collection.immutable.Seq[com.lightbend.lagom.scaladsl.api.transport.MessageProtocol]):com.lightbend.lagom.scaladsl.api.deser.MessageSerializer.NegotiatedSerializer[Message,WireFormat]" title="Permalink" target="_top">
@@ -784,7 +784,7 @@
 
         <div id="inheritedMembers">
         <div class="parent" name="com.lightbend.lagom.scaladsl.api.deser.MessageSerializer">
-              <h3>Inherited from <a href="MessageSerializer.html" class="extype" name="com.lightbend.lagom.scaladsl.api.deser.MessageSerializer">MessageSerializer</a>[<span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="com.lightbend.lagom.scaladsl.api.deser.StreamedMessageSerializer.Message">Message</span>, _], <span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="akka.util.ByteString">ByteString</span>, _]]</h3>
+              <h3>Inherited from <a href="MessageSerializer.html" class="extype" name="com.lightbend.lagom.scaladsl.api.deser.MessageSerializer">MessageSerializer</a>[<span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="com.lightbend.lagom.scaladsl.api.deser.StreamedMessageSerializer.Message">Message</span>, <span class="extype" name="akka.NotUsed">NotUsed</span>], <span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="akka.util.ByteString">ByteString</span>, <span class="extype" name="akka.NotUsed">NotUsed</span>]]</h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">

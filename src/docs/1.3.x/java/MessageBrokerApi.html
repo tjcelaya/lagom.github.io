@@ -7,6 +7,7 @@ import com.lightbend.lagom.javadsl.api.broker.Topic;
 import static com.lightbend.lagom.javadsl.api.Service.*;
 
 public interface HelloService extends Service {
+  String GREETINGS_TOPIC = &quot;greetings&quot;;
   @Override
   default Descriptor descriptor() {
     return named(&quot;helloservice&quot;).withCalls(
@@ -15,7 +16,7 @@ public interface HelloService extends Service {
       )
       // here we declare the topic(s) this service will publish to
       .publishing(
-        topic(&quot;greetings&quot;, this::greetingsTopic)
+        topic(GREETINGS_TOPIC, this::greetingsTopic)
       )
       .withAutoAcl(true);
   }
@@ -41,8 +42,8 @@ public interface HelloService extends Service {
 <pre class="prettyprint"><code class="language-java">public Topic&lt;GreetingMessage&gt; greetingsTopic() {
     return TopicProducer.singleStreamWithOffset(offset -&gt; {
         return persistentEntityRegistry
-            .eventStream(HelloEventTag.INSTANCE, offset)
-            .map(this::convertEvent);
+                .eventStream(HelloEventTag.INSTANCE, offset)
+                .map(this::convertEvent);
     });
 }</code></pre>
 <p>Note that the read-side event stream you passed to the topic producer is &ldquo;activated&rdquo; as soon as the service is started. That means all events persisted by your services will eventually be published to the connected topic. Also, you will generally want to map your domain events into some other type, so that other service won&rsquo;t be tightly coupled to another service&rsquo;s domain model events. In other words, domain model events are an implementation detail of the service, and should not be leaked.</p><h3 id="Offset-storage"><a class="section-marker" href="#Offset-storage">§</a><a href="#offset-storage" name="offset-storage">Offset storage</a></h3>

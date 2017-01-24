@@ -62,7 +62,7 @@ import akka.stream.scaladsl.Source
 override def tick(intervalMs: Int) = ServiceCall { tickMessage =&gt;
   Future.successful(Source.tick(
     intervalMs.milliseconds, intervalMs.milliseconds, tickMessage
-  ))
+  ).mapMaterializedValue(_ =&gt; NotUsed))
 }</code></pre>
 <p>The first two arguments are the delay before messages should be sent, and the interval at which they should be sent. The third argument is the message that should be sent on each tick. Calling this service call with an interval of <code>1000</code> and a request message of <code>tick</code> will result in a stream being returned that sent a <code>tick</code> message every second.</p>
 <p>A streamed <code>sayHello</code> service call can be implemented by mapping the incoming <code>Source</code> of the names to say hello to:</p>
