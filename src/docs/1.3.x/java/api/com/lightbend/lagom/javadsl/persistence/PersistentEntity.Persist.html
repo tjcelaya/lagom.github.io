@@ -68,13 +68,13 @@
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li>Constr&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#methods.inherited.from.class.Object">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li>Method</li>
 </ul>
 </div>
@@ -85,18 +85,22 @@
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="subTitle">com.lightbend.lagom.javadsl.persistence</div>
-<h2 title="Interface PersistentEntity.Persist" class="title">Interface PersistentEntity.Persist&lt;B extends Event&gt;</h2>
+<h2 title="Class PersistentEntity.Persist" class="title">Class PersistentEntity.Persist&lt;B extends Event&gt;</h2>
 </div>
 <div class="contentContainer">
+<ul class="inheritance">
+<li>Object</li>
+<li>
+<ul class="inheritance">
+<li>com.lightbend.lagom.javadsl.persistence.PersistentEntity.Persist&lt;B&gt;</li>
+</ul>
+</li>
+</ul>
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
 <dl>
-<dt>All Known Subinterfaces:</dt>
-<dd><a href="../../../../../com/lightbend/lagom/javadsl/persistence/PersistentEntity.PersistNone.html" title="interface in com.lightbend.lagom.javadsl.persistence">PersistentEntity.PersistNone</a>&lt;B&gt;</dd>
-</dl>
-<dl>
-<dt>All Known Implementing Classes:</dt>
+<dt>Direct Known Subclasses:</dt>
 <dd><a href="../../../../../com/lightbend/lagom/javadsl/persistence/PersistentEntity.PersistAll.html" title="class in com.lightbend.lagom.javadsl.persistence">PersistentEntity.PersistAll</a>, <a href="../../../../../com/lightbend/lagom/javadsl/persistence/PersistentEntity.PersistOne.html" title="class in com.lightbend.lagom.javadsl.persistence">PersistentEntity.PersistOne</a></dd>
 </dl>
 <dl>
@@ -105,10 +109,72 @@
 </dl>
 <hr>
 <br>
-<pre>public static interface <span class="typeNameLabel">PersistentEntity.Persist&lt;B extends Event&gt;</span></pre>
+<pre>public abstract class <span class="typeNameLabel">PersistentEntity.Persist&lt;B extends Event&gt;</span>
+extends Object</pre>
 <div class="block">A command handler returns a <code>Persist</code> directive that defines what event or events,
  if any, to persist. Use the <code>thenPersist</code>, <code>thenPersistAll</code> or <code>done</code> methods of the context
  that is passed to the command handler function to create the <code>Persist</code> directive.</div>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor.summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../com/lightbend/lagom/javadsl/persistence/PersistentEntity.Persist.html#Persist--">Persist</a></span>()</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;Object</h3>
+<code>equals, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor.detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="Persist--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>Persist</h4>
+<pre>public&nbsp;Persist()</pre>
+</li>
+</ul>
+</li>
+</ul>
 </li>
 </ul>
 </div>
@@ -166,13 +232,13 @@
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li>Constr&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#methods.inherited.from.class.Object">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li>Method</li>
 </ul>
 </div>
