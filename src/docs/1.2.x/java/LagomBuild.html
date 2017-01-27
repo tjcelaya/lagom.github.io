@@ -141,7 +141,7 @@
   <li>This particular service uses the Lagom persistence API to persist data, and so has a dependency on <code>lagom-javadsl-persistence</code>.</li>
   <li>A logging implementation needs to be configured, this uses the default <code>lagom-logback</code> logging implementation.</li>
   <li>An implementation of the Play HTTP server needs to be configured - Play provides two server implementations, one in Netty, and one in Akka HTTP. In this case, Netty has been selected.</li>
-  <li>The <code>lagam-maven-plugin</code> has been configured to say that <code>lagomService</code> is <code>true</code>, this tells Lagom that this is a lagom service that should be run when you run <code>lagom:runAll</code>.</li>
+  <li>The <code>lagom-maven-plugin</code> has been configured to say that <code>lagomService</code> is <code>true</code>, this tells Lagom that this is a lagom service that should be run when you run <code>lagom:runAll</code>.</li>
 </ul><h2 id="Defining-a-build-in-sbt"><a class="section-marker" href="#Defining-a-build-in-sbt">§</a><a href="#defining-a-build-in-sbt" name="defining-a-build-in-sbt">Defining a build in sbt</a></h2><h3 id="Adding-the-Lagom-sbt-plugin"><a class="section-marker" href="#Adding-the-Lagom-sbt-plugin">§</a><a href="#adding-the-lagom-sbt-plugin" name="adding-the-lagom-sbt-plugin">Adding the Lagom sbt plugin</a></h3>
 <p>A Lagom build must tell sbt to use the Lagom plugin. This is done by creating a file called <code>project/plugins.sbt</code>, and adding the plugin like so:</p>
 <pre class="prettyprint"><code class="language-sbt">addSbtPlugin(&quot;com.lightbend.lagom&quot; % &quot;lagom-sbt-plugin&quot; % &quot;1.0.0-M1&quot;)</code></pre>
