@@ -644,6 +644,26 @@
       </a>
     </span>
       
+    </li><li name="com.lightbend.lagom.internal.scaladsl.api.broker.TopicFactoryProvider#topicPublisherName" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="topicPublisherName:Option[String]"></a>
+      <a id="topicPublisherName:Option[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">topicPublisherName</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.lightbend.lagom.scaladsl.broker.kafka.LagomKafkaClientComponents@topicPublisherName:Option[String]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The name of the topic publisher.</p><div class="fullcomment"><div class="comment cmt"><p>The name of the topic publisher.</p><p>Since topic publishers don't actually provide any components, they just consume a LagomServer and publish the
+topics they find there, this can be used to signal that a topic publisher has been provided to publish
+topics, so that the LagomServerComponents can detect a misconfiguration where one hasn't been provided.
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The name of the topic publisher that has published topics, if one has been provided.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd>TopicFactoryProvider</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>

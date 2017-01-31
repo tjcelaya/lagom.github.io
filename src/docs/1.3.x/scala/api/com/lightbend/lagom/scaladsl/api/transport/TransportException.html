@@ -51,7 +51,10 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>An exception that can be translated down to a specific error in the transport.
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>An exception that can be translated down to a specific error in the transport.</p><p>Transport exceptions describe the HTTP/WebSocket error code associated with them, allowing Lagom to send an error
+code specific to the type of error. They also have an exception message, which is used both to capture exception
+details, as well as to identify the exception, so that the right type of exception can be deserialized at the other
+end.
 </p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/lagom/lagom/tree/master//service/scaladsl/api/src/main/scala/com/lightbend/lagom/scaladsl/api/transport/Exceptions.scala" target="_blank">Exceptions.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="java.lang.RuntimeException">RuntimeException</span>, <span class="extype" name="java.lang.Exception">Exception</span>, <span class="extype" name="java.lang.Throwable">Throwable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>

@@ -82,7 +82,8 @@
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">The default exception serializer.</p><div class="fullcomment"><div class="comment cmt"><p>The default exception serializer.</p><p>Serializes exception messages to JSON.
+      <p class="shortcomment cmt">The default exception serializer.</p><div class="fullcomment"><div class="comment cmt"><p>The default exception serializer.</p><p>Serializes exception messages to JSON.</p><p>This serializer is capable of converting Lagom built-in exceptions to and from JSON. Custom sub classes of
+TransportException can also be deserialized by extending this class and overriding <span class="extype" name="fromCodeAndMessage()">fromCodeAndMessage()</span>.
 </p></div></div>
     </li><li name="com.lightbend.lagom.scaladsl.api.deser.ExceptionSerializer" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="ExceptionSerializerextendsAnyRef"></a>

@@ -51,7 +51,8 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>The default exception serializer.</p><p>Serializes exception messages to JSON.
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>The default exception serializer.</p><p>Serializes exception messages to JSON.</p><p>This serializer is capable of converting Lagom built-in exceptions to and from JSON. Custom sub classes of
+TransportException can also be deserialized by extending this class and overriding <span class="extype" name="fromCodeAndMessage()">fromCodeAndMessage()</span>.
 </p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/lagom/lagom/tree/master//service/scaladsl/api/src/main/scala/com/lightbend/lagom/scaladsl/api/deser/ExceptionSerializer.scala" target="_blank">ExceptionSerializer.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="ExceptionSerializer.html" class="extype" name="com.lightbend.lagom.scaladsl.api.deser.ExceptionSerializer">ExceptionSerializer</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -443,6 +444,25 @@ exception, it should not itself throw an exception.
                 <span class="name">@inline</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="com.lightbend.lagom.scaladsl.api.deser.DefaultExceptionSerializer#fromCodeAndMessage" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fromCodeAndMessage(transportErrorCode:com.lightbend.lagom.scaladsl.api.transport.TransportErrorCode,exceptionMessage:com.lightbend.lagom.scaladsl.api.transport.ExceptionMessage):Throwable"></a>
+      <a id="fromCodeAndMessage(TransportErrorCode,ExceptionMessage):Throwable"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fromCodeAndMessage</span><span class="params">(<span name="transportErrorCode">transportErrorCode: <a href="../transport/TransportErrorCode.html" class="extype" name="com.lightbend.lagom.scaladsl.api.transport.TransportErrorCode">TransportErrorCode</a></span>, <span name="exceptionMessage">exceptionMessage: <a href="../transport/ExceptionMessage.html" class="extype" name="com.lightbend.lagom.scaladsl.api.transport.ExceptionMessage">ExceptionMessage</a></span>)</span><span class="result">: <span class="extype" name="scala.Throwable">Throwable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.lightbend.lagom.scaladsl.api.deser.DefaultExceptionSerializer@fromCodeAndMessage(transportErrorCode:com.lightbend.lagom.scaladsl.api.transport.TransportErrorCode,exceptionMessage:com.lightbend.lagom.scaladsl.api.transport.ExceptionMessage):Throwable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Override this if you wish to deserialize your own custom Exceptions.</p><div class="fullcomment"><div class="comment cmt"><p>Override this if you wish to deserialize your own custom Exceptions.</p><p>The default implementation delegates to <span class="extype" name="TransportException.fromCodeAndMessage()">TransportException.fromCodeAndMessage()</span>, which will return a best match
+Lagom built-in exception.
+</p></div><dl class="paramcmts block"><dt class="param">transportErrorCode</dt><dd class="cmt"><p>The transport error code.</p></dd><dt class="param">exceptionMessage</dt><dd class="cmt"><p>The exception message.</p></dd><dt>returns</dt><dd class="cmt"><p>The exception.</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>

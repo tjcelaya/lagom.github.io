@@ -359,7 +359,7 @@ their meaning, and the remaining codes are only categorised by whether they are 
 spec, or reserved for applications to specify.</p><p>For WebSocket close codes that are not known, or are not in the private range of 4400 to 4599 defined by us, this use
 class uses the generic HTTP 404 error code.
 </p></div></div>
-    </li><li name="com.lightbend.lagom.scaladsl.api.transport.TransportException" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.lightbend.lagom.scaladsl.api.transport.TransportException" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="TransportExceptionextendsRuntimeException"></a>
       <a id="TransportException:TransportException"></a>
       <h4 class="signature">
@@ -375,7 +375,11 @@ class uses the generic HTTP 404 error code.
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">An exception that can be translated down to a specific error in the transport.</p>
+      <p class="shortcomment cmt">An exception that can be translated down to a specific error in the transport.</p><div class="fullcomment"><div class="comment cmt"><p>An exception that can be translated down to a specific error in the transport.</p><p>Transport exceptions describe the HTTP/WebSocket error code associated with them, allowing Lagom to send an error
+code specific to the type of error. They also have an exception message, which is used both to capture exception
+details, as well as to identify the exception, so that the right type of exception can be deserialized at the other
+end.
+</p></div></div>
     </li><li name="com.lightbend.lagom.scaladsl.api.transport.UnsupportedMediaType" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="UnsupportedMediaTypeextendsTransportException"></a>
       <a id="UnsupportedMediaType:UnsupportedMediaType"></a>

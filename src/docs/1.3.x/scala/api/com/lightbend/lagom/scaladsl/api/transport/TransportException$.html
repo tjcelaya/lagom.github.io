@@ -244,7 +244,7 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="com.lightbend.lagom.scaladsl.api.transport.TransportException#fromCodeAndMessage" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.lightbend.lagom.scaladsl.api.transport.TransportException#fromCodeAndMessage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="fromCodeAndMessage(errorCode:com.lightbend.lagom.scaladsl.api.transport.TransportErrorCode,exceptionMessage:com.lightbend.lagom.scaladsl.api.transport.ExceptionMessage):com.lightbend.lagom.scaladsl.api.transport.TransportException"></a>
       <a id="fromCodeAndMessage(TransportErrorCode,ExceptionMessage):TransportException"></a>
       <h4 class="signature">
@@ -260,7 +260,10 @@
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Convert an error code and exception message to an exception.</p><div class="fullcomment"><div class="comment cmt"><p>Convert an error code and exception message to an exception.</p><p>This will only return Lagom built in exceptions. A custom exception that extends <a href="TransportException.html" class="extype" name="com.lightbend.lagom.scaladsl.api.transport.TransportException">TransportException</a> that has
+been serialized by the <a href="../deser/DefaultExceptionSerializer.html" class="extype" name="com.lightbend.lagom.scaladsl.api.deser.DefaultExceptionSerializer">com.lightbend.lagom.scaladsl.api.deser.DefaultExceptionSerializer</a> will not be returned
+by this method, instead, a best match based on the HTTP/WebSocket error code will be selected.
+</p></div><dl class="paramcmts block"><dt class="param">errorCode</dt><dd class="cmt"><p>The error code.</p></dd><dt class="param">exceptionMessage</dt><dd class="cmt"><p>The exception message.</p></dd><dt>returns</dt><dd class="cmt"><p>A built in TransportException that best matches the given error code and exception message.</p></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
