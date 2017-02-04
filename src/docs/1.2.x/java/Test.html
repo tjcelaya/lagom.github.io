@@ -77,7 +77,7 @@ private final Setup setup = defaultSetup()
 <pre class="prettyprint"><code class="language-java">private final Setup setup1 = defaultSetup().withCassandra(true);</code></pre>
 <p>There&rsquo;s no way to explicitly enable or disable <a href="PubSub.html">pubsub</a>. When cluster is enabled (either explicitly or transitively via enabling Cassandra), pubsub will be available.</p>
 <p>There are two different styles that can be used when writing the tests. It is most convenient to use <code>withServer</code> as illustrated in the above <code>HelloServiceTest</code>. It automatically starts and stops the server before and after the given lambda.</p>
-<p>When your test have several test methods, and especially when using persistence, it is faster to only start the server once in a static method annotated with <code>@BeforeClass</code> and stop it in a method annotated with <code>@AfterClass</code>.</p>
+<p>When your tests have several test methods, and especially when using persistence, it is faster to only start the server once in a static method annotated with <code>@BeforeClass</code> and stop it in a method annotated with <code>@AfterClass</code>.</p>
 <pre class="prettyprint"><code class="language-java">import static com.lightbend.lagom.javadsl.testkit.ServiceTest.*;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.junit.Assert.assertEquals;
