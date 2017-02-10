@@ -41,10 +41,14 @@ object DocumentationGenerator extends App {
     VersionSummary("1.0.x", s"Lagom 1.0.0")
   )
 
-  //val baseUrl = "http://jroper.github.io/lagom.github.io"
-  //val context = "/lagom.github.io"
-  val baseUrl = "http://www.lagomframework.com"
-  val context = ""
+  // Set this to Some("your-github-account-name") if you want to deploy the docs to the gh-pages of your own fork
+  // of the repo
+  val gitHubAccount: Option[String] = None
+
+  val (baseUrl, context) = gitHubAccount match {
+    case Some(account) => (s"http://$account.github.io/lagom.github.io", "/lagom.github.io")
+    case None => ("http://www.lagomframework.com", "")
+  }
 
   // Templated pages to generate
   val templatePages: Seq[(String, Template1[LagomContext, Html])] = Seq(

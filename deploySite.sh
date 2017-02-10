@@ -4,6 +4,15 @@
 
 set -e
 
+if [ $# -gt 0 ]
+then
+    remote="$1"
+    deployBranch="${remote}-gh-pages"
+else
+    remote="origin"
+    deployBranch="master"
+fi
+
 # Build the website
 sbt clean web-stage
 
@@ -14,8 +23,8 @@ git add .
 git commit -m "Website build"
 
 # Push the repo to the master branch of the main repo
-git push ../../.. master -f
+git push ../../.. master:$deployBranch -f
 
 # Push the repo to the website
 cd ../../..
-git push origin master -f
+git push $remote $deployBranch:master -f
