@@ -16,8 +16,6 @@ Contributions can either be made to the core Lagom project, or to any of our sam
 
 ## Projects
 
-Lightbend is sponsoring one intern for Lagom in Outreachy in Round 14.
-
 ### Online Auction Sample app completion
 
 Mentor: [James Roper](https://github.com/jroper)
