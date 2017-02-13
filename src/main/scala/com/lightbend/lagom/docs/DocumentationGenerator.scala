@@ -197,17 +197,6 @@ object DocumentationGenerator extends App {
     }
   }
 
-  private def getNext(ctx: Context): Option[NavLink] = {
-    ctx.parent match {
-      case None => None
-      case Some(parent) =>
-        parent.children.dropWhile(_._1 != ctx.title).drop(1).headOption match {
-          case Some((title, url)) => Some(NavLink(title, url, false))
-          case None => getNext(parent)
-        }
-    }
-  }
-
   def renderDocVersion(version: LanguageVersion): Seq[OutputFile] = {
     val docsPath = s"documentation/${version.name}/${version.language}"
     val versionOutputDir = new File(outputDir, docsPath)
@@ -215,6 +204,24 @@ object DocumentationGenerator extends App {
 
     val languageVersions = versions.collect(Function.unlift((v: Version) => v.versionFor(version.language)))
     val currentLanguageVersion = currentVersion.flatMap(_.versionFor(version.language))
+
+    def getNext(ctx: Context): Seq[NavLink] = {
+      ctx.nextUrls match {
+        case None =>
+          ctx.parent match {
+            case None => Nil
+            case Some(parent) =>
+              parent.children.dropWhile(_._1 != ctx.title).drop(1).headOption match {
+                case Some((title, url)) => Seq(NavLink(title, url, false))
+                case None => getNext(parent)
+              }
+          }
+        case Some(urls) =>
+          urls.flatMap { url =>
+            version.toc.mappings.get(url).map(ctx => NavLink(ctx.title, url, false)).toSeq
+          }
+      }
+    }
 
     def processDocsFile(path: String, file: File): Seq[OutputFile] = {
       if (file.isDirectory) {
@@ -235,9 +242,9 @@ object DocumentationGenerator extends App {
               case VersionPage(name, true) => s"$baseUrl/documentation/$name/${version.language}/$path"
             }
 
-            val nextLink = getNext(context)
+            val nextLinks = getNext(context)
 
-            val rendered = html.documentation(path, fileContent, context, version.language, version.name, versionPages, nav, canonical, nextLink)
+            val rendered = html.documentation(path, fileContent, context, version.language, version.name, versionPages, nav, canonical, nextLinks)
 
             Files.write(targetFile.toPath, rendered.body.getBytes("utf-8"))
             OutputFile(targetFile, docsPath + "/" + path, includeInSitemap = true, "0.9")

@@ -5,7 +5,7 @@
 @import com.lightbend.lagom.docs.NavLink
 
 @(path: String, content: Html, context: Context, language: String, version: String, versions: Seq[VersionPage], nav: List[Section],
-        canonical: Option[String], next: Option[NavLink])(implicit ctx: LagomContext)
+        canonical: Option[String], nextLinks: Seq[NavLink])(implicit ctx: LagomContext)
 
 @main(Some(context.title), canonical) { @* Header *@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
@@ -49,10 +49,23 @@
                 @content
                 </article>
 
-                @for(link <- next) {
-                    <nav class="next-link">
-                        <a href="@{link.url}"><strong>Next: </strong> @link.title</a>
-                    </nav>
+                @if(nextLinks.nonEmpty) {
+                    @if(nextLinks.tail.nonEmpty) {
+                        <nav class="next-links">
+                            <strong>Next:</strong>
+                            <ul>
+                            @for(link <- nextLinks) {
+                                <li><a href="@{link.url}">@link.title</a></li>
+                            }
+                            </ul>
+                        </nav>
+                    } else {
+                        @for(link <- nextLinks) {
+                            <nav class="next-link">
+                                <a href="@{link.url}"><strong>Next: </strong> @link.title</a>
+                            </nav>
+                        }
+                    }
                 }
 
                 @for(sourceUrl <- context.sourceUrl) {
