@@ -59,11 +59,13 @@
     }, {
       "title" : "Getting started with Lagom",
       "url" : "GettingStarted.html",
-      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/gettingstarted/GettingStarted.md"
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/gettingstarted/GettingStarted.md",
+      "nextUrls" : [ "GettingStartedMaven.html", "GettingStartedSbt.html" ]
     }, {
       "title" : "Getting started with Lagom in Maven",
       "url" : "GettingStartedMaven.html",
-      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/gettingstarted/GettingStartedMaven.md"
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/gettingstarted/GettingStartedMaven.md",
+      "nextUrls" : [ "IDEs.html" ]
     }, {
       "title" : "Getting started with Lagom in Sbt",
       "url" : "GettingStartedSbt.html",
@@ -174,6 +176,14 @@
         "title" : "Relational Database Read-Side Support",
         "url" : "ReadSideRDBMS.html",
         "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/guide/cluster/ReadSideRDBMS.md"
+      }, {
+        "title" : "JDBC Read-Side Support",
+        "url" : "ReadSideJDBC.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/guide/cluster/ReadSideJDBC.md"
+      }, {
+        "title" : "JPA Read-Side Support",
+        "url" : "ReadSideJPA.html",
+        "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/guide/cluster/ReadSideJPA.md"
       }, {
         "title" : "Publish-Subscribe",
         "url" : "PubSub.html",
