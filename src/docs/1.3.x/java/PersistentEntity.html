@@ -66,7 +66,8 @@ b.setCommandHandler(AddPost.class, (AddPost cmd, CommandContext&lt;AddPostDone&g
     ctx.invalidCommand(&quot;Title must be defined&quot;);
     return ctx.done();
   }</code></pre>
-<p>A <code>PersistentEntity</code> may also process commands that do not change application state, such as query commands. Such command handlers are registered using <code>setReadOnlyCommandHandler</code> of the <code>BehaviorBuilder</code>. Replies are sent with the <code>reply</code> method of the context that is passed to the command handler function.</p>
+<p>A <code>PersistentEntity</code> may also process commands that do not change application state, such as query commands or commands that are not valid in the entity&rsquo;s current state (such as a bid placed after the auction closed). Such command handlers are registered using <code>setReadOnlyCommandHandler</code> of the <code>BehaviorBuilder</code>. Replies are sent with the <code>reply</code> method of the context that is passed to the command handler function.</p>
+<p>The <code>setReadOnlyCommandHandler</code> is simply a convenience function that avoids you having to return no events followed by a side effect.</p>
 <pre class="prettyprint"><code class="language-java">b.setReadOnlyCommandHandler(GetPost.class, (cmd, ctx) -&gt;
   ctx.reply(state().getContent().get()));</code></pre>
 <p>The commands must be immutable to avoid concurrency issues that may occur from changing a command instance that has been sent.</p>
