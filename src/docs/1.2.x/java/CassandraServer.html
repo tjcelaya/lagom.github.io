@@ -122,7 +122,7 @@ lagomCassandraMaxBootWaitingTime in ThisBuild := 0.seconds</code></pre>
 <p>In sbt:</p>
 <pre class="prettyprint"><code class="language-sbt">lagomCassandraEnabled in ThisBuild := false</code></pre>
 <p>One good reason to disable the embedded Cassandra server is if you need your services to connect to an external, locally running, Cassandra instance.</p><h2 id="Connecting-to-a-locally-running-Cassandra-instance"><a class="section-marker" href="#Connecting-to-a-locally-running-Cassandra-instance">§</a><a href="#connecting-to-a-locally-running-cassandra-instance" name="connecting-to-a-locally-running-cassandra-instance">Connecting to a locally running Cassandra instance</a></h2>
-<p>It&rsquo;s possible to connect to an <a href="ServiceLocator.html#communicating-with-external-services">externally run</a> Cassandra instance in place of the embedded one. All you need to do is adding the following in your build.</p>
+<p>It&rsquo;s possible to connect to an <a href="ServiceLocator.html#communicating-with-external-services">externally run</a> Cassandra instance in place of the embedded one. All you need to do is adding the following in your build and you should use lagom version 1.2.2 or above.</p>
 <p>In the Maven root project pom:</p>
 <pre class="prettyprint"><code class="language-xml">&lt;plugin&gt;
     &lt;groupId&gt;com.lightbend.lagom&lt;/groupId&gt;
