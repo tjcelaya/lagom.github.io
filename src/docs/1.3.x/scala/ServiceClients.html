@@ -43,7 +43,18 @@
   <li>If the first call succeeds, the breaker is reset back to Closed state</li>
   <li>If the first call fails, the breaker is tripped again into the Open state for another full resetTimeout</li>
 </ul>
-<p>All service calls with Lagom service clients are by default using circuit breakers. Circuit Breakers are used and configured on the client side, but the granularity and configuration identifiers are defined by the service provider. By default, one circuit breaker instance is used for all calls (methods) to another service. It is possible to set a unique circuit breaker identifier for each method to use a separate circuit breaker instance for each method. It is also possible to group related methods by using the same identifier on several methods.</p>Unable to find label circuit-breaker in source file code/ServiceClients.scala
+<p>All service calls with Lagom service clients are by default using circuit breakers. Circuit Breakers are used and configured on the client side, but the granularity and configuration identifiers are defined by the service provider. By default, one circuit breaker instance is used for all calls (methods) to another service. It is possible to set a unique circuit breaker identifier for each method to use a separate circuit breaker instance for each method. It is also possible to group related methods by using the same identifier on several methods.</p>
+<pre class="prettyprint"><code class="language-scala">import com.lightbend.lagom.scaladsl.api.CircuitBreaker
+
+def descriptor: Descriptor = {
+  import Service._
+
+  named(&quot;hello&quot;).withCalls(
+    namedCall(&quot;hi&quot;, this.sayHi),
+    namedCall(&quot;hiAgain&quot;, this.hiAgain)
+      .withCircuitBreaker(CircuitBreaker.identifiedBy(&quot;hello2&quot;))
+  )
+}</code></pre>
 <p>In the above example the default identifer is used for the <code>sayHi</code> method, since no specific identifier is given. The default identifier is the same as the service name, i.e. <code>&quot;hello&quot;</code> in this example. The <code>hiAgain</code> method will use another circuit breaker instance, since <code>&quot;hello2&quot;</code> is specified as circuit breaker identifier.</p>
 <p>On the client side you can configure the circuit breakers. The default configuration is:</p>
 <pre class="prettyprint"><code class="language-conf"># Circuit breakers for calls to other services are configured

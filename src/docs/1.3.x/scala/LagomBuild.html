@@ -25,7 +25,7 @@
     libraryDependencies += lagomScaladslApi
   )</code></pre>
 <p>The first line defines the project itself, by declaring a <code>lazy val</code> of type <code>Project</code>. (sbt tip: declaring projects using <code>lazy val</code> instead of just <code>val</code> can prevent some issues with initialization order.)</p>
-<p>The project is defined to be the <code>hello-api</code> directory, as indicated by <code>project in file(&quot;hello-api&quot;)</code>. This means all the source code for this project will be under that directory, laid out according to the usual Maven structure (which sbt adopts as well). So our main Java sources go in <code>hello-api/src/main/scala</code>.</p>
+<p>The project is defined to be the <code>hello-api</code> directory, as indicated by <code>project in file(&quot;hello-api&quot;)</code>. This means all the source code for this project will be under that directory, laid out according to the usual Maven structure (which sbt adopts as well). So our main Scala sources go in <code>hello-api/src/main/scala</code>.</p>
 <p>More settings follow, in which we set the project version and add a library dependency. The Lagom plugin provides some predefined values to make the Lagom libraries easy to add. In this case, we&rsquo;re using <code>lagomScaladslApi</code>. (You can add other dependencies using the usual sbt shorthand for specifying the library&rsquo;s <code>groupId</code>, <code>artifactId</code> and <code>version</code>; see <a href="http://www.scala-sbt.org/0.13/docs/Library-Dependencies.html">Library dependencies</a> in the sbt documentation.)</p>
 <p>Now we need to define the implementation project:</p>
 <pre class="prettyprint"><code class="language-sbt">lazy val `hello-impl` = (project in file(&quot;hello-impl&quot;))

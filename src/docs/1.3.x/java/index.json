@@ -20,6 +20,52 @@
       "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/welcome/LagomDesignPhilosophy.md"
     } ]
   }, {
+    "title" : "Getting started with Lagom",
+    "children" : [ {
+      "title" : "Introduction",
+      "url" : "IntroGetStarted.html",
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/gettingstarted/IntroGetStarted.md"
+    }, {
+      "title" : "Lagom Java prerequisites",
+      "url" : "JavaPrereqs.html",
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/gettingstarted/JavaPrereqs.md",
+      "nextUrls" : [ "GettingStartedMaven.html", "GettingStartedSbt.html" ]
+    }, {
+      "title" : "Creating and running Hello World with Maven",
+      "url" : "GettingStartedMaven.html",
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/gettingstarted/GettingStartedMaven.md",
+      "nextUrls" : [ "UnderstandHello.html" ]
+    }, {
+      "title" : "Creating and running Hello World with sbt",
+      "url" : "GettingStartedSbt.html",
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/gettingstarted/GettingStartedSbt.md",
+      "nextUrls" : [ "UnderstandHello.html" ]
+    }, {
+      "title" : "Understanding Hello World",
+      "url" : "UnderstandHello.html",
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/gettingstarted/UnderstandHello.md",
+      "nextUrls" : [ "MavenIDEs.html", "EclipseSbt.html", "IntellijSbt.html" ]
+    }, {
+      "title" : "Integrating Maven projects with an IDE",
+      "url" : "MavenIDEs.html",
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/gettingstarted/MavenIDEs.md",
+      "nextUrls" : [ "LagomExamples.html" ]
+    }, {
+      "title" : "Integrating sbt with Eclipse",
+      "url" : "EclipseSbt.html",
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/gettingstarted/EclipseSbt.md",
+      "nextUrls" : [ "LagomExamples.html" ]
+    }, {
+      "title" : "Integrating sbt with IntelliJ",
+      "url" : "IntellijSbt.html",
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/gettingstarted/IntellijSbt.md",
+      "nextUrls" : [ "LagomExamples.html" ]
+    }, {
+      "title" : "Lagom examples",
+      "url" : "LagomExamples.html",
+      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/gettingstarted/LagomExamples.md"
+    } ]
+  }, {
     "title" : "Lagom core concepts",
     "children" : [ {
       "title" : "Lagom core concepts",
@@ -49,31 +95,6 @@
       "title" : "Event Sourcing and CQRS",
       "url" : "ES_CQRS.html",
       "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/concepts/ES_CQRS.md"
-    } ]
-  }, {
-    "title" : "Getting started with Lagom",
-    "children" : [ {
-      "title" : "Installing Lagom",
-      "url" : "Installation.html",
-      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/gettingstarted/Installation.md"
-    }, {
-      "title" : "Getting started with Lagom",
-      "url" : "GettingStarted.html",
-      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/gettingstarted/GettingStarted.md",
-      "nextUrls" : [ "GettingStartedMaven.html", "GettingStartedSbt.html" ]
-    }, {
-      "title" : "Getting started with Lagom in Maven",
-      "url" : "GettingStartedMaven.html",
-      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/gettingstarted/GettingStartedMaven.md",
-      "nextUrls" : [ "IDEs.html" ]
-    }, {
-      "title" : "Getting started with Lagom in Sbt",
-      "url" : "GettingStartedSbt.html",
-      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/java/gettingstarted/GettingStartedSbt.md"
-    }, {
-      "title" : "Import a Lagom build in your IDE",
-      "url" : "IDEs.html",
-      "sourceUrl" : "https://github.com/lagom/lagom/edit/master/docs/manual/common/gettingstarted/IDEs.md"
     } ]
   }, {
     "title" : "Lagom reference guide",
