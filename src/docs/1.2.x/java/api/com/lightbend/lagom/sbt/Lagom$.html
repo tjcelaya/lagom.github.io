@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -200,10 +200,14 @@ extends sbt.AutoPlugin</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/sbt/Lagom$.html#autoImport--">autoImport</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>sbt.Init.Initialize&lt;scala.collection.Seq&lt;sbt.ModuleID&gt;&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/sbt/Lagom$.html#devServiceLocatorDependencies--">devServiceLocatorDependencies</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>scala.collection.Seq&lt;sbt.Init.Setting&lt;scala.collection.Seq&lt;sbt.ModuleID&gt;&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/sbt/Lagom$.html#projectSettings--">projectSettings</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>sbt.Plugins</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/lightbend/lagom/sbt/Lagom$.html#requires--">requires</a></span>()</code>&nbsp;</td>
 </tr>
@@ -303,10 +307,19 @@ extends sbt.AutoPlugin</pre>
 <a name="projectSettings--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>projectSettings</h4>
 <pre>public&nbsp;scala.collection.Seq&lt;sbt.Init.Setting&lt;scala.collection.Seq&lt;sbt.ModuleID&gt;&gt;&gt;&nbsp;projectSettings()</pre>
+</li>
+</ul>
+<a name="devServiceLocatorDependencies--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>devServiceLocatorDependencies</h4>
+<pre>public&nbsp;sbt.Init.Initialize&lt;scala.collection.Seq&lt;sbt.ModuleID&gt;&gt;&nbsp;devServiceLocatorDependencies()</pre>
 </li>
 </ul>
 </li>
