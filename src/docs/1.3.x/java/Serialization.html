@@ -1,6 +1,6 @@
-<h1 id="Serialization"><a class="section-marker" href="#Serialization">§</a><a href="#serialization" name="serialization">Serialization</a></h1>
+<h1 id="Serialization"><a class="section-marker" href="#Serialization">§</a>Serialization</h1>
 <p>Out of the box, Lagom will use JSON for request and response message format for the external API of the service, using Jackson to serialize and deserialize messages. The messages that are sent within the cluster of the service must also be serializable and so must the events that are stored by <a href="PersistentEntity.html">Persistent Entities</a>. We recommend JSON for these as well and Lagom makes it easy to add Jackson serialization support to such classes.</p>
-<p>Do not depend on Java serialization for production deployments. It is inefficient both in serialization size and speed. It is very difficult to evolve the classes when using Java serialization, which is especially important for the persistent state and events, since you must be able to deserialize old objects that were stored.</p><h2 id="Enabling-JSON-Serialization"><a class="section-marker" href="#Enabling-JSON-Serialization">§</a><a href="#enabling-json-serialization" name="enabling-json-serialization">Enabling JSON Serialization</a></h2>
+<p>Do not depend on Java serialization for production deployments. It is inefficient both in serialization size and speed. It is very difficult to evolve the classes when using Java serialization, which is especially important for the persistent state and events, since you must be able to deserialize old objects that were stored.</p><h2 id="Enabling-JSON-Serialization"><a class="section-marker" href="#Enabling-JSON-Serialization">§</a>Enabling JSON Serialization</h2>
 <p>To enable JSON serialization for a class you need to implement the <a href="api/index.html?com/lightbend/lagom/serialization/Jsonable.html">Jsonable</a> marker interface.</p>
 <pre class="prettyprint"><code class="language-java">import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.lightbend.lagom.javadsl.immutable.ImmutableStyle;
@@ -16,7 +16,7 @@ public interface AbstractUser extends Jsonable {
 
   String getEmail();
 }</code></pre>
-<p>Note that we&rsquo;re using the <a href="Immutable.html#Immutables">Immutables</a> library here, so this will generate an immutable <code>User</code> class. This is the reason for adding the <code>@JsonDeserialize</code> annotation.</p><h3 id="Jackson-Modules"><a class="section-marker" href="#Jackson-Modules">§</a><a href="#jackson-modules" name="jackson-modules">Jackson Modules</a></h3>
+<p>Note that we&rsquo;re using the <a href="Immutable.html#Immutables">Immutables</a> library here, so this will generate an immutable <code>User</code> class. This is the reason for adding the <code>@JsonDeserialize</code> annotation.</p><h3 id="Jackson-Modules"><a class="section-marker" href="#Jackson-Modules">§</a>Jackson Modules</h3>
 <p>The following Jackson modules are enabled by default:</p>
 <pre class="prettyprint"><code class="language-conf"># The Jackson JSON serializer will register these modules.
 # It is also possible to use jackson-modules = [&quot;*&quot;] to dynamically
@@ -30,7 +30,7 @@ jackson-modules = [
 <p>You can amend the configuration <code>lagom.serialization.json.jackson-modules</code> to enable other modules.</p>
 <p>The <a href="https://github.com/FasterXML/jackson-module-parameter-names">ParameterNamesModule</a> requires that the <code>-parameters</code> Java compiler option is enabled.</p>
 <p>The section <a href="Immutable.html">Immutable Objects</a> contains more examples of classes that are <code>Jsonable</code>.</p>
-<p>You can use the <a href="api/index.html?com/lightbend/lagom/javadsl/testkit/PersistentEntityTestDriver.html">PersistentEntityTestDriver</a> that is described in the <a href="PersistentEntity.html#Unit Testing">Persistent Entity Unit Testing</a> section to verify that all commands, events, replies and state are serializable.</p><h3 id="Compression"><a class="section-marker" href="#Compression">§</a><a href="#compression" name="compression">Compression</a></h3>
+<p>You can use the <a href="api/index.html?com/lightbend/lagom/javadsl/testkit/PersistentEntityTestDriver.html">PersistentEntityTestDriver</a> that is described in the <a href="PersistentEntity.html#Unit-Testing">Persistent Entity Unit Testing</a> section to verify that all commands, events, replies and state are serializable.</p><h3 id="Compression"><a class="section-marker" href="#Compression">§</a>Compression</h3>
 <p>Compression, as described here, is only used for persistent events, persistent snapshots and remote messages with the service cluster. It is not used for messages that are serialized in the external API of the service.</p>
 <p>JSON can be rather verbose and for large messages it can be beneficial to enable compression. That is done by using the <a href="api/index.html?com/lightbend/lagom/serialization/CompressedJsonable.html">CompressedJsonable</a> instead of the <code>Jsonable</code> marker interface.</p>
 <pre class="prettyprint"><code class="language-java">import com.lightbend.lagom.serialization.CompressedJsonable;
@@ -44,11 +44,11 @@ public interface AbstractAuthor extends CompressedJsonable {
 
   String biography();
 }</code></pre>
-<p>The serializer will by default only compress messages that are larger than 1024 bytes. This threshold can be changed with configuration property <code>lagom.serialization.json.compress-larger-than</code>.</p><h2 id="Schema-Evolution"><a class="section-marker" href="#Schema-Evolution">§</a><a href="#schema-evolution" name="schema-evolution">Schema Evolution</a></h2>
+<p>The serializer will by default only compress messages that are larger than 1024 bytes. This threshold can be changed with configuration property <code>lagom.serialization.json.compress-larger-than</code>.</p><h2 id="Schema-Evolution"><a class="section-marker" href="#Schema-Evolution">§</a>Schema Evolution</h2>
 <p>When working on long running projects using <a href="PersistentEntity.html">Persistence</a>, or any kind of Event Sourcing, schema evolution becomes an important aspects of developing your application. The requirements as well as our own understanding of the business domain may (and will) change over time.</p>
 <p>Lagom provides a way to perform transformations of the JSON tree model during deserialization.</p>
-<p>We will look at a few scenarios of how the classes may be evolved.</p><h3 id="Remove-Field"><a class="section-marker" href="#Remove-Field">§</a><a href="#remove-field" name="remove-field">Remove Field</a></h3>
-<p>Removing a field can be done without any migration code. The Jackson JSON serializer will ignore properties that does not exist in the class.</p><h3 id="Add-Field"><a class="section-marker" href="#Add-Field">§</a><a href="#add-field" name="add-field">Add Field</a></h3>
+<p>We will look at a few scenarios of how the classes may be evolved.</p><h3 id="Remove-Field"><a class="section-marker" href="#Remove-Field">§</a>Remove Field</h3>
+<p>Removing a field can be done without any migration code. The Jackson JSON serializer will ignore properties that does not exist in the class.</p><h3 id="Add-Field"><a class="section-marker" href="#Add-Field">§</a>Add Field</h3>
 <p>Adding an optional field can be done without any migration code. The default value will be <code>Optional.empty</code>.</p>
 <p>Old class:</p>
 <pre class="prettyprint"><code class="language-java">@Value.Immutable
@@ -128,7 +128,7 @@ public class ItemAddedMigration extends JacksonJsonMigration {
 <pre class="prettyprint"><code>lagom.serialization.json.migrations {
   &quot;com.myservice.event.ItemAdded&quot; = &quot;com.myservice.event.ItemAddedMigration&quot;
 }
-</code></pre><h3 id="Rename-Field"><a class="section-marker" href="#Rename-Field">§</a><a href="#rename-field" name="rename-field">Rename Field</a></h3>
+</code></pre><h3 id="Rename-Field"><a class="section-marker" href="#Rename-Field">§</a>Rename Field</h3>
 <p>Let&rsquo;s say that we want to rename the <code>productId</code> field to <code>itemId</code> in the previous example.</p>
 <pre class="prettyprint"><code class="language-java">@Value.Immutable
 @ImmutableStyle
@@ -164,7 +164,7 @@ public class ItemAddedMigration extends JacksonJsonMigration {
     return root;
   }
 
-}</code></pre><h3 id="Structural-Changes"><a class="section-marker" href="#Structural-Changes">§</a><a href="#structural-changes" name="structural-changes">Structural Changes</a></h3>
+}</code></pre><h3 id="Structural-Changes"><a class="section-marker" href="#Structural-Changes">§</a>Structural Changes</h3>
 <p>In a similar way we can do arbitary structural changes.</p>
 <p>Old class:</p>
 <pre class="prettyprint"><code class="language-java">@Value.Immutable
@@ -221,7 +221,7 @@ public interface AbstractAddress extends Jsonable {
     return root;
   }
 
-}</code></pre><h3 id="Rename-Class"><a class="section-marker" href="#Rename-Class">§</a><a href="#rename-class" name="rename-class">Rename Class</a></h3>
+}</code></pre><h3 id="Rename-Class"><a class="section-marker" href="#Rename-Class">§</a>Rename Class</h3>
 <p>It is also possible to rename the class. For example, let&rsquo;s rename <code>OrderAdded</code> to <code>OrderPlaced</code>.</p>
 <p>Old class:</p>
 <pre class="prettyprint"><code class="language-java">@Value.Immutable

@@ -1,4 +1,4 @@
-<h1 id="Message-Broker-Support"><a class="section-marker" href="#Message-Broker-Support">§</a><a href="#message-broker-support" name="message-broker-support">Message Broker Support</a></h1>
+<h1 id="Message-Broker-Support"><a class="section-marker" href="#Message-Broker-Support">§</a>Message Broker Support</h1>
 <p>When a service needs data owned by another service, there are two main strategies to obtain the sought data:</p>
 <p>1) A service can ask for the data from the service that owns it, and wait until the data is sent back to it. This is a synchronous communication pattern.</p>
 <p>2) The system can be architected so that data owned by a service, but needed by other services, is published to an infrastructure component that stores the data for some pre-defined amount of time. This additional component allows publishing and consuming to happen at different times, effectively decoupling services, and hence enabling services to communicate asynchronously.</p>

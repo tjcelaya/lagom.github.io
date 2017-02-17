@@ -1,10 +1,10 @@
-<h1 id="Understanding-Hello-World"><a class="section-marker" href="#Understanding-Hello-World">§</a><a href="#understanding-hello-world" name="understanding-hello-world">Understanding Hello World</a></h1>
+<h1 id="Understanding-Hello-World"><a class="section-marker" href="#Understanding-Hello-World">§</a>Understanding Hello World</h1>
 <p>After creating and running Hello World from the command line, you no doubt appreciate what Lagom framework did for you. There was no need to determine what infrastructure you might need and then install and configure it. The template removed the necessity to set up a project or build structure. And, as you create services of your own, Lagom detects changes and performs a hot reload! Lagom allows you to concentrate on satisfying your business needs.</p>
 <p>The separation of concerns illustrated in Hello World and an introduction to service descriptors and the registry will help you as you start developing your own microservices:</p>
 <ul>
-  <li><a href="#service-interface">Service interface</a></li>
-  <li><a href="#service-implementation">Service implementation</a></li>
-</ul><h1 id="Service-interface"><a class="section-marker" href="#Service-interface">§</a><a href="#service-interface" name="service-interface">Service interface</a></h1>
+  <li><a href="#Service-interface">Service interface</a></li>
+  <li><a href="#Service-implementation">Service implementation</a></li>
+</ul><h1 id="Service-interface"><a class="section-marker" href="#Service-interface">§</a>Service interface</h1>
 <p>The service interface belongs in the <code>api</code> project. For instance, the service interface for the <code>hello</code> service resides in the <code>hello-api</code> project (look for the <code>HelloService.scala</code> source file).</p>
 <pre class="prettyprint"><code class="language-scala">import akka.{Done, NotUsed}
 import com.lightbend.lagom.scaladsl.api._
@@ -36,7 +36,7 @@ object GreetingMessage {
   <p>The service interface inherits from <a href="api/com/lightbend/lagom/scaladsl/api/Service.html"><code>Service</code></a> and provides an implementation of <a href="api/com/lightbend/lagom/scaladsl/api/Service.html#descriptor"><code>Service.descriptor</code></a> method.</p></li>
   <li>
   <p>The implementation of <code>Service.descriptor</code> returns a <a href="api/com/lightbend/lagom/scaladsl/api/Descriptor.html"><code>Descriptor</code></a>. The <code>HelloService</code> descriptor defines the service name and the REST endpoints it offers. For each endpoint, declare an abstract method in the service interface as illustrated in the <code>HelloService.hello</code> method. For more information, see <a href="ServiceDescriptors.html">Service Descriptors</a>.</p></li>
-</ul><h1 id="Service-implementation"><a class="section-marker" href="#Service-implementation">§</a><a href="#service-implementation" name="service-implementation">Service implementation</a></h1>
+</ul><h1 id="Service-implementation"><a class="section-marker" href="#Service-implementation">§</a>Service implementation</h1>
 <p>The related <code>impl</code> project, <code>hello-impl</code> provides implementation for the service abstract methods. For instance, the <code>HelloServiceImpl.scala</code> source file contains the service implementation of the <code>HelloService.hello</code> method for the <code>hello</code> service. The <a href="api/com/lightbend/lagom/scaladsl/persistence/PersistentEntityRegistry.html"><code>PersistentEntityRegistry</code></a> supports data persistence using <a href="ES_CQRS.html">Event Sourcing and CQRS</a>.</p>
 <pre class="prettyprint"><code class="language-scala">import com.lightbend.lagom.scaladsl.api.ServiceCall
 import com.lightbend.lagom.scaladsl.persistence.PersistentEntityRegistry

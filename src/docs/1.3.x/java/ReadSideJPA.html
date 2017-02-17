@@ -1,5 +1,5 @@
 <h1 id="JPA-Read-Side-support"><a class="section-marker" href="#JPA-Read-Side-support">§</a>JPA Read-Side support</h1>
-<p>This page is specifically about Lagom&rsquo;s support for relational database read-sides using JPA. Before reading this, you should familiarize yourself with Lagom&rsquo;s general <a href="ReadSide.html">read-side support</a> and <a href="ReadSideRDBMS.html">relational database read-side support overview</a>.</p><h2 id="Project-dependencies"><a class="section-marker" href="#Project-dependencies">§</a><a href="#project-dependencies" name="project-dependencies">Project dependencies</a></h2>
+<p>This page is specifically about Lagom&rsquo;s support for relational database read-sides using JPA. Before reading this, you should familiarize yourself with Lagom&rsquo;s general <a href="ReadSide.html">read-side support</a> and <a href="ReadSideRDBMS.html">relational database read-side support overview</a>.</p><h2 id="Project-dependencies"><a class="section-marker" href="#Project-dependencies">§</a>Project dependencies</h2>
 <p>To use JPA support, add the following in your project&rsquo;s build:</p>
 <p>In Maven:</p>
 <pre class="prettyprint"><code class="language-xml">&lt;dependency&gt;
@@ -10,7 +10,7 @@
 </code></pre>
 <p>In sbt:</p>
 <pre class="prettyprint"><code class="language-sbt">libraryDependencies += lagomJavadslPersistenceJpa</code></pre>
-<p>You will also need to add dependencies on your JPA provider (such as <a href="http://hibernate.org/orm/">Hibernate ORM</a> or <a href="http://www.eclipse.org/eclipselink/">EclipseLink</a>) and database driver.</p><h2 id="Configuration"><a class="section-marker" href="#Configuration">§</a><a href="#configuration" name="configuration">Configuration</a></h2>
+<p>You will also need to add dependencies on your JPA provider (such as <a href="http://hibernate.org/orm/">Hibernate ORM</a> or <a href="http://www.eclipse.org/eclipselink/">EclipseLink</a>) and database driver.</p><h2 id="Configuration"><a class="section-marker" href="#Configuration">§</a>Configuration</h2>
 <p>JPA support builds on top of Lagom&rsquo;s support for <a href="PersistentEntityRDBMS.html">storing persistent entities in a relational database</a>. See that guide for instructions on configuring Lagom to use the correct JDBC driver and database URL.</p>
 <p>Next, we need to configure JPA to communicate with our database, and optionally configure Lagom to initialize a JPA persistence unit.</p>
 <p>JPA is configured using a file called <a href="http://docs.oracle.com/javaee/7/tutorial/persistence-intro003.htm#JEETT01162"><code>persistence.xml</code></a>. Create a file at <code>src/main/resources/META-INF/persistence.xml</code> in your service implementation project using this template as a guide:</p>
@@ -53,7 +53,7 @@
     # After retrying this many times, the final exception will be thrown
     max-retries = 10
   }
-}</code></pre><h2 id="Write-a-JPA-entity-class"><a class="section-marker" href="#Write-a-JPA-entity-class">§</a><a href="#write-a-jpa-entity-class" name="write-a-jpa-entity-class">Write a JPA entity class</a></h2>
+}</code></pre><h2 id="Write-a-JPA-entity-class"><a class="section-marker" href="#Write-a-JPA-entity-class">§</a>Write a JPA entity class</h2>
 <p>JPA <a href="http://docs.oracle.com/javaee/7/tutorial/persistence-intro001.htm#BNBQA">entities</a> represent tables in the read-side database. Here is an example of a JPA entity representing a summary of a blog post, which could be used to query for an index of all blog entries:</p>
 <pre class="prettyprint"><code class="language-java">import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -171,7 +171,7 @@ public PSequence&lt;AggregateEventTag&lt;BlogEvent&gt;&gt; aggregateTags() {
   sequence_offset bigint, time_uuid_offset char(36),
   PRIMARY KEY (read_side_id, tag)
 )
-</code></pre><h3 id="Global-prepare"><a class="section-marker" href="#Global-prepare">§</a><a href="#global-prepare" name="global-prepare">Global prepare</a></h3>
+</code></pre><h3 id="Global-prepare"><a class="section-marker" href="#Global-prepare">§</a>Global prepare</h3>
 <p>The global prepare callback runs at least once across the whole cluster. It is intended for doing things like creating tables and preparing any data that needs to be available before read side processing starts. Read side processors may be sharded across many nodes, and so tasks like creating tables should usually only be done from one node.</p>
 <p>The global prepare callback is run from an Akka cluster singleton. It may be run multiple times - every time a new node becomes the new singleton, the callback will be run. Consequently, the task must be idempotent. If it fails, it will be run again using an exponential backoff, and the read side processing of the whole cluster will not start until it has run successfully.</p>
 <p>Of course, setting a global prepare callback is completely optional, you may prefer to manage database tables manually, but it is very convenient for development and test environments to use this callback to create them for you.</p>
@@ -182,10 +182,10 @@ public PSequence&lt;AggregateEventTag&lt;BlogEvent&gt;&gt; aggregateTags() {
 }</code></pre>
 <p>In this case, we&rsquo;re using the JPA <a href="https://docs.oracle.com/javaee/7/api/javax/persistence/Persistence.html#generateSchema-java.lang.String-java.util.Map-"><code>generateSchema</code></a> method along with a Hibernate-specific property that can add missing tables and columns to existing schemas, as well as create the schema from scratch, but won&rsquo;t remove any existing data.</p>
 <p>It can then be registered as the global prepare callback in the <code>buildHandler</code> method:</p>
-<pre class="prettyprint"><code class="language-java">builder.setGlobalPrepare(this::createSchema);</code></pre><h3 id="Prepare"><a class="section-marker" href="#Prepare">§</a><a href="#prepare" name="prepare">Prepare</a></h3>
+<pre class="prettyprint"><code class="language-java">builder.setGlobalPrepare(this::createSchema);</code></pre><h3 id="Prepare"><a class="section-marker" href="#Prepare">§</a>Prepare</h3>
 <p>In addition to the global prepare callback, there is also a prepare callback that can be specified by calling <a href="api/index.html?com/lightbend/lagom/javadsl/persistence/jpa/JpaReadSide.ReadSideHandlerBuilder.html#setPrepare-java.util.function.BiConsumer-"><code>builder.setPrepare</code></a>. This will be executed once per shard, when the read side processor starts up.</p>
 <p>If you read the <a href="ReadSideCassandra.html">Cassandra read-side support</a> guide, you may have seen this used to prepare database statements for later use. JPA <code>Query</code> and <code>CriteriaQuery</code> instances, however, are not guaranteed to be thread-safe, so the prepare callback should not be used for this purpose with relational databases.</p>
-<p>Again this callback is optional, and in our example we have no need for a prepare callback, so none is specified.</p><h3 id="Event-handlers"><a class="section-marker" href="#Event-handlers">§</a><a href="#event-handlers" name="event-handlers">Event handlers</a></h3>
+<p>Again this callback is optional, and in our example we have no need for a prepare callback, so none is specified.</p><h3 id="Event-handlers"><a class="section-marker" href="#Event-handlers">§</a>Event handlers</h3>
 <p>The event handlers take an event and a JPA <code>EntityManger</code>, and update the read-side accordingly.</p>
 <p>Here&rsquo;s an example callback for handling the <code>PostAdded</code> event:</p>
 <pre class="prettyprint"><code class="language-java">private void processPostAdded(EntityManager entityManager,

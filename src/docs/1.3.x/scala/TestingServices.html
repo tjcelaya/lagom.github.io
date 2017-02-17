@@ -1,11 +1,11 @@
-<h1 id="Testing-Services"><a class="section-marker" href="#Testing-Services">§</a><a href="#testing-services" name="testing-services">Testing Services</a></h1><h2 id="Running-tests"><a class="section-marker" href="#Running-tests">§</a><a href="#running-tests" name="running-tests">Running tests</a></h2>
+<h1 id="Testing-Services"><a class="section-marker" href="#Testing-Services">§</a>Testing Services</h1><h2 id="Running-tests"><a class="section-marker" href="#Running-tests">§</a>Running tests</h2>
 <p>Tests can be run from sbt, or from your IDE. Running tests from your IDE will be specific to your IDE, so we&rsquo;ll focus here on how to run tests from sbt.</p>
 <ul>
   <li>To run all tests, run <code>test</code>.</li>
   <li>To run only one test class, run <code>testOnly</code> followed by the name of the class i.e. <code>testOnly com.example.MyTest</code>. Wildcards are supported, so you can say <code>testOnly *.MyTest</code>, for example.</li>
   <li>To run only the tests that cover code that has changed, run <code>testQuick</code>.</li>
   <li>To run tests continually, run a command with a tilde in front, i.e. <code>~testQuick</code>.</li>
-</ul><h2 id="Testing-libraries"><a class="section-marker" href="#Testing-libraries">§</a><a href="#testing-libraries" name="testing-libraries">Testing libraries</a></h2>
+</ul><h2 id="Testing-libraries"><a class="section-marker" href="#Testing-libraries">§</a>Testing libraries</h2>
 <p>You can use any testing framework with Lagom, popular ones include <a href="http://www.scalatest.org/">ScalaTest</a> and <a href="http://etorreborre.github.io/specs2/">Specs2</a>. If you&rsquo;re not sure which to use, or don&rsquo;t have a preference, we use ScalaTest for testing Lagom itself, and we&rsquo;ll document it here.</p>
 <p>In addition to a test framework, Lagom also provides a helper library for testing common Lagom components, called the Lagom testkit.</p>
 <p>To use your preferred test framework and the Lagom testkit, you&rsquo;ll need to add them to your library dependencies, like so:</p>
@@ -26,7 +26,7 @@
   .settings(lagomForkedTestSettings: _*)
   .settings(
     // ...
-  )</code></pre><h2 id="How-to-test-one-service"><a class="section-marker" href="#How-to-test-one-service">§</a><a href="#how-to-test-one-service" name="how-to-test-one-service">How to test one service</a></h2>
+  )</code></pre><h2 id="How-to-test-one-service"><a class="section-marker" href="#How-to-test-one-service">§</a>How to test one service</h2>
 <p>Lagom provides support for writing functional tests for one service in isolation. The service is running in a server and in the test you can interact with it using its service client, i.e. calls to the service API. These utilities are defined in <a href="api/com/lightbend/lagom/scaladsl/testkit/ServiceTest$.html">ServiceTest</a>.</p>
 <p>Here&rsquo;s what a simple test may look like:</p>
 <pre class="prettyprint"><code class="language-scala">import com.lightbend.lagom.scaladsl.server.LocalServiceLocator
@@ -101,8 +101,8 @@ class HelloServiceSpec extends AsyncWordSpec with Matchers with BeforeAndAfterAl
 ) { ctx =&gt;
   new HelloApplication(ctx) with LocalServiceLocator
 }</code></pre>
-<p>There&rsquo;s no way to explicitly enable or disable <a href="PubSub.html">pubsub</a>. When cluster is enabled (either explicitly or transitively via enabling Cassandra), pubsub will be available.</p><h2 id="How-to-test-several-services"><a class="section-marker" href="#How-to-test-several-services">§</a><a href="#how-to-test-several-services" name="how-to-test-several-services">How to test several services</a></h2>
-<p>Lagom will provide support for writing integration tests that involve several interacting services. This feature is <a href="https://github.com/lagom/lagom/issues/38">not yet implemented</a>.</p><h2 id="How-to-test-streamed-request/response"><a class="section-marker" href="#How-to-test-streamed-request/response">§</a><a href="#how-to-test-streamed-request-response" name="how-to-test-streamed-request-response">How to test streamed request/response</a></h2>
+<p>There&rsquo;s no way to explicitly enable or disable <a href="PubSub.html">pubsub</a>. When cluster is enabled (either explicitly or transitively via enabling Cassandra), pubsub will be available.</p><h2 id="How-to-test-several-services"><a class="section-marker" href="#How-to-test-several-services">§</a>How to test several services</h2>
+<p>Lagom will provide support for writing integration tests that involve several interacting services. This feature is <a href="https://github.com/lagom/lagom/issues/38">not yet implemented</a>.</p><h2 id="How-to-test-streamed-request/response"><a class="section-marker" href="#How-to-test-streamed-request/response">§</a>How to test streamed request/response</h2>
 <p>Let&rsquo;s say we have a service that has streaming request and/or response parameters. For example an <code>EchoService</code> like this:</p>
 <pre class="prettyprint"><code class="language-scala">trait EchoService extends Service {
   def echo: ServiceCall[Source[String, NotUsed], Source[String, NotUsed]]
@@ -131,6 +131,6 @@ class HelloServiceSpec extends AsyncWordSpec with Matchers with BeforeAndAfterAl
     }
   }
 }</code></pre>
-<p>Read more about it in the documentation of the <a href="http://doc.akka.io/docs/akka/2.4/java/stream/stream-testkit.html#Streams_TestKit">Akka Streams TestKit</a>.</p><h2 id="How-to-test-a-persistent-entity"><a class="section-marker" href="#How-to-test-a-persistent-entity">§</a><a href="#how-to-test-a-persistent-entity" name="how-to-test-a-persistent-entity">How to test a persistent entity</a></h2>
+<p>Read more about it in the documentation of the <a href="http://doc.akka.io/docs/akka/2.4/java/stream/stream-testkit.html#Streams_TestKit">Akka Streams TestKit</a>.</p><h2 id="How-to-test-a-persistent-entity"><a class="section-marker" href="#How-to-test-a-persistent-entity">§</a>How to test a persistent entity</h2>
 <p><a href="PersistentEntity.html">Persistent Entities</a> can be used in the service tests described above. In addition to that you should write unit tests using the <a href="api/com/lightbend/lagom/scaladsl/testkit/PersistentEntityTestDriver.html">PersistentEntityTestDriver</a>, which will run the <code>PersistentEntity</code> without using a database.</p>
 <p>This is described in the <a href="PersistentEntity.html#Unit-Testing">Persistent Entity</a> documentation.</p>

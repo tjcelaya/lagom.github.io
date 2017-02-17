@@ -1,4 +1,4 @@
-<h1 id="Logging"><a class="section-marker" href="#Logging">§</a><a href="#logging" name="logging">Logging</a></h1>
+<h1 id="Logging"><a class="section-marker" href="#Logging">§</a>Logging</h1>
 <p>Lagom uses SLF4J for logging, backed by <a href="http://logback.qos.ch/">Logback</a> as its default logging engine. Here is a short example showcasing how you can access the logger:</p>
 <pre class="prettyprint"><code class="language-java">package docs.logging;
 
@@ -29,7 +29,7 @@ import com.lightbend.lagom.sbt.LagomImport.lagomLogback
 
 lazy val usersApi = (project in file(&quot;usersApi&quot;))
   .settings(libraryDependencies += lagomLogback)</code></pre>
-<p>The Lagom logger module includes a default logback configuration. Read <a href="SettingsLogger.html">Configuring Logging</a> for details.</p><h2 id="Log4j-2"><a class="section-marker" href="#Log4j-2">§</a><a href="#log4j-2" name="log4j-2">Log4j 2</a></h2>
+<p>The Lagom logger module includes a default logback configuration. Read <a href="SettingsLogger.html">Configuring Logging</a> for details.</p><h2 id="Log4j-2"><a class="section-marker" href="#Log4j-2">§</a>Log4j 2</h2>
 <p>Lagom can be configured to use <a href="https://logging.apache.org/log4j/2.x/">Log4j 2</a> as its default logging engine. Using Log4j 2 can use either the SLF4J API for logging as shown above or the Log4j 2 API. For example, using the Log4j 2 API:</p>
 <pre class="prettyprint"><code class="language-java">package docs.logging;
 

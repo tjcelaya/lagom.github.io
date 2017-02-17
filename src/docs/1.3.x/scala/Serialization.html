@@ -1,8 +1,8 @@
-<h1 id="Serialization"><a class="section-marker" href="#Serialization">§</a><a href="#serialization" name="serialization">Serialization</a></h1>
+<h1 id="Serialization"><a class="section-marker" href="#Serialization">§</a>Serialization</h1>
 <p>Out of the box, Lagom will use JSON for request and response message format for the external API of the service, using Play JSON to serialize and deserialize messages. The messages that are sent within the cluster of the service must also be serializable and so must the events that are stored by <a href="PersistentEntity.html">Persistent Entities</a>. We recommend JSON for these as well and Lagom makes it easy to add Play JSON serialization support to such classes.</p>
 <p>Do not depend on Java serialization for production deployments. It is inefficient both in serialization size and speed. It is very difficult to evolve the classes when using Java serialization, which is especially important for the persistent state and events, since you must be able to deserialize old objects that were stored.</p>
 <p>Runtime overhead is avoided by not basing the serialization on reflection. Transformations to and from JSON are defined either manually or by using a built in macro - essentially doing what reflection would do, but at compile time instead of during runtime. This comes with one caveat, each top level class that can be serialized needs an explicit serializer defined. To use the Play JSON support in Lagom you need to provide such serializers for each type.</p>
-<p>The Play JSON abstraction for serializing and deserializing a class into JSON is the <a href="https://www.playframework.com/documentation/2.5.x/api/scala/index.html#play.api.libs.json.Format">Format</a> which in turn is a combination of <a href="https://www.playframework.com/documentation/2.5.x/api/scala/index.html#play.api.libs.json.Reads">Reads</a> and <a href="https://www.playframework.com/documentation/2.5.x/api/scala/index.html#play.api.libs.json.Writes">Writes</a>. The library parses JSON into a JSON tree model, which is what the <code>Format</code>s work with.</p><h2 id="Enabling-JSON-Serialization"><a class="section-marker" href="#Enabling-JSON-Serialization">§</a><a href="#enabling-json-serialization" name="enabling-json-serialization">Enabling JSON Serialization</a></h2>
+<p>The Play JSON abstraction for serializing and deserializing a class into JSON is the <a href="https://www.playframework.com/documentation/2.5.x/api/scala/index.html#play.api.libs.json.Format">Format</a> which in turn is a combination of <a href="https://www.playframework.com/documentation/2.5.x/api/scala/index.html#play.api.libs.json.Reads">Reads</a> and <a href="https://www.playframework.com/documentation/2.5.x/api/scala/index.html#play.api.libs.json.Writes">Writes</a>. The library parses JSON into a JSON tree model, which is what the <code>Format</code>s work with.</p><h2 id="Enabling-JSON-Serialization"><a class="section-marker" href="#Enabling-JSON-Serialization">§</a>Enabling JSON Serialization</h2>
 <p>To enable JSON Serialization there are three steps you need to follow.</p>
 <p>The first step is to define your <a href="https://www.playframework.com/documentation/2.5.x/api/scala/play/api/libs/json/Format.html">Format</a> for each class that is to be serialized, this can be done using <a href="#Automated-mapping">automated mapping</a> or <a href="#Manual-mapping">manual mapping</a>. </p>
 <pre class="prettyprint"><code class="language-scala">implicit val format: Format[AddPost] = Json.format</code></pre>
@@ -33,7 +33,7 @@ import com.lightbend.lagom.scaladsl.playjson.JsonSerializerRegistry
 
 val system = ActorSystem(&quot;my-actor-system&quot;, ActorSystemSetup(
   JsonSerializerRegistry.serializationSetupFor(MyRegistry)
-))</code></pre><h2 id="Automated-mapping"><a class="section-marker" href="#Automated-mapping">§</a><a href="#automated-mapping" name="automated-mapping">Automated mapping</a></h2>
+))</code></pre><h2 id="Automated-mapping"><a class="section-marker" href="#Automated-mapping">§</a>Automated mapping</h2>
 <p>The <a href="https://www.playframework.com/documentation/2.5.x/api/scala/index.html#play.api.libs.json.Json$@format[A]:play.api.libs.json.OFormat[A]">Json.format[MyClass]</a> macro will inspect a <code>case class</code> for what fields it contains and produce a <code>Format</code> that uses the field names and types of the class in the resulting JSON.</p>
 <p>The macro allows for defining formats based on the exact structure of the class which is handy and avoids spending development time on explicitly defining the format, on the other hand it tightly couples the structure of the JSON with the structure of the class so that a refactoring of the class unexpectedly leads to the format being unable to read JSON that was serialized before the change. There are tools in place to deal with this (see <a href="#Schema-Evolution">schema evolution</a>) but care must be taken.</p>
 <p>If the class contains fields of complex types, it pulls those in from <code>implicit</code> marked <code>Format</code>s in the scope. This means that you must provide such implicit formats for all the complex types used inside a class before calling the macro.</p>
@@ -44,7 +44,7 @@ object UserMetadata {
 case class AddComment(userId: String, comment: String, userMetadata: UserMetadata)
 object AddComment {
   implicit val format: Format[AddComment] = Json.format
-}</code></pre><h2 id="Manual-mapping"><a class="section-marker" href="#Manual-mapping">§</a><a href="#manual-mapping" name="manual-mapping">Manual mapping</a></h2>
+}</code></pre><h2 id="Manual-mapping"><a class="section-marker" href="#Manual-mapping">§</a>Manual mapping</h2>
 <p>Defining a <code>Format</code> can be done in several ways using the Play JSON APIs, either using <a href="https://playframework.com/documentation/2.5.x/ScalaJsonCombinators#Format">JSON Combinators</a> or by manually implementing functions that turn a <code>JsValue</code> into a <code>JsSuccess(T)</code> or a <code>JsFailure()</code>.</p>
 <pre class="prettyprint"><code class="language-scala">case class AddOrder(productId: String, quantity: Int)
 
@@ -56,12 +56,12 @@ object AddOrder {
     (JsPath \ &quot;product_id&quot;).format[String] and
       (JsPath \ &quot;quantity&quot;).format[Int]
     ) (AddOrder.apply, unlift(AddOrder.unapply))
-}</code></pre><h2 id="Special-mapping-considerations"><a class="section-marker" href="#Special-mapping-considerations">§</a><a href="#special-mapping-considerations" name="special-mapping-considerations">Special mapping considerations</a></h2><h3 id="Mapping-options"><a class="section-marker" href="#Mapping-options">§</a><a href="#mapping-options" name="mapping-options">Mapping options</a></h3>
-<p>The automatic mapping will handle <code>Option</code> fields, for manual mapping of optional fields you can use <code>(JsPath \ &quot;optionalField&quot;).formatNullable[A]</code>. This will treat missing fields as <code>None</code> allowing for adding of new fields without providing an explicit schema migration step.</p><h3 id="Mapping-singletons"><a class="section-marker" href="#Mapping-singletons">§</a><a href="#mapping-singletons" name="mapping-singletons">Mapping singletons</a></h3>
+}</code></pre><h2 id="Special-mapping-considerations"><a class="section-marker" href="#Special-mapping-considerations">§</a>Special mapping considerations</h2><h3 id="Mapping-options"><a class="section-marker" href="#Mapping-options">§</a>Mapping options</h3>
+<p>The automatic mapping will handle <code>Option</code> fields, for manual mapping of optional fields you can use <code>(JsPath \ &quot;optionalField&quot;).formatNullable[A]</code>. This will treat missing fields as <code>None</code> allowing for adding of new fields without providing an explicit schema migration step.</p><h3 id="Mapping-singletons"><a class="section-marker" href="#Mapping-singletons">§</a>Mapping singletons</h3>
 <p>For toplevel singletons (Scala <code>object</code>s) you can use <a href="api/index.html#com/lightbend/lagom/scaladsl/playjson/Serializers@emptySingletonFormat">com.lightbend.lagom.scaladsl.playjson.Serializers.emptySingletonFormat</a> to get a <code>Format</code> that outputs empty JSON (as the type is also encoded along side the data).</p>
 <pre class="prettyprint"><code class="language-scala">case object GetOrders {
   implicit val format: Format[GetOrders.type] = JsonSerializer.emptySingletonFormat(GetOrders)
-}</code></pre><h3 id="Mapping-hierarchies"><a class="section-marker" href="#Mapping-hierarchies">§</a><a href="#mapping-hierarchies" name="mapping-hierarchies">Mapping hierarchies</a></h3>
+}</code></pre><h3 id="Mapping-hierarchies"><a class="section-marker" href="#Mapping-hierarchies">§</a>Mapping hierarchies</h3>
 <p>When mapping a hierarchy of types, for example an ADT, or a trait or abstract class you will need to provide a <code>Format</code> for the supertype, that based on some information in the JSON decides which subtype to deserialize.</p>
 <pre class="prettyprint"><code class="language-scala">import play.api.libs.json._
 
@@ -96,11 +96,11 @@ object Fruit {
       ))
     }
   )
-}</code></pre><h2 id="Schema-Evolution"><a class="section-marker" href="#Schema-Evolution">§</a><a href="#schema-evolution" name="schema-evolution">Schema Evolution</a></h2>
+}</code></pre><h2 id="Schema-Evolution"><a class="section-marker" href="#Schema-Evolution">§</a>Schema Evolution</h2>
 <p>When working on long running projects using <a href="PersistentEntity.html">Persistence</a>, or any kind of Event Sourcing, schema evolution becomes an important aspects of developing your application. The requirements as well as our own understanding of the business domain may (and will) change over time.</p>
 <p>Lagom provides a way to perform transformations of the JSON tree model during deserialization. To do those transformations you can either modify the json imperatively or use the <a href="https://www.playframework.com/documentation/2.5.x/ScalaJsonTransformers">Play JSON transformers</a></p>
-<p>We will look at a few scenarios of how the classes may be evolved.</p><h3 id="Remove-Field"><a class="section-marker" href="#Remove-Field">§</a><a href="#remove-field" name="remove-field">Remove Field</a></h3>
-<p>Removing a field can be done without any migration code. Both manual and automatic mappings will ignore properties that does not exist in the class.</p><h3 id="Add-Field"><a class="section-marker" href="#Add-Field">§</a><a href="#add-field" name="add-field">Add Field</a></h3>
+<p>We will look at a few scenarios of how the classes may be evolved.</p><h3 id="Remove-Field"><a class="section-marker" href="#Remove-Field">§</a>Remove Field</h3>
+<p>Removing a field can be done without any migration code. Both manual and automatic mappings will ignore properties that does not exist in the class.</p><h3 id="Add-Field"><a class="section-marker" href="#Add-Field">§</a>Add Field</h3>
 <p>Adding an optional field can be done without any migration code if automated mapping is used or manual mapping is used and you have made sure a missing field is read as a <code>None</code> by your format (see <a href="#Mapping-options">mapping options</a>).</p>
 <p>Old class:</p>
 <pre class="prettyprint"><code class="language-scala">case class ItemAdded(
@@ -158,7 +158,7 @@ object Fruit {
     ))
   )
 }</code></pre>
-<p>In this case we give the <code>JsonMigrations.transform</code> method the type it is for, and a sorted map of transformations that has happened leading up to the current version of the schema.</p><h3 id="Rename-Field"><a class="section-marker" href="#Rename-Field">§</a><a href="#rename-field" name="rename-field">Rename Field</a></h3>
+<p>In this case we give the <code>JsonMigrations.transform</code> method the type it is for, and a sorted map of transformations that has happened leading up to the current version of the schema.</p><h3 id="Rename-Field"><a class="section-marker" href="#Rename-Field">§</a>Rename Field</h3>
 <p>Let&rsquo;s say that we want to rename the <code>productId</code> field to <code>itemId</code> in the previous example.</p>
 <pre class="prettyprint"><code class="language-scala">case class ItemAdded(
     shoppingCartId: String,
@@ -189,7 +189,7 @@ override def migrations = Map[String, JsonMigration](
   JsonMigrations.transform[ItemAdded](immutable.SortedMap(
     1 -&gt; productIdToItemId
   ))
-)</code></pre><h3 id="Structural-Changes"><a class="section-marker" href="#Structural-Changes">§</a><a href="#structural-changes" name="structural-changes">Structural Changes</a></h3>
+)</code></pre><h3 id="Structural-Changes"><a class="section-marker" href="#Structural-Changes">§</a>Structural Changes</h3>
 <p>In a similar way we can do arbitary structural changes.</p>
 <p>Old class:</p>
 <pre class="prettyprint"><code class="language-scala">case class Customer(
@@ -240,7 +240,7 @@ val customerMigration = new JsonMigration(2) {
 
 override def migrations: Map[String, JsonMigration] = Map(
   classOf[Customer].getName -&gt; customerMigration
-)</code></pre><h3 id="Rename-Class"><a class="section-marker" href="#Rename-Class">§</a><a href="#rename-class" name="rename-class">Rename Class</a></h3>
+)</code></pre><h3 id="Rename-Class"><a class="section-marker" href="#Rename-Class">§</a>Rename Class</h3>
 <p>It is also possible to rename the class. For example, let&rsquo;s rename <code>OrderAdded</code> to <code>OrderPlaced</code>.</p>
 <p>Old class:</p>
 <pre class="prettyprint"><code class="language-scala">case class OrderAdded(shoppingCartId: String)</code></pre>

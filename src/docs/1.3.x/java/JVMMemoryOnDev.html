@@ -1,11 +1,11 @@
-<h1 id="Increase-Memory-in-sbt-and-Maven"><a class="section-marker" href="#Increase-Memory-in-sbt-and-Maven">§</a><a href="#increase-memory-in-sbt-and-maven" name="increase-memory-in-sbt-and-maven">Increase Memory in sbt and Maven</a></h1>
+<h1 id="Increase-Memory-in-sbt-and-Maven"><a class="section-marker" href="#Increase-Memory-in-sbt-and-Maven">§</a>Increase Memory in sbt and Maven</h1>
 <p>Lagom in dev mode starts all your services plus some internal Lagom services in a single JVM. This can cause <code>OutOfMemoryError</code>s depending on your JVM setup. It is possible to start Maven and sbt with increased memory.</p>
-<p>We recommend you increase the Maximum Metaspace size and the Thread Stack size. These values can be set using <code>-Xss2M -XX:MaxMetaspaceSize=1024M</code>. The exact values may depend on your hardware and your code base.</p><h2 id="Maven"><a class="section-marker" href="#Maven">§</a><a href="#maven" name="maven">Maven</a></h2>
+<p>We recommend you increase the Maximum Metaspace size and the Thread Stack size. These values can be set using <code>-Xss2M -XX:MaxMetaspaceSize=1024M</code>. The exact values may depend on your hardware and your code base.</p><h2 id="Maven"><a class="section-marker" href="#Maven">§</a>Maven</h2>
 <p>You can start Maven with extra memory using <code>MAVEN_OPTS</code> environment variable.</p>
 <pre class="prettyprint"><code class="language-bash">$ MAVEN_OPTS=&quot;-Xms512M -Xmx1024M -Xss2M -XX:MaxMetaspaceSize=1024M&quot; mvn lagom:runAll
 </code></pre>
 <p>In this example we&rsquo;re setting an initial JVM Heap of 512Mb, a maximum Heap of 1024M, a thread stack of 2M and maximum Metaspace size of 2014M. </p>
-<p>Stating the <code>MAVEN_OPTS</code> on every invocation is error prone and exporting it globally might not be possible if you need different settings for different projects. You may want to use <a href="http://direnv.net/">direnv</a> to setup the environment variables per project.</p><h2 id="sbt"><a class="section-marker" href="#sbt">§</a><a href="#sbt" name="sbt">sbt</a></h2>
+<p>Stating the <code>MAVEN_OPTS</code> on every invocation is error prone and exporting it globally might not be possible if you need different settings for different projects. You may want to use <a href="http://direnv.net/">direnv</a> to setup the environment variables per project.</p><h2 id="sbt"><a class="section-marker" href="#sbt">§</a>sbt</h2>
 <p>You can start sbt with extra memory using <code>SBT_OPTS</code> environment variable. </p>
 <pre class="prettyprint"><code class="language-bash">$ SBT_OPTS=&quot;-Xms512M -Xmx1024M -Xss2M -XX:MaxMetaspaceSize=1024M&quot; sbt
 </code></pre>

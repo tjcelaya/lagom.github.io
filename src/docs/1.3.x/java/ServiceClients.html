@@ -1,17 +1,19 @@
-<h1 id="Consuming-services"><a class="section-marker" href="#Consuming-services">§</a><a href="#consuming-services" name="consuming-services">Consuming services</a></h1>
-<p>We&rsquo;ve seen how to define service descriptors and how to implement them, now we need to consume them. The service descriptor contains everything Lagom needs to know about how to invoke a service, consequently, Lagom is able to implement service descriptor interfaces for you.</p><h2 id="Binding-a-service-client"><a class="section-marker" href="#Binding-a-service-client">§</a><a href="#binding-a-service-client" name="binding-a-service-client">Binding a service client</a></h2>
+<h1 id="Consuming-services"><a class="section-marker" href="#Consuming-services">§</a>Consuming services</h1>
+<p>We&rsquo;ve seen how to define service descriptors and how to implement them, now we need to consume them. The service descriptor contains everything Lagom needs to know about how to invoke a service, consequently, Lagom is able to implement service descriptor interfaces for you.</p><h2 id="Binding-a-service-client"><a class="section-marker" href="#Binding-a-service-client">§</a>Binding a service client</h2>
 <p>The first thing necessary to consume a service is to bind it, so that Lagom can provide an implementation for your application to use. This can be done using the <code>bindClient</code> method on <a href="api/index.html?com/lightbend/lagom/javadsl/client/ServiceClientGuiceSupport.html">ServiceClientGuiceSupport</a>. If you&rsquo;re already binding a service implementation using <a href="api/index.html?com/lightbend/lagom/javadsl/server/ServiceGuiceSupport.html">ServiceGuiceSupport</a>, this interface extends <code>ServiceClientGuiceSupport</code>, so your existing module can be used as is:</p>
 <pre class="prettyprint"><code class="language-java">import com.google.inject.AbstractModule;
-import com.lightbend.lagom.javadsl.server.ServiceGuiceSupport;
+import com.lightbend.lagom.javadsl.client.ServiceClientGuiceSupport;
 import docs.services.HelloService;
+import com.lightbend.lagom.javadsl.api.ServiceInfo;
 
-public class Module extends AbstractModule implements ServiceGuiceSupport {
+public class Module extends AbstractModule implements ServiceClientGuiceSupport {
 
     protected void configure() {
+        bindServiceInfo(ServiceInfo.of(&quot;hello-service&quot;));
         bindClient(HelloService.class);
     }
 }</code></pre>
-<p>Note that when you bind a server using <code>bindServices</code>, this will automatically bind a client for that service as well.</p><h2 id="Using-a-service-client"><a class="section-marker" href="#Using-a-service-client">§</a><a href="#using-a-service-client" name="using-a-service-client">Using a service client</a></h2>
+<p>Note that when you bind a server using <code>bindServices</code>, this will automatically bind a client for that service as well.</p><h2 id="Using-a-service-client"><a class="section-marker" href="#Using-a-service-client">§</a>Using a service client</h2>
 <p>Having bound the client, you can now have it injected into any Lagom component using <code>@Inject</code> annotations. Here&rsquo;s an example of consuming one service from another service:</p>
 <pre class="prettyprint"><code class="language-java">public class MyServiceImpl implements MyService {
   private final HelloService helloService;
@@ -30,7 +32,7 @@ public class Module extends AbstractModule implements ServiceGuiceSupport {
       );
     };
   }
-}</code></pre><h2 id="Circuit-Breakers"><a class="section-marker" href="#Circuit-Breakers">§</a><a href="#circuit-breakers" name="circuit-breakers">Circuit Breakers</a></h2>
+}</code></pre><h2 id="Circuit-Breakers"><a class="section-marker" href="#Circuit-Breakers">§</a>Circuit Breakers</h2>
 <p>A <a href="http://martinfowler.com/bliki/CircuitBreaker.html">circuit breaker</a> is used to provide stability and prevent cascading failures in distributed systems. These should be used in conjunction with judicious timeouts at the interfaces between services to prevent the failure of a single service from bringing down other services.</p>
 <p>As an example, we have a web application interacting with a third-party web service. Let&rsquo;s say the third-party has oversold their capacity and their database melts down under load. Assume that the database fails in such a way that it takes a very long time to hand back an error to the third-party web service. This in turn makes calls fail after a long period of time. Back to our web application, the users have noticed that their form submissions take much longer seeming to hang. The users do what they know to do which is use the refresh button, adding more requests to their already running requests. This eventually causes the failure of the web application due to resource exhaustion.</p>
 <p>Introducing circuit breakers on the web service call would cause the requests to begin to fail-fast, letting the user know that something is wrong and that they need not refresh their request. This also confines the failure behavior to only those users that are using functionality dependent on the third-party, other users are no longer affected as there is no resource exhaustion. Circuit breakers can also allow savvy developers to mark portions of the site that use the functionality unavailable, or perhaps show some cached content as appropriate while the breaker is open.</p>

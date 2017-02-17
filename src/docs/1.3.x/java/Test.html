@@ -1,11 +1,11 @@
-<h1 id="Testing-Services"><a class="section-marker" href="#Testing-Services">§</a><a href="#testing-services" name="testing-services">Testing Services</a></h1><h2 id="Running-tests"><a class="section-marker" href="#Running-tests">§</a><a href="#running-tests" name="running-tests">Running tests</a></h2>
+<h1 id="Testing-Services"><a class="section-marker" href="#Testing-Services">§</a>Testing Services</h1><h2 id="Running-tests"><a class="section-marker" href="#Running-tests">§</a>Running tests</h2>
 <p>You can run tests from the sbt console.</p>
 <ul>
   <li>To run all tests, run <code>test</code>.</li>
   <li>To run only one test class, run <code>testOnly</code> followed by the name of the class i.e. <code>testOnly my.namespace.MyTest</code>.</li>
   <li>To run only the tests that have failed, run <code>testQuick</code>.</li>
   <li>To run tests continually, run a command with a tilde in front, i.e. <code>~testQuick</code>.</li>
-</ul><h2 id="JUnit"><a class="section-marker" href="#JUnit">§</a><a href="#junit" name="junit">JUnit</a></h2>
+</ul><h2 id="JUnit"><a class="section-marker" href="#JUnit">§</a>JUnit</h2>
 <p>The recommended test framework for Lagom is <a href="http://junit.org/">JUnit</a></p>
 <pre class="prettyprint"><code class="language-java">import static org.junit.Assert.*;
 
@@ -25,7 +25,7 @@ public class SimpleTest {
     assertFalse(str.isEmpty());
   }
 
-}</code></pre><h2 id="Dependency"><a class="section-marker" href="#Dependency">§</a><a href="#dependency" name="dependency">Dependency</a></h2>
+}</code></pre><h2 id="Dependency"><a class="section-marker" href="#Dependency">§</a>Dependency</h2>
 <p>To use this feature add the following in your project&rsquo;s build.</p>
 <pre class="prettyprint"><code class="language-xml">&lt;dependency&gt;
     &lt;groupId&gt;com.lightbend.lagom&lt;/groupId&gt;
@@ -37,7 +37,7 @@ public class SimpleTest {
 <p>In sbt:</p>
 <pre class="prettyprint"><code class="language-sbt">libraryDependencies += lagomJavadslTestKit</code></pre>
 <p>When using Cassandra the tests must be forked, which is enabled by adding the following in your project&rsquo;s build:</p>
-<pre class="prettyprint"><code class="language-sbt">.settings(lagomForkedTestSettings: _*)</code></pre><h2 id="How-to-test-one-service"><a class="section-marker" href="#How-to-test-one-service">§</a><a href="#how-to-test-one-service" name="how-to-test-one-service">How to test one service</a></h2>
+<pre class="prettyprint"><code class="language-sbt">.settings(lagomForkedTestSettings: _*)</code></pre><h2 id="How-to-test-one-service"><a class="section-marker" href="#How-to-test-one-service">§</a>How to test one service</h2>
 <p>Lagom provides support for writing functional tests for one service in isolation. The service is running in a server and in the test you can interact with it using its service client, i.e. calls to the service API. These utilities are defined in <a href="api/index.html?com/lightbend/lagom/javadsl/testkit/ServiceTest.html">ServiceTest</a>.</p>
 <pre class="prettyprint"><code class="language-java">import static com.lightbend.lagom.javadsl.testkit.ServiceTest.*;
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -117,8 +117,8 @@ public class AdvancedHelloServiceTest {
     assertEquals(&quot;Hello Bob&quot;, msg);
   }
 
-}</code></pre><h2 id="How-to-test-several-services"><a class="section-marker" href="#How-to-test-several-services">§</a><a href="#how-to-test-several-services" name="how-to-test-several-services">How to test several services</a></h2>
-<p>Lagom will provide support for writing integration tests that involve several interacting services. This feature is <a href="https://github.com/lagom/lagom/issues/38">not yet implemented</a>.</p><h2 id="How-to-test-streamed-request/response"><a class="section-marker" href="#How-to-test-streamed-request/response">§</a><a href="#how-to-test-streamed-request-response" name="how-to-test-streamed-request-response">How to test streamed request/response</a></h2>
+}</code></pre><h2 id="How-to-test-several-services"><a class="section-marker" href="#How-to-test-several-services">§</a>How to test several services</h2>
+<p>Lagom will provide support for writing integration tests that involve several interacting services. This feature is <a href="https://github.com/lagom/lagom/issues/38">not yet implemented</a>.</p><h2 id="How-to-test-streamed-request/response"><a class="section-marker" href="#How-to-test-streamed-request/response">§</a>How to test streamed request/response</h2>
 <p>Let&rsquo;s say we have a service that have streaming request and/or response parameters. For example an <code>EchoService</code> like this:</p>
 <pre class="prettyprint"><code class="language-java">public interface EchoService extends Service {
 
@@ -165,7 +165,7 @@ public class EchoServiceTest {
   }
 
 }</code></pre>
-<p>Read more about it in the documentation of the <a href="http://doc.akka.io/docs/akka/2.4/java/stream/stream-testkit.html#Streams_TestKit">Akka Streams TestKit</a>.</p><h2 id="How-to-test-broker-publishing-and-consuming"><a class="section-marker" href="#How-to-test-broker-publishing-and-consuming">§</a><a href="#how-to-test-broker-publishing-and-consuming" name="how-to-test-broker-publishing-and-consuming">How to test broker publishing and consuming</a></h2>
-<p>The section on <a href="MessageBrokerTesting.html">Message Broker Testing</a> is related to Testing Services but is specific to testing the production and consumption via Brokers.</p><h2 id="How-to-test-PersistentEntity"><a class="section-marker" href="#How-to-test-PersistentEntity">§</a><a href="#how-to-test-persistententity" name="how-to-test-persistententity">How to test PersistentEntity</a></h2>
-<p><a href="PersistentEntity.html#unit-testing">Persistent Entities</a> can be used in the service tests described above. In addition to that you should write unit tests using the <a href="api/index.html?com/lightbend/lagom/javadsl/testkit/PersistentEntityTestDriver.html">PersistentEntityTestDriver</a>, which will run the <code>PersistentEntity</code> without using a database.</p>
+<p>Read more about it in the documentation of the <a href="http://doc.akka.io/docs/akka/2.4/java/stream/stream-testkit.html#Streams_TestKit">Akka Streams TestKit</a>.</p><h2 id="How-to-test-broker-publishing-and-consuming"><a class="section-marker" href="#How-to-test-broker-publishing-and-consuming">§</a>How to test broker publishing and consuming</h2>
+<p>The section on <a href="MessageBrokerTesting.html">Message Broker Testing</a> is related to Testing Services but is specific to testing the production and consumption via Brokers.</p><h2 id="How-to-test-PersistentEntity"><a class="section-marker" href="#How-to-test-PersistentEntity">§</a>How to test PersistentEntity</h2>
+<p><a href="PersistentEntity.html#Unit-Testing">Persistent Entities</a> can be used in the service tests described above. In addition to that you should write unit tests using the <a href="api/index.html?com/lightbend/lagom/javadsl/testkit/PersistentEntityTestDriver.html">PersistentEntityTestDriver</a>, which will run the <code>PersistentEntity</code> without using a database.</p>
 <p>This is described in the documentation of <a href="PersistentEntity.html#Unit-Testing">Persistent Entity</a></p>

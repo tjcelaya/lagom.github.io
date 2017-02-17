@@ -1,6 +1,6 @@
-<h1 id="Development-Environment"><a class="section-marker" href="#Development-Environment">§</a><a href="#development-environment" name="development-environment">Development Environment</a></h1>
+<h1 id="Development-Environment"><a class="section-marker" href="#Development-Environment">§</a>Development Environment</h1>
 <p>Lagom&rsquo;s sbt and Maven based development environments allow running any number of services together with a single command.</p>
-<p>The same command also reloads your services when the code changes, so that you don&rsquo;t have to manually restart them. You can stay focused on your work and let Lagom do the compiling and reloading.</p><h2 id="Running-all-services-in-Maven"><a class="section-marker" href="#Running-all-services-in-Maven">§</a><a href="#running-all-services-in-maven" name="running-all-services-in-maven">Running all services in Maven</a></h2>
+<p>The same command also reloads your services when the code changes, so that you don&rsquo;t have to manually restart them. You can stay focused on your work and let Lagom do the compiling and reloading.</p><h2 id="Running-all-services-in-Maven"><a class="section-marker" href="#Running-all-services-in-Maven">§</a>Running all services in Maven</h2>
 <p>To run all services in Maven, simply run the <code>lagom:runAll</code> command:</p>
 <pre class="prettyprint"><code class="language-console">$ cd &lt;path to your Lagom project&gt;
 $ mvn lagom:runAll
@@ -9,7 +9,7 @@ INFO Service hello-impl listening for HTTP on 0:0:0:0:0:0:0:0:23966
 INFO Service hello-stream-impl listening for HTTP on 0:0:0:0:0:0:0:0:27462
 (Services started, press enter to stop and go back to the console...)
 </code></pre>
-<p>This may take a while if you have a lot of services or if dependencies are being retrieved for the first time.</p><h2 id="Starting-the-sbt-development-console"><a class="section-marker" href="#Starting-the-sbt-development-console">§</a><a href="#starting-the-sbt-development-console" name="starting-the-sbt-development-console">Starting the sbt development console</a></h2>
+<p>This may take a while if you have a lot of services or if dependencies are being retrieved for the first time.</p><h2 id="Starting-the-sbt-development-console"><a class="section-marker" href="#Starting-the-sbt-development-console">§</a>Starting the sbt development console</h2>
 <p>Assuming you have have an sbt project, it&rsquo;s now time to fire up the console on your Lagom project directory:</p>
 <pre class="prettyprint"><code class="language-console">$ cd &lt;path to your Lagom project&gt;
 $ sbt
@@ -23,12 +23,12 @@ $ sbt
 [info] Service stream-impl listening for HTTP on 0:0:0:0:0:0:0:0:27462
 (Services started, press enter to stop and go back to the console...)
 </code></pre>
-<p>This may take a while if you have a lot of services or if dependencies are being retrieved for the first time.</p><h2 id="Hot-reloading"><a class="section-marker" href="#Hot-reloading">§</a><a href="#hot-reloading" name="hot-reloading">Hot reloading</a></h2>
+<p>This may take a while if you have a lot of services or if dependencies are being retrieved for the first time.</p><h2 id="Hot-reloading"><a class="section-marker" href="#Hot-reloading">§</a>Hot reloading</h2>
 <p>Once the &ldquo;Services started&rdquo; message has appeared, if you make a change to your source code, you&rsquo;ll see output like this in the console:</p>
 <pre class="prettyprint"><code class="language-console">[info] Compiling 1 Java source to /&lt;project-path&gt;/target/scala-2.11/classes...
 
 --- (RELOAD) ---
-</code></pre><h2 id="Behind-the-scenes"><a class="section-marker" href="#Behind-the-scenes">§</a><a href="#behind-the-scenes" name="behind-the-scenes">Behind the scenes</a></h2>
+</code></pre><h2 id="Behind-the-scenes"><a class="section-marker" href="#Behind-the-scenes">§</a>Behind the scenes</h2>
 <p>What&rsquo;s happening behind the scenes when you <code>runAll</code>?</p>
 <ul>
   <li>an embedded Service Locator is started</li>

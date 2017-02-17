@@ -1,6 +1,6 @@
 <h1 id="Advanced-Topic:-Integrating-with-Akka"><a class="section-marker" href="#Advanced-Topic:-Integrating-with-Akka">§</a>Advanced Topic: Integrating with Akka</h1>
 <p>Lagom is built with Akka as one of the underlying technologies. Nonetheless, writing simple Lagom services doesn&rsquo;t require interacting with Akka directly.</p>
-<p>More advanced users may want direct access, as described in this section.</p><h2 id="Usage-from-Service-Implementation"><a class="section-marker" href="#Usage-from-Service-Implementation">§</a><a href="#usage-from-service-implementation" name="usage-from-service-implementation">Usage from Service Implementation</a></h2>
+<p>More advanced users may want direct access, as described in this section.</p><h2 id="Usage-from-Service-Implementation"><a class="section-marker" href="#Usage-from-Service-Implementation">§</a>Usage from Service Implementation</h2>
 <p>Pretty much everything in Akka is accessible through an <code>ActorSystem</code> object. You can inject the current <code>ActorSystem</code> into your service implementations or persistent entities with ordinary dependency injection.</p>
 <p>Let&rsquo;s look at an example of a <code>WorkerService</code> that accepts job requests and delegates the work to actors running on other nodes in the service&rsquo;s cluster.</p>
 <pre class="prettyprint"><code class="language-java">import static akka.pattern.PatternsCS.ask;
@@ -126,7 +126,7 @@ public interface AbstractJobStatus extends Jsonable {
 
   @Value.Parameter
   public String getStatus();
-}</code></pre><h2 id="Usage-of-Lagom-APIs-in-Actors"><a class="section-marker" href="#Usage-of-Lagom-APIs-in-Actors">§</a><a href="#usage-of-lagom-apis-in-actors" name="usage-of-lagom-apis-in-actors">Usage of Lagom APIs in Actors</a></h2>
+}</code></pre><h2 id="Usage-of-Lagom-APIs-in-Actors"><a class="section-marker" href="#Usage-of-Lagom-APIs-in-Actors">§</a>Usage of Lagom APIs in Actors</h2>
 <p>If you need to have access to some Lagom API from an actor, you have two options:</p>
 <ol>
   <li>Pass the Lagom object as an ordinary constructor parameter when creating the actor.</li>
