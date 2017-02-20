@@ -1,12 +1,13 @@
 <h1 id="Using-ConductR-with-sbt"><a class="section-marker" href="#Using-ConductR-with-sbt">§</a>Using ConductR with sbt</h1>
 <p>To use ConductR with sbt, add the <a href="https://github.com/typesafehub/sbt-conductr">sbt-conductr plugin</a> to your <code>project/plugins.sbt</code>:</p>
-<pre class="prettyprint"><code class="language-sbt">addSbtPlugin(&quot;com.lightbend.conductr&quot; % &quot;sbt-conductr&quot; % &quot;2.1.17&quot;)</code></pre>
+<pre class="prettyprint"><code class="language-sbt">addSbtPlugin(&quot;com.lightbend.conductr&quot; % &quot;sbt-conductr&quot; % &quot;2.2.4&quot;)</code></pre>
 <p>sbt-conductr adds several commands to the sbt console:</p>
 <ul>
-  <li><code>install</code> to introspect your projects and then load and run them within the sandbox</li>
-  <li><code>generateInstallationScript</code> to produce an installation script to deploy your Lagom system that you can then tailor</li>
+  <li><code>install</code> to introspect your project and deploy all services within the ConductR sandbox</li>
+  <li><code>generateInstallationScript</code> to produce an deployment script for all your services that you can then tailor</li>
   <li><code>bundle:dist</code> to produce individual ConductR packages for your services</li>
-  <li><code>configuration:dist</code> to produce individual custom ConductR configuration for your services</li>
+  <li><code>configuration:dist</code> to produce individual ConductR configurations for your services</li>
+  <li><code>cassandra-configuration:dist</code> to produce a Cassandra ConductR configuration</li>
   <li>Commands from the <code>conductr-cli</code></li>
 </ul>
 <p>We will use most of these commands in the next sections.</p><h2 id="Run-it-all"><a class="section-marker" href="#Run-it-all">§</a>Run it all</h2>
