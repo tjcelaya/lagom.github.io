@@ -12,7 +12,7 @@ The best way to get started is to read Lagom's [Get Involved](../get-involved.ht
 
 The best place to talk about Lagom development is on the [Lagom contributors Gitter channel](https://gitter.im/lagom/contributors). Discussion about the Lagom Outreachy projects can be had in the [Lagom Outreachy Gitter channel](https://gitter.im/lagom/outreachy), where Lagom Outreachy mentors can be found (though note that the Lagom team is very geographically distributed, including developers in Australia, USA and Europe, so don't expect to get immediate responses from any particular person).
 
-Contributions can either be made to the core Lagom project, or to any of our sample apps, for example, enhancements to the [online auction](https://github.com/lagom/online-auction-java) would be a great way to go.
+To start contributing, there are several issues tagged with the "outreachy" label on the Lagom online auction sample app, see [here](https://github.com/lagom/online-auction-java/issues?q=is%3Aissue+is%3Aopen+label%3Aoutreachy). Alternatively, bugfixes and other changes to the main Lagom repo, or to any of the other sample apps in the Lagom GitHub organization, would be welcome.
 
 ## Projects
 
